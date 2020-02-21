@@ -24,13 +24,126 @@
               /*word-wrap:break-word;*/
               /*width: 120px;*/
         }
+
 		</style>
+        <!-- 引入样式 -->
+        <link rel="stylesheet" href="../css/element-ui.css">
+        <style>
+            .cabinetForm{
+                background: #01232E;
+                width:200px
+            }
+            .cabinetForm .title{
+                background-color: #01818D;
+                height: 20px;
+                font-weight: bold;
+                font-size: 14px;
+                color: #80E6EF;
+                padding-top: 5px;
+                padding-left: 5px;
+            }
+            .el-form-item{
+                margin-bottom: 1px;
+            }
+            .el-form-item__label{
+                font-size: 12px;
+                color: #80E6EF;
+                font-weight: bold;
+                line-height: 15px
+            }
+            .el-form-item__content{
+                font-size: 12px;
+                color: #80E6EF;
+                line-height: 15px
+            }
+        </style>
 	</head>
 	<body>
       <div id="container">
 		<div id="label">
         </div>
 	  </div>
+      <div id="switch" style="position: absolute;left: 50px;top: 65px;z-index:5;line-height:20px;vertical-align:middle">
+          <el-switch style="margin-top:-3px;" v-model="value1" active-color="#00aeef"></el-switch>
+          <span style="color:#ffffff;font-size:16px">CPU利用率(>=60%)</span>
+          &nbsp;&nbsp;&nbsp;
+          <el-switch style="margin-top:-3px;" v-model="value2" active-color="#00aeef"></el-switch>
+          <span style="color:#ffffff;font-size:16px">温度(>=45°C)</span>
+          <br><br>
+          <el-switch style="margin-top:-3px;" v-model="value3" active-color="#00aeef"></el-switch>
+          <span style="color:#ffffff;font-size:16px">内存利用率(>=60%)</span>
+          &nbsp;&nbsp;&nbsp;
+          <el-switch style="margin-top:-3px;" v-model="value4" active-color="#00aeef"></el-switch>
+          <span style="color:#ffffff;font-size:16px">功耗</span>
+      </div>
+
+      <div id="cabinetForm" v-show="seen" :style="positionStyle" class="cabinetForm">
+          <div class="title">机柜详细信息</div>
+          <el-form :model="chassis" label-width="80px">
+              <el-form-item label="机柜名称" v-model="chassis.chassisName">
+                  {{chassis.chassisName}}
+              </el-form-item>
+              <el-form-item label="机柜类型" v-model="chassis.chassisType">
+                  {{chassis.chassisType}}
+              </el-form-item>
+              <el-form-item label="厂家" v-model="chassis.manufacturer">
+                  {{chassis.manufacturer}}
+              </el-form-item>
+              <el-form-item label="入网时间" v-model="chassis.putIntoProductionTime">
+                  {{chassis.putIntoProductionTime}}
+              </el-form-item>
+              <el-form-item label="使用状态" v-model="chassis.propertyState">
+                  {{chassis.propertyState}}
+              </el-form-item>
+              <el-form-item label="健康检查" v-model="chassis.health">
+                  {{chassis.health}}
+              </el-form-item>
+              <el-form-item label="额定功耗" v-model="chassis.powerCapacityWatts">
+                  {{chassis.powerCapacityWatts}}W
+              </el-form-item>
+              <el-form-item label="使用功耗" v-model="chassis.powerConsumedWatts">
+                  <el-progress :text-inside="true" :stroke-width="15" :percentage="chassis.percentage"></el-progress>
+              </el-form-item>
+          </el-form>
+      </div>
+      <div id="serverForm" v-show="seen" :style="positionStyle" class="cabinetForm">
+          <div class="title">服务器详细信息</div>
+          <el-form :model="server" label-width="80px">
+              <el-form-item label="服务器名称" v-model="server.serverName">
+                  {{server.serverName}}
+              </el-form-item>
+              <el-form-item label="服务器编号" v-model="server.serverNO">
+                  {{server.serverNO}}
+              </el-form-item>
+              <el-form-item label="服务器类型" v-model="server.serverType">
+                  {{server.serverType}}
+              </el-form-item>
+              <el-form-item label="厂家" v-model="server.manufacturer">
+                  {{server.manufacturer}}
+              </el-form-item>
+              <el-form-item label="入网时间" v-model="server.putIntoProductionTime">
+                  {{server.putIntoProductionTime}}
+              </el-form-item>
+              <el-form-item label="IP" v-model="server.ip">
+                  {{server.ip}}
+              </el-form-item>
+              <el-form-item label="CPU分配率" v-model="server.cpuAlloc">
+                  <el-progress :text-inside="true" :stroke-width="15" :percentage="server.cpuAlloc"></el-progress>
+              </el-form-item>
+              <el-form-item label="内存分配率" v-model="server.memAlloc">
+                  <el-progress :text-inside="true" :stroke-width="15" :percentage="server.memAlloc"></el-progress>
+              </el-form-item>
+              <el-form-item label="CPU平均利用率" v-model="server.cpuUsed">
+                  <el-progress :text-inside="true" :stroke-width="15" :percentage="server.cpuUsed"></el-progress>
+              </el-form-item>
+              <el-form-item label="内存平均利用率" v-model="server.memUsed">
+                  <el-progress :text-inside="true" :stroke-width="15" :percentage="server.memUsed"></el-progress>
+              </el-form-item>
+              <el-form-item label="CPU碎片率" v-model="server.cpus">
+                  <el-progress :text-inside="true" :stroke-width="15" :percentage="server.cpus"></el-progress>
+              </el-form-item>
+          </el-form>
+      </div>
       <div id="console">
         <div id="help">
           帮助：<br />
@@ -60,7 +173,136 @@
       <script src="../js/KeyboardState.js"></script>
       <script src="../js/jquery-1.9.1.js"></script>
       <script src="../js/Projector.js"></script>
-      
+      <!-- 引入组件库 -->
+      <script src="../js/vue.js"></script>
+      <script src="../js/element-ui.js"></script>
+      <script>
+          new Vue({
+              el: '#switch',
+              data: function() {
+                  return {
+                      visible: false ,
+                      value1: false,
+                      value2: false,
+                      value3: false,
+                      value4: false,
+                  }
+              },
+              watch: {
+                  value1(value) {
+                      if (value) {
+                          cpuGE60List.forEach(function(mesh){
+                              if (mesh.type === 'Mesh') {
+                                  // mesh.material.visible = true
+                                  // mesh.geometry.faces.forEach(function (face) {
+                                  //     face.color.copy(new THREE.Color(Math.random() * 0xffffff));
+                                  // });
+                                  mesh.material.materials[2].color.setRGB(1, 0, 0 );
+                                  mesh.geometry.colorsNeedUpdate = true;
+                              }
+                          })
+                      }else {
+                          cpuGE60List.forEach(function(mesh){
+                              if (mesh.type === 'Mesh') {
+                                  // mesh.material.visible = false
+                                  mesh.material.materials[2].color.setRGB(0.73, 0.73, 0.73 );
+                                  mesh.geometry.colorsNeedUpdate = true;
+                              }
+                          })
+                      }
+                  },
+                  value2(value) {
+                      if (value) {
+                          memGE60List.forEach(function(mesh){
+                              if (mesh.type === 'Mesh') {
+                                  // mesh.material.visible = true
+                                  // mesh.geometry.faces.forEach(function (face) {
+                                  //     face.color.copy(new THREE.Color(Math.random() * 0xffffff));
+                                  // });
+                                  mesh.material.materials[2].color.setRGB(1, 1, 0 );
+                                  mesh.geometry.colorsNeedUpdate = true;
+                              }
+                          })
+                      }else {
+                          memGE60List.forEach(function(mesh){
+                              if (mesh.type === 'Mesh') {
+                                  // mesh.material.visible = false
+                                  mesh.material.materials[2].color.setRGB(0.73, 0.73, 0.73 );
+                                  mesh.geometry.colorsNeedUpdate = true;
+                              }
+                          })
+                      }
+                  },
+                  value3(value) {
+                      if (value) {
+                          temGE45List.forEach(function(mesh){
+                              if (mesh.type === 'Mesh') {
+                                  // mesh.material.visible = true
+                                  // mesh.geometry.faces.forEach(function (face) {
+                                  //     face.color.copy(new THREE.Color(Math.random() * 0xffffff));
+                                  // });
+                                  mesh.material.materials[2].color.setRGB(0, 0, 1 );
+                                  mesh.geometry.colorsNeedUpdate = true;
+                              }
+                          })
+                      }else {
+                          temGE45List.forEach(function(mesh){
+                              if (mesh.type === 'Mesh') {
+                                  // mesh.material.visible = false
+                                  mesh.material.materials[2].color.setRGB(0.73, 0.73, 0.73 );
+                                  mesh.geometry.colorsNeedUpdate = true;
+                              }
+                          })
+                      }
+                  }
+              }
+          })
+      </script>
+      <script>
+          var cabinetForm = new Vue({
+              el: '#cabinetForm',
+              data:  {
+                  seen: false,
+                  positionStyle: '',
+                  chassis: {
+                      chassisName: 'NFV-D-HDNJIH-03A-1203-0H03-M-SRV-40',
+                      chassisType: 'RackMount',
+                      manufacturer: 'ZTE',
+                      putIntoProductionTime: '32days',
+                      propertyState: 'Used',
+                      health: 'OK',
+                      powerCapacityWatts: '550',
+                      powerConsumedWatts: '101',
+                      percentage: Math.round(this.powerConsumedWatts / this.powerCapacityWatts  * 100),
+                      percentage: 46
+                  }
+              }
+          })
+      </script>
+      <script>
+          var serverForm = new Vue({
+              el: '#serverForm',
+              data: function() {
+                  return {
+                      seen: false,
+                      positionStyle: '',
+                      server: {
+                        serverName: '',
+                        serverNO: '',
+                        serverType: 'Compute',
+                        manufacturer: 'ZTE',
+                        putIntoProductionTime: '1天',
+                        cpuAlloc: 96,
+                        memAlloc: 89,
+                        cpuUsed: 37,
+                        memUsed: 30,
+                        cpus: 92,
+                        ip: '192.168.1.2'
+                      }
+                  }
+              }
+          })
+      </script>
 		<script>
 			// Our Javascript will go here.
           
@@ -79,6 +321,9 @@
           
           // custom global variables
           var targetList = [];
+          var cpuGE60List = [];
+          var memGE60List = [];
+          var temGE45List = [];
           var projector, mouse = { x: 0, y: 0 };
           
           // loginfo
@@ -89,7 +334,7 @@
             info.innerHTML += log;
             info.innerHTML += "<br />";
           }
-          
+
           // 定义机柜、服务器数据
           var model = [
             {
@@ -101,13 +346,13 @@
                 'size': {w: 30, h: 70, d: 30}, // 尺寸
                 'position': {x: -170, y: 0, z: 80}, // 位置
                 'servers': [
-                  {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                  {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                  {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                  {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                  {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                  {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                  {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
+                  {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
+                  {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
+                  {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
+                  {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
+                  {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':50},
+                  {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
+                  {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
                 ]
               }
             },
@@ -120,13 +365,13 @@
                 'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
                 'position': {x: -140, y: 0, z: 80}, // 位置
                 'servers': [
-                  {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-				  {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                  {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                  {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                  {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                  {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                  {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
+                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
+                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
+                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':60},
+                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
+                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
+                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
+                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40}
                 ]
               }
             },
@@ -139,13 +384,13 @@
                 'size': {w: 30, h: 70, d: 30}, // 尺寸
                 'position': {x: -110, y: 0, z: 80}, // 位置
                 'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
+                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
+                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':60},
+                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
+                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':60},
+                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
+                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
+                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
                 ]
               }
             },
@@ -158,13 +403,13 @@
                 'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
                 'position': {x: -80, y: 0, z: 80}, // 位置
                 'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
+                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
+                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
+                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
+                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':40},
+                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':40},
+                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
+                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
                 ]
               }
             },
@@ -260,13 +505,13 @@
                           'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
                           'position': {x: 100, y: 0, z: 80}, // 位置
                           'servers': [
-                              {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                              {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                              {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                              {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                              {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                              {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                              {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
+                              {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
+                              {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
+                              {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
+                              {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
+                              {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
+                              {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
+                              {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
                           ]
                       }
               },
@@ -580,9 +825,17 @@
           
           // 处理服务器打开、关闭时，信息的展示和隐藏
           function openServer(o) {
+            // o.material.materials.forEach(function(material){
+            //   material.color.setRGB( 1, 0, 0 );
+            // })
+            o.material.materials[2].color.setRGB(1, 0, 0 );
+            o.geometry.colorsNeedUpdate = true;
             loginfo('openServer:'+o.container.info.id+','+o.container.info.name+'--'+o.info.id+','+o.info.name);
           }
           function closeServer(o) {
+            o.material.materials[2].color.setRGB(0.73,0.73,0.73)
+            o.geometry.colorsNeedUpdate = true;
+            serverForm.seen = false;
             loginfo('closeServer:'+o.container.info.id+','+o.container.info.name+'--'+o.info.id+','+o.info.name);
           }
           
@@ -591,15 +844,30 @@
             loginfo('openCabinet:'+o.info.id+','+o.info.name);
           }
           function closeCabinet(o) {
+            serverForm.seen = false;
             loginfo('closeCabinet:'+o.info.id+','+o.info.name);
           }
           
           // 处理鼠标HHover服务器时，服务器信息的内容渲染
           function hoverServer(o) {
             openHover(o.info.uuid, function() {
-				
+                serverForm.server.serverName = o.info.name;
+                serverForm.server.serverNO = o.info.id;
+                // serverForm.server.ip = o.info.ip;
               // show info
               //loginfo('open:'+o.container.info.id+','+o.container.info.name+'--'+o.info.id+','+o.info.name);
+                let halfWidth = window.innerWidth / 2;
+                let halfHeight = window.innerHeight / 2;
+
+                // 逆转相机求出二维坐标
+                let vector = new THREE.Vector3();
+                let standardVector = vector.project(camera);
+                let left = Math.round(standardVector.x * halfWidth + halfWidth +  o.position.x );
+                let top = Math.round(-standardVector.y * halfHeight + halfHeight  +  o.position.z - 80);
+
+                serverForm.positionStyle =  "position: absolute; left: "+  left + "px; top:" + top + "px";
+                cabinetForm.seen = false;
+                serverForm.seen = true;
             });
           }
           
@@ -608,9 +876,22 @@
             openHover(o.info.uuid, function() {
               // show info
               //loginfo('hover:'+o.info.id+','+o.info.name);
-            });
+                cabinetForm.chassis.chassisName = o.info.name;
+              //   renderDiv(o);
+                // 获取窗口的一半高度和宽度
+                let halfWidth = window.innerWidth / 2;
+                let halfHeight = window.innerHeight / 2;
+
+                // 逆转相机求出二维坐标
+                let vector = new THREE.Vector3();
+                let standardVector = vector.project(camera);
+                let left = Math.round(standardVector.x * halfWidth + halfWidth +  o.info.position.x );
+                let top = Math.round(-standardVector.y * halfHeight + halfHeight  +  o.info.position.z - 80);
+                cabinetForm.positionStyle =  "position: absolute; left: "+  left + "px; top:" + top + "px";
+                cabinetForm.seen = true;
+            })
           }
-          
+
           // 鼠标Hover时的通用方法
           var curHoverUUID = null;
           function openHover(hoverUUID, callback) {
@@ -619,7 +900,7 @@
             
             // 显示Div等操作
             //document.getElementById("floatInfo").style.display = 'block'
-			
+
             // 回调
             callback();
           }
@@ -627,6 +908,8 @@
             curHoverUUID = null;
             //document.getElementById("floatInfo").style.display = 'none'
             // 隐藏Div等操作
+            cabinetForm.seen = false;
+            serverForm.seen = false;
           }
           
           init();
@@ -780,8 +1063,8 @@
                 o.position.z = o.position.z - 25;
               }
             }
-            //scene.add(door_right);
-            //targetList.push(door_right);
+            scene.add(door_right);
+            targetList.push(door_right);
             
             var door_left = createDoor( 50, 80, -180, 41, 265, 0, 0, 0);
             door_left.toggle = function(o) {
@@ -795,8 +1078,8 @@
                 o.position.z = o.position.z - 25;
               }
             }
-            // scene.add(door_left);
-            // targetList.push(door_left);
+            scene.add(door_left);
+            targetList.push(door_left);
 
             // 创建机柜，
             
@@ -951,12 +1234,25 @@
                 server.container = cabinet;
                 server.info = c.servers[i];
                 cabinet.servers.push(server);
+                //处理服务器归类
+                handlerServer(server);
               }
             }
             
             return cabinet;
           }
-          
+
+          function handlerServer(server){
+              if (server.info.cpuUsed > 60){
+                  cpuGE60List.push(server);
+              }
+              if (server.info.memUsed > 60){
+                  memGE60List.push(server);
+              }
+              if (server.info.temperature > 45){
+                  temGE45List.push(server);
+              }
+          }
           function createServer(w, h, d, px, py, pz) {
             // 服务器
             //var texture = new THREE.ImageUtils.loadTexture( 'data:image/gif;base64,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' );
@@ -1279,38 +1575,13 @@
 			  //o.material.color.set( 0xff0000 );
 			  
               if (typeof o.hover == 'function') {
-				renderDiv(o);
                 o.hover(o);
               } else {
                 closeHover();
               }
             }
           }
-          // 更新div的位置
-		function renderDiv(object) {
-			// 获取窗口的一半高度和宽度
-			let halfWidth = window.innerWidth / 2;
-			let halfHeight = window.innerHeight / 2;
 
-			// 逆转相机求出二维坐标
-			let vector = object.position.clone().project(camera);
-
-			// 修改 div 的位置
-			$("#label").css({
-				left: vector.x * halfWidth + halfWidth,
-				top: -vector.y * halfHeight + halfHeight - object.position.y
-			});
-			// 显示模型信息
-            var showInfo = "名称：" + object.container.info.name + " ";
-            if(object.info != undefined){
-                showInfo += object.info.name;
-            }
-            showInfo += "\n CPU利用率：";
-            showInfo += '22%';
-            showInfo += "\n 内存利用率："
-            showInfo += '22%';
-            $("#label").text(showInfo);
-		}
 		
           function onDocumentMouseDown( event ) 
           {
@@ -1341,10 +1612,12 @@
             {
                 //console.log("Hit @ " + toString( intersects[0].point ) );
                 // change the color of the closest face.
-                intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 ); 
-                intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
-
+                // intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 );
                 var o = intersects[ 0 ].object;
+                // intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
+                // o.material.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 );
+                // o.material.materials[0].color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 );
+                // o.geometry.colorsNeedUpdate = true;
                 if (typeof o.toggle == 'function') {
                   o.toggle(o);
                 }

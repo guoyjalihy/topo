@@ -1,0 +1,88 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <!-- import CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+<div id="app">
+    <el-button @click="visible = true">Button</el-button>
+    <el-dialog :visible.sync="visible" title="Hello world">
+        <p>Try Element</p>
+    </el-dialog>
+
+    <el-switch
+            v-model="value"
+            active-color="#13ce66"
+            inactive-color="#ff4949">
+    </el-switch>
+</div>
+<div id="cabinetForm" >
+    <el-form :model="chassis" label-width="80px">
+        <el-form-item label="机柜名称" v-model="chassis.chassisName">
+            {{chassis.chassisName}}
+        </el-form-item>
+        <el-form-item label="机柜类型" v-model="chassis.chassisType">
+            {{chassis.chassisType}}
+        </el-form-item>
+        <el-form-item label="厂家" v-model="chassis.manufacturer">
+            {{chassis.manufacturer}}
+        </el-form-item>
+        <el-form-item label="入网时间" v-model="chassis.putIntoProductionTime">
+            {{chassis.putIntoProductionTime}}
+        </el-form-item>
+        <el-form-item label="使用状态" v-model="chassis.propertyState">
+            {{chassis.propertyState}}
+        </el-form-item>
+        <el-form-item label="健康检查" v-model="chassis.health">
+            {{chassis.health}}
+        </el-form-item>
+        <el-form-item label="额定功耗" v-model="chassis.powerCapacityWatts">
+            {{chassis.powerCapacityWatts}}W
+        </el-form-item>
+        <el-form-item label="使用功耗" v-model="chassis.powerConsumedWatts">
+            <el-progress :text-inside="true" :stroke-width="15" :percentage="chassis.percentage"></el-progress>
+        </el-form-item>
+    </el-form>
+</div>
+</body>
+<!-- import Vue before Element -->
+<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<!-- import JavaScript -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+    var demo = new Vue({
+        el: '#app',
+        data: function() {
+            return {
+                visible: false ,
+                value: true,
+            }
+        }
+    })
+    var cabinetForm = new Vue({
+        el: '#cabinetForm',
+        data: function() {
+            return {
+                chassis: {
+                    name: '',
+                    chassisName: 'NFV-D-HDNJIH-03A-1203-0H03-M-SRV-40',
+                    chassisType: 'RackMount',
+                    manufacturer: 'ZTE',
+                    putIntoProductionTime: '32days',
+                    propertyState: 'Used',
+                    health: 'OK',
+                    powerCapacityWatts: '550',
+                    powerConsumedWatts: '101',
+                    percentage: Math.round(this.powerConsumedWatts / this.powerCapacityWatts  * 100),
+                    percentage: 16
+                }
+            }
+        }
+    })
+</script>
+</html>
+
