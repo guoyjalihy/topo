@@ -473,7 +473,7 @@
             light.position.set(0,100,0);
             scene.add(light);
             
-            initModel();
+            initModel(1080,1080,80);
             
             // initialize object to perform world/screen calculations
             projector = new THREE.Projector();
@@ -486,19 +486,22 @@
 			
           }
           
-          function initModel() {
+          function initModel(l,w,h) {
+              // 预留宽度
+              const reserve = 500;
+
               //机房长、宽、高
-              const length = 1080;
-              const width = 1080;
-              const height = 80;
+              const length = l;
+              const width = w;
+              const height = h;
             // FLOOR
-            createFloor(length, width);
+            createFloor(l+reserve, w+reserve);
 
             // WALL
             createWall(width, height, 0, 41, -540, 0, 0, 0);
 
-            createGlassWall(1080, 80, length/2, 41, 0, 0, Math.PI / 2, 0);
-            createGlassWall(1080, 80, -length/2, 41, 0, 0, -Math.PI / 2, 0);
+            createGlassWall(width, height, length/2, 41, 0, 0, Math.PI / 2, 0);
+            createGlassWall(width, height, -length/2, 41, 0, 0, -Math.PI / 2, 0);
 
             // createGlassWall(100, 80, 296, 41, 210, 0, Math.PI / 2, 0);
             // createGlassWall(100, 80, -296, 41, 210, 0, -Math.PI / 2, 0);
@@ -508,10 +511,10 @@
 
             // createGlassWall(300, 80, 0, 41, 155, 0, 0, 0);
             
-            createGlassWall(80, 80, 500, 41, 540, 0, 0, 0);
-            createGlassWall(80, 80, -500, 41, 540, 0, 0, 0);
+            createGlassWall(80, height, 500, 41, width/2, 0, 0, 0);
+            createGlassWall(80, height, -500, 41, width/2, 0, 0, 0);
             
-            createGlassWall(800, 80, 0, 41, 540, 0, 0, 0);
+            createGlassWall(800, height, 0, 41, width/2, 0, 0, 0);
             
             // COLUMN
             // createColumn(10, 80, 295, 41, 155);
