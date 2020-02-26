@@ -59,53 +59,85 @@
         </style>
 	</head>
 	<body>
+    <div style="z-index:2;text-align:center;font-size: 16px;color:#00ffff;top:4px;position: absolute;width:100%;background: rgba(255, 0, 0, 0.0);">
+        浙中产业园D01-202机房拓扑
+    </div>
+    <div style="z-index:1;position: absolute;width:100%;">
+        <img src="../images/line.png" alt="" style="width:100%;height:28px">
+    </div>
       <div id="container">
 		<div id="label">
         </div>
 	  </div>
-      <div id="switch" style="position: absolute;left: 50px;top: 65px;z-index:5;line-height:20px;vertical-align:middle">
-          <el-switch style="margin-top:-3px;" v-model="value1" active-color="#00aeef"></el-switch>
-          <span style="color:#ffffff;font-size:16px">CPU利用率(>=60%)</span>
-          &nbsp;&nbsp;&nbsp;
-          <el-switch style="margin-top:-3px;" v-model="value2" active-color="#00aeef"></el-switch>
-          <span style="color:#ffffff;font-size:16px">温度(>=45°C)</span>
-          <br><br>
-          <el-switch style="margin-top:-3px;" v-model="value3" active-color="#00aeef"></el-switch>
-          <span style="color:#ffffff;font-size:16px">内存利用率(>=60%)</span>
-          &nbsp;&nbsp;&nbsp;
-          <el-switch style="margin-top:-3px;" v-model="value4" active-color="#00aeef"></el-switch>
-          <span style="color:#ffffff;font-size:16px">功耗</span>
-      </div>
+<!--      <div id="switch" style="position: absolute;left: 50px;top: 65px;z-index:5;line-height:20px;vertical-align:middle">-->
+<!--          <el-switch style="margin-top:-3px;" v-model="value1" active-color="#00aeef"></el-switch>-->
+<!--          <span style="color:#ffffff;font-size:16px">CPU利用率(>=60%)</span>-->
+<!--          &nbsp;&nbsp;&nbsp;-->
+<!--          <el-switch style="margin-top:-3px;" v-model="value2" active-color="#00aeef"></el-switch>-->
+<!--          <span style="color:#ffffff;font-size:16px">温度(>=45°C)</span>-->
+<!--          <br><br>-->
+<!--          <el-switch style="margin-top:-3px;" v-model="value3" active-color="#00aeef"></el-switch>-->
+<!--          <span style="color:#ffffff;font-size:16px">内存利用率(>=60%)</span>-->
+<!--          &nbsp;&nbsp;&nbsp;-->
+<!--          <el-switch style="margin-top:-3px;" v-model="value4" active-color="#00aeef"></el-switch>-->
+<!--          <span style="color:#ffffff;font-size:16px">功耗</span>-->
+<!--      </div>-->
 
-      <div id="cabinetForm" v-show="seen" :style="positionStyle" class="cabinetForm">
-          <div class="title">机柜详细信息</div>
-          <el-form :model="chassis" label-width="80px">
-              <el-form-item label="机柜名称" v-model="chassis.chassisName">
-                  {{chassis.chassisName}}
-              </el-form-item>
-              <el-form-item label="机柜类型" v-model="chassis.chassisType">
-                  {{chassis.chassisType}}
-              </el-form-item>
-              <el-form-item label="厂家" v-model="chassis.manufacturer">
-                  {{chassis.manufacturer}}
-              </el-form-item>
-              <el-form-item label="入网时间" v-model="chassis.putIntoProductionTime">
-                  {{chassis.putIntoProductionTime}}
-              </el-form-item>
-              <el-form-item label="使用状态" v-model="chassis.propertyState">
-                  {{chassis.propertyState}}
-              </el-form-item>
-              <el-form-item label="健康检查" v-model="chassis.health">
-                  {{chassis.health}}
-              </el-form-item>
-              <el-form-item label="额定功耗" v-model="chassis.powerCapacityWatts">
-                  {{chassis.powerCapacityWatts}}W
-              </el-form-item>
-              <el-form-item label="使用功耗" v-model="chassis.powerConsumedWatts">
-                  <el-progress :text-inside="true" :stroke-width="15" :percentage="chassis.percentage"></el-progress>
-              </el-form-item>
-          </el-form>
-      </div>
+<!--      <div id="cabinetForm" v-show="seen" :style="positionStyle" class="cabinetForm">-->
+<!--          <div class="title">机柜详细信息</div>-->
+<!--          <el-form :model="chassis" label-width="80px">-->
+<!--              <el-form-item label="机柜名称" v-model="chassis.chassisName">-->
+<!--                  {{chassis.chassisName}}-->
+<!--              </el-form-item>-->
+<!--              <el-form-item label="机柜类型" v-model="chassis.chassisType">-->
+<!--                  {{chassis.chassisType}}-->
+<!--              </el-form-item>-->
+<!--              <el-form-item label="厂家" v-model="chassis.manufacturer">-->
+<!--                  {{chassis.manufacturer}}-->
+<!--              </el-form-item>-->
+<!--              <el-form-item label="入网时间" v-model="chassis.putIntoProductionTime">-->
+<!--                  {{chassis.putIntoProductionTime}}-->
+<!--              </el-form-item>-->
+<!--              <el-form-item label="使用状态" v-model="chassis.propertyState">-->
+<!--                  {{chassis.propertyState}}-->
+<!--              </el-form-item>-->
+<!--              <el-form-item label="健康检查" v-model="chassis.health">-->
+<!--                  {{chassis.health}}-->
+<!--              </el-form-item>-->
+<!--              <el-form-item label="额定功耗" v-model="chassis.powerCapacityWatts">-->
+<!--                  {{chassis.powerCapacityWatts}}W-->
+<!--              </el-form-item>-->
+<!--              <el-form-item label="使用功耗" v-model="chassis.powerConsumedWatts">-->
+<!--                  <el-progress :text-inside="true" :stroke-width="15" :percentage="chassis.percentage"></el-progress>-->
+<!--              </el-form-item>-->
+<!--          </el-form>-->
+<!--      </div>-->
+    <div id="queryForm" style="position: absolute;left: 50px;top: 65px;z-index:5;vertical-align:middle">
+        <el-form ref="form" :model="query" label-width="80px">
+            <el-form-item label="CPU分配率(>=)">
+                <el-input v-model="query.cpuAlloc"></el-input>
+            </el-form-item>
+            <el-form-item label="内存分配率(>=)">
+                <el-input v-model="query.memAlloc"></el-input>
+            </el-form-item>
+            <el-form-item label="CPU利用率(>=)">
+                <el-input v-model="query.cpuUsed"></el-input>
+            </el-form-item>
+            <el-form-item label="内存利用率(>=)">
+                <el-input v-model="query.memUsed"></el-input>
+            </el-form-item>
+            <el-form-item label="CPU碎片率(>=)">
+                <el-input v-model="query.cpus"></el-input>
+            </el-form-item>
+            <el-form-item label="温度(>=)">
+                <el-input v-model="query.temperature"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="onSubmit">筛选</el-button>
+                <el-button  @click="clear">还原</el-button>
+            </el-form-item>
+        </el-form>
+    </div>
       <div id="serverForm" v-show="seen" :style="positionStyle" class="cabinetForm">
           <div class="title">服务器详细信息</div>
           <el-form :model="server" label-width="80px">
@@ -179,108 +211,27 @@
 
         <!--      机房数据-->
       <script src="../js/data.js"></script>
+
       <script>
-          new Vue({
-              el: '#switch',
-              data: function() {
-                  return {
-                      visible: false ,
-                      value1: false,
-                      value2: false,
-                      value3: false,
-                      value4: false,
-                  }
-              },
-              watch: {
-                  value1(value) {
-                      if (value) {
-                          cpuGE60List.forEach(function(mesh){
-                              if (mesh.type === 'Mesh') {
-                                  // mesh.material.visible = true
-                                  // mesh.geometry.faces.forEach(function (face) {
-                                  //     face.color.copy(new THREE.Color(Math.random() * 0xffffff));
-                                  // });
-                                  mesh.material.materials[2].color.setRGB(1, 0, 0 );
-                                  mesh.geometry.colorsNeedUpdate = true;
-                              }
-                          })
-                      }else {
-                          cpuGE60List.forEach(function(mesh){
-                              if (mesh.type === 'Mesh') {
-                                  // mesh.material.visible = false
-                                  mesh.material.materials[2].color.setRGB(0.73, 0.73, 0.73 );
-                                  mesh.geometry.colorsNeedUpdate = true;
-                              }
-                          })
-                      }
-                  },
-                  value2(value) {
-                      if (value) {
-                          memGE60List.forEach(function(mesh){
-                              if (mesh.type === 'Mesh') {
-                                  // mesh.material.visible = true
-                                  // mesh.geometry.faces.forEach(function (face) {
-                                  //     face.color.copy(new THREE.Color(Math.random() * 0xffffff));
-                                  // });
-                                  mesh.material.materials[2].color.setRGB(1, 1, 0 );
-                                  mesh.geometry.colorsNeedUpdate = true;
-                              }
-                          })
-                      }else {
-                          memGE60List.forEach(function(mesh){
-                              if (mesh.type === 'Mesh') {
-                                  // mesh.material.visible = false
-                                  mesh.material.materials[2].color.setRGB(0.73, 0.73, 0.73 );
-                                  mesh.geometry.colorsNeedUpdate = true;
-                              }
-                          })
-                      }
-                  },
-                  value3(value) {
-                      if (value) {
-                          temGE45List.forEach(function(mesh){
-                              if (mesh.type === 'Mesh') {
-                                  // mesh.material.visible = true
-                                  // mesh.geometry.faces.forEach(function (face) {
-                                  //     face.color.copy(new THREE.Color(Math.random() * 0xffffff));
-                                  // });
-                                  mesh.material.materials[2].color.setRGB(0, 0, 1 );
-                                  mesh.geometry.colorsNeedUpdate = true;
-                              }
-                          })
-                      }else {
-                          temGE45List.forEach(function(mesh){
-                              if (mesh.type === 'Mesh') {
-                                  // mesh.material.visible = false
-                                  mesh.material.materials[2].color.setRGB(0.73, 0.73, 0.73 );
-                                  mesh.geometry.colorsNeedUpdate = true;
-                              }
-                          })
-                      }
-                  }
-              }
-          })
-      </script>
-      <script>
-          var cabinetForm = new Vue({
-              el: '#cabinetForm',
-              data:  {
-                  seen: false,
-                  positionStyle: '',
-                  chassis: {
-                      chassisName: 'NFV-D-HDNJIH-03A-1203-0H03-M-SRV-40',
-                      chassisType: 'RackMount',
-                      manufacturer: 'ZTE',
-                      putIntoProductionTime: '32days',
-                      propertyState: 'Used',
-                      health: 'OK',
-                      powerCapacityWatts: '550',
-                      powerConsumedWatts: '101',
-                      percentage: Math.round(this.powerConsumedWatts / this.powerCapacityWatts  * 100),
-                      percentage: 46
-                  }
-              }
-          })
+          // var cabinetForm = new Vue({
+          //     el: '#cabinetForm',
+          //     data:  {
+          //         seen: false,
+          //         positionStyle: 'display:none',
+          //         chassis: {
+          //             chassisName: 'NFV-D-HDNJIH-03A-1203-0H03-M-SRV-40',
+          //             chassisType: 'RackMount',
+          //             manufacturer: 'ZTE',
+          //             putIntoProductionTime: '32days',
+          //             propertyState: 'Used',
+          //             health: 'OK',
+          //             powerCapacityWatts: '550',
+          //             powerConsumedWatts: '101',
+          //             percentage: Math.round(this.powerConsumedWatts / this.powerCapacityWatts  * 100),
+          //             percentage: 46
+          //         }
+          //     }
+          // })
       </script>
       <script>
           var serverForm = new Vue({
@@ -306,6 +257,98 @@
               }
           })
       </script>
+      <script>
+          var filterByQuery = function(mesh){
+              if (queryForm.query.cpuAlloc){
+                  if (!mesh.info.cpuAlloc){
+                      return false;
+                  }
+                  if (mesh.info.cpuAlloc < queryForm.query.cpuAlloc) {
+                      return false;
+                  }
+              }
+              if (queryForm.query.memAlloc){
+                  if (!mesh.info.memAlloc){
+                      return false;
+                  }
+                  if (mesh.info.memAlloc < queryForm.query.memAlloc) {
+                      return false;
+                  }
+              }
+              if (queryForm.query.cpuUsed){
+                  if (!mesh.info.cpuUsed){
+                      return false;
+                  }
+                  if (mesh.info.cpuUsed < queryForm.query.cpuUsed) {
+                      return false;
+                  }
+              }
+              if (queryForm.query.memUsed){
+                  if (!mesh.info.memUsed){
+                      return false;
+                  }
+                  if (mesh.info.memUsed < queryForm.query.memUsed) {
+                      return false;
+                  }
+              }
+              if (queryForm.query.cpus){
+                  if (!mesh.info.cpus){
+                      return false;
+                  }
+                  if (mesh.info.cpus < queryForm.query.cpus) {
+                      return false;
+                  }
+              }
+              if (queryForm.query.temperature){
+                  if (!mesh.info.temperature){
+                      return false;
+                  }
+                  if (mesh.info.temperature < queryForm.query.temperature) {
+                      return false;
+                  }
+              }
+              return true;
+          }
+
+          var queryForm = new Vue({
+              el: '#queryForm',
+              data:  {
+                  query: {
+                      cpuAlloc: '',
+                      memAlloc: '',
+                      cpuUsed: '',
+                      memUsed: '',
+                      temperature: '',
+                      cpus: ''
+                  }
+              },
+              methods: {
+                  onSubmit() {
+                      serverList.forEach(function(mesh){
+                          mesh.material.materials[2].color.setRGB(0.7, 0.7, 0.7 );
+                          mesh.geometry.colorsNeedUpdate = true;
+                          if (filterByQuery(mesh)) {
+                              mesh.material.materials[2].color.setRGB(1, 0, 0 );
+                              mesh.geometry.colorsNeedUpdate = true;
+                          }
+                      })
+                  },
+                  clear() {
+                      this.query.cpuAlloc = '';
+                      this.query.memAlloc = '';
+                      this.query.cpuUsed = '';
+                      this.query.memUsed = '';
+                      this.query.temperature = '';
+                      this.query.cpus = '';
+                      serverList.forEach(function(mesh){
+                          mesh.material.materials[2].color.setRGB(0.7, 0.7, 0.7 );
+                          mesh.geometry.colorsNeedUpdate = true;
+                      })
+                  }
+
+              }
+          })
+      </script>
 		<script>
 			// Our Javascript will go here.
           
@@ -314,6 +357,9 @@
           // standard global variables
           var container = document.getElementById("container");
           var scene, camera, renderer, controls, stats;
+          var serverModel;
+          var cabinetModel = {};
+          var server_texture,server_back_texture;
           var clock = new THREE.Clock();
           
           var keyboard = new KeyboardState();
@@ -324,9 +370,8 @@
           
           // custom global variables
           var targetList = [];
-          var cpuGE60List = [];
-          var memGE60List = [];
-          var temGE45List = [];
+          var serverList = [];
+
           var projector, mouse = { x: 0, y: 0 };
           
           // loginfo
@@ -364,24 +409,26 @@
           }
           
           // 处理鼠标HHover服务器时，服务器信息的内容渲染
-          function hoverServer(o) {
+          function hoverServer(o,event) {
             openHover(o.info.uuid, function() {
                 serverForm.server.serverName = o.info.name;
                 serverForm.server.serverNO = o.info.id;
                 // serverForm.server.ip = o.info.ip;
               // show info
               //loginfo('open:'+o.container.info.id+','+o.container.info.name+'--'+o.info.id+','+o.info.name);
-                let halfWidth = window.innerWidth / 2;
-                let halfHeight = window.innerHeight / 2;
+              //   let halfWidth = window.innerWidth / 2;
+              //   let halfHeight = window.innerHeight / 2;
 
                 // 逆转相机求出二维坐标
-                let vector = new THREE.Vector3();
-                let standardVector = vector.project(camera);
-                let left = Math.round(standardVector.x * halfWidth + halfWidth +  o.position.x );
-                let top = Math.round(-standardVector.y * halfHeight + halfHeight  +  o.position.z - 80);
+                // let vector = new THREE.Vector3();
+                // let standardVector = vector.project(camera);
+                let left = event.clientX;
+                let top = event.clientY;
+                // let left = Math.round(standardVector.x * halfWidth + halfWidth +  o.position.x );
+                // let top = Math.round(-standardVector.y * halfHeight + halfHeight  +  o.position.z - 80);
 
                 serverForm.positionStyle =  "position: absolute; left: "+  left + "px; top:" + top + "px";
-                cabinetForm.seen = false;
+                // cabinetForm.seen = false;
                 serverForm.seen = true;
             });
           }
@@ -391,19 +438,19 @@
             openHover(o.info.uuid, function() {
               // show info
               //loginfo('hover:'+o.info.id+','+o.info.name);
-                cabinetForm.chassis.chassisName = o.info.name;
+              //   cabinetForm.chassis.chassisName = o.info.name;
               //   renderDiv(o);
                 // 获取窗口的一半高度和宽度
-                let halfWidth = window.innerWidth / 2;
-                let halfHeight = window.innerHeight / 2;
-
-                // 逆转相机求出二维坐标
-                let vector = new THREE.Vector3();
-                let standardVector = vector.project(camera);
-                let left = Math.round(standardVector.x * halfWidth + halfWidth +  o.info.position.x );
-                let top = Math.round(-standardVector.y * halfHeight + halfHeight  +  o.info.position.z - 80);
-                cabinetForm.positionStyle =  "position: absolute; left: "+  left + "px; top:" + top + "px";
-                cabinetForm.seen = true;
+                // let halfWidth = window.innerWidth / 2;
+                // let halfHeight = window.innerHeight / 2;
+                //
+                // // 逆转相机求出二维坐标
+                // let vector = new THREE.Vector3();
+                // let standardVector = vector.project(camera);
+                // this.left = Math.round(standardVector.x * halfWidth + halfWidth );
+                // this.top = Math.round(-standardVector.y * halfHeight + halfHeight );
+                // cabinetForm.positionStyle =  " left: "+  left + "px; top:" + top + "px";
+                // cabinetForm.seen = true;
             })
           }
 
@@ -423,7 +470,7 @@
             curHoverUUID = null;
             //document.getElementById("floatInfo").style.display = 'none'
             // 隐藏Div等操作
-            cabinetForm.seen = false;
+            // cabinetForm.seen = false;
             serverForm.seen = false;
           }
           
@@ -472,7 +519,8 @@
             var light = new THREE.PointLight(0x00ff00);
             light.position.set(0,100,0);
             scene.add(light);
-            
+            createServerModel(26,4,26);
+            createCabinetModel();
             initModel(1080,1080,80);
             
             // initialize object to perform world/screen calculations
@@ -485,7 +533,36 @@
             document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 			
           }
-          
+
+            //服务器宽、高、深
+          function createServerModel(server_w,server_h,server_d){
+
+              server_texture = new THREE.ImageUtils.loadTexture( '../images/server.png' );
+              server_texture.wrapS = server_texture.wrapT = THREE.ClampToEdgeWrapping;
+              server_texture.repeat.set( 1, 1 );
+              server_texture.minFilter = THREE.LinearFilter
+
+                server_back_texture = new THREE.ImageUtils.loadTexture( '../images/server-back.png' );
+                server_back_texture.wrapS = server_back_texture.wrapT = THREE.ClampToEdgeWrapping;
+                server_back_texture.repeat.set( 1, 1 );
+                server_back_texture.minFilter = THREE.LinearFilter
+
+                var geometry = new THREE.BoxGeometry(server_w, server_h, server_d);
+                //var material = new THREE.MeshBasicMaterial( { map: texture } );
+                // Create an array of materials to be used in a cube, one for each side
+                var materialArray = [];
+                // order to add materials: x+,x-,y+,y-,z+,z-
+                materialArray.push( new THREE.MeshBasicMaterial( { color: 0xbbbbbb } ) );
+                materialArray.push( new THREE.MeshBasicMaterial( { color: 0xbbbbbb } ) );
+                materialArray.push( new THREE.MeshBasicMaterial( { color: 0xbbbbbb } ) );
+                materialArray.push( new THREE.MeshBasicMaterial( { color: 0xbbbbbb } ) );
+                materialArray.push( new THREE.MeshBasicMaterial( { map: server_texture } ) );
+                materialArray.push( new THREE.MeshBasicMaterial( { map: server_back_texture } ) );
+                var material = new THREE.MeshFaceMaterial( materialArray );
+
+                serverModel =  new THREE.Mesh( geometry, material );
+            }
+
           function initModel(l,w,h) {
               // 预留宽度
               const reserve = 500;
@@ -494,6 +571,7 @@
               const length = l;
               const width = w;
               const height = h;
+
             // FLOOR
             createFloor(l+reserve, w+reserve);
 
@@ -605,11 +683,9 @@
             scene.add(door_left);
             targetList.push(door_left);
 
-            // 创建机柜，
-            
             for (var i=0; i<model.length; i++) {
               var c = model[i].cabinet;
-              createCabinet(c.size.w, c.size.h, c.size.d, c.position.x, c.position.y, c.position.z, c);
+              createCabinet(c.position.x, c.position.y, c.position.z, c);
             }
             
             //var cabinet = createCabinet(30, 70, 30, 0, 0, 0 );
@@ -620,19 +696,52 @@
             //var cabinet = createCabinet(30, 70, 30, 0, 0, 100 );
             //var cabinet = createCabinet(30, 70, 30, 0, 0, -100 );
           }
-          
-          function createCabinet(w, h, d, px, py, pz, c) {
+            function createCabinetModel() {
+                //机柜宽、高、深
+                const cabinet_w = 30;
+                const cabinet_h = 70;
+                const cabinet_d = 30;
+                // 机柜的后
+                var geometry = new THREE.BoxGeometry(cabinet_w, cabinet_h, 2);
+                var meterial = new THREE.MeshBasicMaterial( { color: 0x777777, opacity: 0.2, transparent: true } );
+                var back = new THREE.Mesh( geometry, meterial );
+                cabinetModel.back = back;
+
+                // 机柜的左、右
+                var geometry = new THREE.BoxGeometry(cabinet_w, cabinet_h, 2);
+                var meterial = new THREE.MeshBasicMaterial( { color: 0x777777, opacity: 0.9, transparent: true } );
+                var left = new THREE.Mesh( geometry, meterial );
+                var right = new THREE.Mesh( geometry, meterial );
+                cabinetModel.left = left;
+                cabinetModel.right = right;
+
+                // 机柜的底部、顶部
+                var geometry = new THREE.BoxGeometry(cabinet_w, 2, cabinet_d);
+                var meterial = new THREE.MeshBasicMaterial( { color: 0x222222, transparent: true } );
+                var top = new THREE.Mesh( geometry, meterial );
+                var bottom = new THREE.Mesh( geometry, meterial );
+                cabinetModel.top = top;
+                cabinetModel.bottom = bottom;
+
+                // 机柜门
+                var geometry = new THREE.BoxGeometry(cabinet_w, cabinet_h, 2);
+                var meterial = new THREE.MeshBasicMaterial( { color: 0x003333, opacity: 0.5, transparent: true } );
+                var front = new THREE.Mesh( geometry, meterial );
+                cabinetModel.front = front;
+            }
+
+          function createCabinet(px, py, pz, c) {
             var cabinet = {};
-            
+            //机柜宽、高、深
+            const cabinet_w = 30;
+            const cabinet_h = 70;
+            const cabinet_d = 30;
             // 机柜的后
-            var geometry = new THREE.BoxGeometry(w, h, 2);
-            var meterial = new THREE.MeshBasicMaterial( { color: 0x777777, opacity: 0.2, transparent: true } );
-            
-            var back = new THREE.Mesh( geometry, meterial );
+            var back = cabinetModel.back.clone();
 
             back.position.x = px;
-            back.position.y = py + h / 2 + 1;
-            back.position.z = pz - d / 2 + 2;
+            back.position.y = py + cabinet_h / 2 + 1;
+            back.position.z = pz - cabinet_d / 2 + 2;
             
             back.hover = function(o) {
               hoverCabinet(o.container);
@@ -644,19 +753,16 @@
             cabinet.back = back;
           
             // 机柜的左、右
-            var geometry = new THREE.BoxGeometry(w, h, 2);
-            var meterial = new THREE.MeshBasicMaterial( { color: 0x777777, opacity: 0.9, transparent: true } );
+            var left = cabinetModel.left.clone();
+            var right = cabinetModel.right.clone();
             
-            var left = new THREE.Mesh( geometry, meterial );
-            var right = new THREE.Mesh( geometry, meterial );
-            
-            left.position.x = px + w / 2 -1;
-            left.position.y = py + h / 2 + 1;
+            left.position.x = px + cabinet_w / 2 -1;
+            left.position.y = py + cabinet_h / 2 + 1;
             left.position.z = pz;
             left.rotation.y = Math.PI / 2;
 
-            right.position.x = px - w / 2 +1;
-            right.position.y = py + h / 2 + 1;
+            right.position.x = px - cabinet_w / 2 +1;
+            right.position.y = py + cabinet_h / 2 + 1;
             right.position.z = pz;
             right.rotation.y = -Math.PI / 2;
             
@@ -678,14 +784,11 @@
             cabinet.right = right;
             
             // 机柜的底部、顶部
-            var geometry = new THREE.BoxGeometry(w, 2, d);
-            var meterial = new THREE.MeshBasicMaterial( { color: 0x222222, transparent: true } );
-            
-            var top = new THREE.Mesh( geometry, meterial );
-            var bottom = new THREE.Mesh( geometry, meterial );
+            var top = cabinetModel.top.clone();
+            var bottom = cabinetModel.bottom.clone();
             
             top.position.x = px;
-            top.position.y = py + h + 2;
+            top.position.y = py + cabinet_h + 2;
             top.position.z = pz;
             
             bottom.position.x = px;
@@ -710,25 +813,22 @@
             cabinet.bottom = bottom;
             
             // 机柜门
-            var geometry = new THREE.BoxGeometry(w, h, 2);
-            var meterial = new THREE.MeshBasicMaterial( { color: 0x003333, opacity: 0.5, transparent: true } );
-            
-            var front = new THREE.Mesh( geometry, meterial );
+            var front = cabinetModel.front.clone();
             
             front.position.x = px;
-            front.position.y = py + h / 2 + 1;
-            front.position.z = pz + d / 2;
+            front.position.y = py + cabinet_h / 2 + 1;
+            front.position.z = pz + cabinet_d / 2;
             front.toggle = function(o) {
               if ( o.rotation.y == 0 ) {
                 o.rotation.y = o.rotation.y + Math.PI * 3 / 5;
-                o.position.x = o.position.x + w / 2 + 3;
-                o.position.z = o.position.z + d / 2;
+                o.position.x = o.position.x + cabinet_w / 2 + 3;
+                o.position.z = o.position.z + cabinet_d / 2;
                 
                 openCabinet(o.container);
               } else {
                 o.rotation.y = o.rotation.y - Math.PI * 3 / 5;
-                o.position.x = o.position.x - w / 2 - 3;
-                o.position.z = o.position.z - d / 2;
+                o.position.x = o.position.x - cabinet_w / 2 - 3;
+                o.position.z = o.position.z - cabinet_d / 2;
                 
                 // 关闭机柜门时，将机柜中的服务器收起
                 for (var i=0; i<o.container.servers.length; i++) {
@@ -754,7 +854,7 @@
             if (c && c.servers) {
               cabinet.info = c;
               for (var i=0; i<c.servers.length; i++) {
-                var server = createServer(w-4, 4, d-4, px, py + (9*(i+1)), pz+2);   // 服务器的厚度默认为 4， 服务器之间的间隔为 5
+                var server = createServer(px, py + (9*(i+1)), pz+2);   // 服务器的厚度默认为 4， 服务器之间的间隔为 5
                 server.container = cabinet;
                 server.info = c.servers[i];
                 cabinet.servers.push(server);
@@ -767,44 +867,32 @@
           }
 
           function handlerServer(server){
-              if (server.info.cpuUsed > 60){
-                  cpuGE60List.push(server);
-              }
-              if (server.info.memUsed > 60){
-                  memGE60List.push(server);
-              }
-              if (server.info.temperature > 45){
-                  temGE45List.push(server);
-              }
+              // if (server.info.cpuUsed > 60){
+              //     cpuGE60List.push(server);
+              // }
+              // if (server.info.memUsed > 60){
+              //     memGE60List.push(server);
+              // }
+              // if (server.info.temperature > 45){
+              //     temGE45List.push(server);
+              // }
+              serverList.push(server);
           }
-          function createServer(w, h, d, px, py, pz) {
+          var server_d = 26;
+          function createServer(px, py, pz) {
             // 服务器
             //var texture = new THREE.ImageUtils.loadTexture( 'data:image/gif;base64,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' );
-            var texture = new THREE.ImageUtils.loadTexture( '../images/server.png' );
-            texture.wrapS = texture.wrapT = THREE.ClampToEdgeWrapping; 
-            texture.repeat.set( 1, 1 );
-			texture.minFilter = THREE.LinearFilter
-
-            var texture_back = new THREE.ImageUtils.loadTexture( '../images/server-back.png' );
-            texture_back.wrapS = texture_back.wrapT = THREE.ClampToEdgeWrapping; 
-            texture_back.repeat.set( 1, 1 );
-			texture_back.minFilter = THREE.LinearFilter
-
-            var geometry = new THREE.BoxGeometry(w, h, d);
-            //var material = new THREE.MeshBasicMaterial( { map: texture } );
-            // Create an array of materials to be used in a cube, one for each side
-            var materialArray = [];
-            // order to add materials: x+,x-,y+,y-,z+,z-
-            materialArray.push( new THREE.MeshBasicMaterial( { color: 0xbbbbbb } ) );
-            materialArray.push( new THREE.MeshBasicMaterial( { color: 0xbbbbbb } ) );
-            materialArray.push( new THREE.MeshBasicMaterial( { color: 0xbbbbbb } ) );
-            materialArray.push( new THREE.MeshBasicMaterial( { color: 0xbbbbbb } ) );
-            materialArray.push( new THREE.MeshBasicMaterial( { map: texture } ) );
-            materialArray.push( new THREE.MeshBasicMaterial( { map: texture_back } ) );
-            var material = new THREE.MeshFaceMaterial( materialArray );
-
-            var server = new THREE.Mesh( geometry, material );
-            
+            const server = serverModel.clone();
+              var materialArray = [];
+              // order to add materials: x+,x-,y+,y-,z+,z-
+              materialArray.push( new THREE.MeshBasicMaterial( { color: 0xbbbbbb } ) );
+              materialArray.push( new THREE.MeshBasicMaterial( { color: 0xbbbbbb } ) );
+              materialArray.push( new THREE.MeshBasicMaterial( { color: 0xbbbbbb } ) );
+              materialArray.push( new THREE.MeshBasicMaterial( { color: 0xbbbbbb } ) );
+              materialArray.push( new THREE.MeshBasicMaterial( { map: server_texture } ) );
+              materialArray.push( new THREE.MeshBasicMaterial( { map: server_back_texture } ) );
+              var material = new THREE.MeshFaceMaterial( materialArray );
+            serverModel.material = material;
             server.position.x = px;
             server.position.y = py;
             server.position.z = pz;
@@ -815,7 +903,7 @@
                 if ( o === o.container.servers[i] ) continue;
                 if ( o.container.servers[i].position.z == pz ) {
                 } else {
-                  o.container.servers[i].position.z = o.container.servers[i].position.z - d / 2;
+                  o.container.servers[i].position.z = o.container.servers[i].position.z - server_d / 2;
                   // 
                   closeServer(o.container.servers[i]);
                 }
@@ -823,20 +911,20 @@
               
               if ( o.position.z == pz ) {
                 if ( openOrClose == null || openOrClose ) {
-                  o.position.z = o.position.z + d / 2;
+                  o.position.z = o.position.z + server_d / 2;
                   // 打开服务器时，处理其他逻辑
                   openServer(o);
                 }
               } else {
                 if ( openOrClose == null || !openOrClose ) {
-                  o.position.z = o.position.z - d / 2;
+                  o.position.z = o.position.z - server_d / 2;
                   // 关上服务器时，处理其他逻辑
                   closeServer(o);
                 }
               }
             }
-            server.hover = function(o) {
-              hoverServer(o);
+            server.hover = function(o,event) {
+              hoverServer(o,event);
             }
             
             scene.add(server);
@@ -1104,7 +1192,7 @@
 			  //o.material.color.set( 0xff0000 );
 			  
               if (typeof o.hover == 'function') {
-                o.hover(o);
+                o.hover(o,event);
               } else {
                 closeHover();
               }
