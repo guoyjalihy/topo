@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <title>点击事件</title>
     <style>
-        body {
-            margin: 0;
-            overflow: hidden;
+        .canvasWrap {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            background: gray;
         }
 
-        #label {
-            position: absolute;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.6);
-            line-height: 1;
-            border-radius: 5px;
+        .label {
+            margin-top: -20px;
+            color: #fff;
+            border: 1px solid #fff;
+            padding: 3px 5px;
+            background: rgba(0, 0, 0, 0.6)
         }
     </style>
     <script src="../js/three.min.js"></script>
@@ -25,229 +27,104 @@
 <!--    <script src="../js/controls/OrthographicTrackballControls.js"></script>-->
 <!--    <script src="../js/libs/dat.gui.min.js"></script>-->
     <script src="../js/Stats.js"></script>
+    <script src="../js/CSS2DRenderer.js"></script>
 </head>
 <body>
-<div id="WebGL-output"></div>
-<div id="Stats-output"></div>
-
-<div id="label"></div>
+<div class="canvasWrap" id="canvasWrap" style="margin-bottom:15px;"></div>
+<div class="label" id="label1" style="margin-bottom:15px;"></div>
+</body>
 <script>
-
-    var stats = initStats();
-    var scene, camera, renderer, controls, light, selectObject;
-
-    // 场景
-    function initScene() {
-        scene = new THREE.Scene();
-    }
-
-    // 相机
-    function initCamera() {
-        camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 10000);
-        camera.position.set(0, 400, 600);
-        camera.lookAt(new THREE.Vector3(0, 0, 0));
-    }
-
-    // 渲染器
-    function initRenderer() {
-        if (Detector.webgl) {
-            renderer = new THREE.WebGLRenderer({antialias: true});
-        } else {
-            renderer = new THREE.CanvasRenderer();
-        }
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setClearColor(0x050505);
-        document.body.appendChild(renderer.domElement);
-    }
-
-    // 初始化模型
-    function initContent() {
-        var helper = new THREE.GridHelper(1200, 50, 0xCD3700, 0x4A4A4A);
-        scene.add(helper);
-
-        var cubeGeometry = new THREE.BoxGeometry(100, 100, 100);
-        var cubeMaterial = new THREE.MeshLambertMaterial({color: 0x9370DB});
-        var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
-        cube.position.y = 50;
-        cube.name = "cube";
-        scene.add(cube);
-
-        var sphereGeometry = new THREE.SphereGeometry(50, 50, 50, 50);
-        var sphereMaterial = new THREE.MeshLambertMaterial({color: 0x3CB371});
-        var sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
-        sphere.position.x = 200;
-        sphere.position.y = 50;
-        sphere.name = "sphere";
-        // sphere.position.z = 200;
-        scene.add(sphere);
-
-        var cylinderGeometry = new THREE.CylinderGeometry(50, 50, 100, 100);
-        var cylinderMaterial = new THREE.MeshLambertMaterial({color: 0xCD7054});
-        var cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
-        cylinder.position.x = -200;
-        cylinder.position.y = 50;
-        cylinder.name = "cylinder";
-        // cylinder.position.z = -200;
-        scene.add(cylinder);
-    }
-
-    // 鼠标双击触发的方法
-    function onMouseDblclick(event) {
-
-        // 获取 raycaster 和所有模型相交的数组，其中的元素按照距离排序，越近的越靠前
-        var intersects = getIntersects(event);
-
-        // 获取选中最近的 Mesh 对象
-        if (intersects.length !== 0 && intersects[0].object instanceof THREE.Mesh) {
-            selectObject = intersects[0].object;
-            changeMaterial(selectObject);
-        } else {
-            alert("未选中 Mesh!");
-        }
-    }
-
-    // 获取与射线相交的对象数组
-    function getIntersects(event) {
-        event.preventDefault();
-        console.log("event.clientX:"+event.clientX);
-        console.log("event.clientY:"+event.clientY);
-
-        // 声明 raycaster 和 mouse 变量
-        var raycaster = new THREE.Raycaster();
-        var mouse = new THREE.Vector2();
-
-        // 通过鼠标点击位置,计算出 raycaster 所需点的位置,以屏幕为中心点,范围 -1 到 1
-        mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
-
-        //通过鼠标点击的位置(二维坐标)和当前相机的矩阵计算出射线位置
-        raycaster.setFromCamera(mouse, camera);
-
-        // 获取与射线相交的对象数组，其中的元素按照距离排序，越近的越靠前
-        var intersects = raycaster.intersectObjects(scene.children);
-
-        //返回选中的对象
-        return intersects;
-    }
-
-    // 窗口变动触发的方法
-    function onWindowResize() {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-
-    // 键盘按下触发的方法
-    function onKeyDown(event) {
-        switch (event.keyCode) {
-            case 13:
-                initCamera();
-                initControls();
-                break;
-        }
-    }
-
-    // 改变对象材质属性
-    function changeMaterial(object) {
-
-        var material = new THREE.MeshLambertMaterial({
-            color: 0xffffff * Math.random(),
-            transparent: object.material.transparent ? false : true,
-            opacity: 0.8
-        });
-        object.material = material;
-    }
-
-    // 初始化轨迹球控件
-    function initControls() {
-        controls = new THREE.OrbitControls(camera, renderer.domElement);
-        // controls.noRotate = true;
-        // controls.noPan = true;
-    }
-
-    // 初始化灯光
-    function initLight() {
-        light = new THREE.SpotLight(0xffffff);
-        light.position.set(-300, 600, -400);
-        light.castShadow = true;
-
-        scene.add(light);
-        scene.add(new THREE.AmbientLight(0x5C5C5C));
-    }
-
-    // 初始化 dat.GUI
-    function initGui() {
-        // 保存需要修改相关数据的对象
-        gui = new function () {
-
-        }
-        // 属性添加到控件
-        // var guiControls = new dat.GUI();
-    }
-
-    // 初始化性能插件
-    function initStats() {
-        var stats = new Stats();
-
-        stats.domElement.style.position = 'absolute';
-        stats.domElement.style.left = '0px';
-        stats.domElement.style.top = '0px';
-
-        document.body.appendChild(stats.domElement);
-        return stats;
-    }
-
-    // 更新div的位置
-    function renderDiv(object) {
-        // 获取窗口的一半高度和宽度
-        let halfWidth = window.innerWidth / 2;
-        let halfHeight = window.innerHeight / 2;
-
-        // 逆转相机求出二维坐标
-        let vector = object.position.clone().project(camera);
-
-        // 修改 div 的位置
-        $("#label").css({
-            left: vector.x * halfWidth + halfWidth,
-            top: -vector.y * halfHeight + halfHeight - object.position.y
-        });
-        // 显示模型信息
-        $("#label").text("name:" + object.name);
-    }
-
-    // 更新控件
-    function update() {
-        stats.update();
-        controls.update();
-        // controls.handleResize();
-    }
-
-    // 初始化
-    function init() {
-        initScene();
-        initCamera();
-        initRenderer();
-        initContent();
-        initLight();
-        initControls();
-        initGui();
-        addEventListener('click', onMouseDblclick, false);
-        addEventListener('resize', onWindowResize, false);
-        addEventListener('keydown', onKeyDown, false);
-    }
-
-    function animate() {
-        if (selectObject != undefined && selectObject != null) {
-            renderDiv(selectObject);
-        }
-        requestAnimationFrame(animate);
-        renderer.render(scene, camera);
-        update();
-    }
+    var camera, scene, scene2, renderer, labelRenderer;
+    var controls;
+    var clock = new THREE.Clock();
+    var textureLoader = new THREE.TextureLoader();
+    var width, height;
+    var earth, moon;
 
     init();
     animate();
 
+    function init() {
+        var EARTH_RADIUS = 1;
+        var MOON_RADIUS = 0.27;
+        var container = document.getElementById('canvasWrap')
+        width = document.getElementById('canvasWrap').clientWidth;
+        height = document.getElementById('canvasWrap').clientHeight;
+        camera = new THREE.PerspectiveCamera(45, width / height, 1, 1000);
+        camera.position.set(10, 9, 8);
+        console.log(camera)
+        controls = new THREE.OrbitControls(camera);
+        scene = new THREE.Scene();
+        scene2 = new THREE.Scene();
+        var dirLight = new THREE.DirectionalLight(0xffffff);
+        dirLight.position.set(0, 0, 1);
+        scene.add(dirLight);
+        //
+        // var axesHelper = new THREE.AxesHelper(5);
+        // scene.add(axesHelper);
+
+        var earthGeometry = new THREE.SphereBufferGeometry(EARTH_RADIUS, 16, 16);
+        var earthMaterial = new THREE.MeshPhongMaterial({
+            specular: 0x333333, //材质的高光颜色。默认值是0x111111
+            shininess: 5, //高亮的程度，越高的值越闪亮。默认值为30
+            //颜色贴图，默认null.纹理贴图颜色由漫反射颜色.color调节
+            map: textureLoader.load('../images/server.png'),
+            //镜面反射贴图值会影响镜面高光以及环境贴图对表面的影响程度。默认null
+            specularMap: textureLoader.load('../images/server.png'),
+            //用于创建法线贴图的纹理。RGB值会影响每个像素片段的曲面法线，并更改颜色照亮的方式。法线贴图不会改变曲面的实际形状，只会改变光照。
+            normalMap: textureLoader.load('../images/server.png'),
+            //法线贴图对材质的影响程度。典型范围是0-1 ，默认值是Vector2 设置（1,1）
+            normalScale: new THREE.Vector2(0.85, 0.85)
+        });
+        earth = new THREE.Mesh(earthGeometry, earthMaterial)
+        scene.add(earth);
+
+        var moonGeometry = new THREE.SphereBufferGeometry(MOON_RADIUS, 16, 16);
+        var moonMaterial = new THREE.MeshPhongMaterial({
+            shininess: 5,
+            map: textureLoader.load("../images/server.png")
+        });
+        moon = new THREE.Mesh(moonGeometry, moonMaterial);
+        console.log(moon)
+        scene.add(moon);
+
+        //var earthDiv = '<div><a href="aboutMe.html">earth</a></div>' 用字符串写元素不行
+        //earthDiv.style.marginTop = "-1em";
+        earthDiv = document.getElementById("label1");
+        earthDiv.style.display = "block"
+        console.log(earthDiv)
+        earthLabel = new THREE.CSS2DObject(earthDiv);
+        earthLabel.position.set(0, EARTH_RADIUS, 0);
+        earth.add(earthLabel);
+
+        var moonDiv = document.createElement("div");
+        moonDiv.className = "label";
+        moonDiv.textContent = "Moon";
+        //moonDiv.style.marginTop = "-1em";
+        var moonLabel = new THREE.CSS2DObject(moonDiv);
+        moonLabel.position.set(0, MOON_RADIUS, 0);
+        moon.add(moonLabel);
+
+        renderer = new THREE.WebGLRenderer();
+        renderer.setPixelRatio(window.devicePixelRatio);
+        renderer.setSize(width, height);
+        container.appendChild(renderer.domElement);
+
+        labelRenderer = new THREE.CSS2DRenderer();
+        labelRenderer.setSize(width, height);
+        labelRenderer.domElement.style.position = "absolute";
+        labelRenderer.domElement.style.top = 0;
+        container.appendChild(labelRenderer.domElement);
+
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        //获取自时钟启动后的秒数
+        var elapsed = clock.getElapsedTime() / 3;
+        moon.position.set(Math.sin(elapsed) * 5, 0, Math.cos(elapsed) * 5);
+        renderer.render(scene, camera);
+        labelRenderer.render(scene, camera)
+    }
 </script>
-</body>
 </html>
