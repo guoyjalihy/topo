@@ -53,6 +53,9 @@
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <!-- import JavaScript -->
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+<script type="module" src="../js/common/mysql.js"></script>
+
 <script>
     var demo = new Vue({
         el: '#app',
@@ -82,7 +85,18 @@
                 }
             }
         }
-    })
+    });
+
+    MySql.Execute(
+        "172.29.122.177",
+        "root",
+        "Caps@123..",
+        "cpms",
+        "select * from host",
+        function (data) {
+            // document.getElementById("output").innerHTML = JSON.stringify(data,null,2);
+            console.log(data);
+        });
 </script>
 </html>
 

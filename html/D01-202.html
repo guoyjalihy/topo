@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8>
+    <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <title>浙中产业园D01-202</title>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="../css/element-ui.css">
+    <style>
+        body {
+            overflow: hidden;
+            background: black;
+        }
+        #help {
+            display: none;
+            position: absolute;
+            right: 70px;
+            top: 70px;
+            z-index: 5;
+            vertical-align: middle;
+            width: 220px;
+        }
+
+        .cabinetForm {
+            background: #01232E;
+            width: 200px;
+            display: none;
+        }
+
+        .title {
+            background-color: #01818D;
+            height: 20px;
+            font-weight: bold;
+            font-size: 14px;
+            color: #80E6EF;
+            padding-top: 5px;
+            padding-left: 5px;
+        }
+
+        .el-form-item {
+            margin-bottom: 1px;
+        }
+
+        .el-form-item__label {
+            font-size: 12px;
+            color: #80E6EF;
+            font-weight: bold;
+            line-height: 15px
+        }
+
+        .el-form-item__content {
+            font-size: 12px;
+            color: #80E6EF;
+            line-height: 15px
+        }
+
+        .el-table .el-table__header-wrapper tr th {
+            background-color: #01232E;
+            color: #80E6EF;
+        }
+
+        .el-table .el-table__row {
+            background-color: #01232E;
+            color: #80E6EF;
+        }
+
+        .el-table td,
+        .el-table th.is-leaf {
+            border-bottom: 1px solid #4e73ac;
+            border-right: 1px solid #4e73ac;
+        }
+
+        .el-table__header tr,
+        .el-table__header th {
+            height: 20px;
+            padding: 0;
+        }
+
+        .el-table__body tr,
+        .el-table__body td {
+            height: 20px;
+            padding: 0;
+        }
+
+        .el-table {
+            /*border: 1px solid #4e73ac;*/
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<body onload="load()">
+<div style="z-index:2;text-align:center;font-size: 16px;color:#00ffff;top:4px;position: absolute;width:100%;background: rgba(255, 0, 0, 0.0);">
+    浙中产业园D01-202机房拓扑
+</div>
+<div style="z-index:1;position: absolute;width:100%;">
+    <img src="../images/line.png" alt="" style="width:100%;height:28px">
+</div>
+<div id="container" style="height:100%">
+</div>
+<div id="showInfos">
+    <div style="position: absolute;right: 50px;top: 30px;cursor:pointer;">
+        <img src="../images/help.jpg" alt="" style="width:50px;height:50px" @mouseenter="enter()" @mouseleave="leave()">
+    </div>
+    <div id="queryForm" style="display:none;position: absolute;left: 50px;top: 65px;z-index:5;vertical-align:middle">
+        <el-form ref="form" :model="query" label-width="80px">
+            <el-form-item label="CPU分配率(>=)">
+                <el-input v-model="query.cpu_alloc_ratio"></el-input>
+            </el-form-item>
+            <el-form-item label="内存分配率(>=)">
+                <el-input v-model="query.mem_alloc_ratio"></el-input>
+            </el-form-item>
+            <el-form-item label="CPU利用率(>=)">
+                <el-input v-model="query.cpu_util"></el-input>
+            </el-form-item>
+            <el-form-item label="内存利用率(>=)">
+                <el-input v-model="query.mem_util"></el-input>
+            </el-form-item>
+            <el-form-item label="CPU碎片率(>=)">
+                <el-input v-model="query.cpu_unalloc_ratio"></el-input>
+            </el-form-item>
+            <el-form-item label="温度(>=)">
+                <el-input v-model="query.temperatures"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="onSubmit">筛选</el-button>
+                <el-button @click="clear">还原</el-button>
+            </el-form-item>
+        </el-form>
+    </div>
+    <div id="serverForm" :style="positionStyle" class="cabinetForm">
+        <div class="title">服务器详细信息</div>
+        <el-form :model="server" label-width="80px">
+            <el-form-item label="服务器名称" v-model="server.host_name">
+                {{server.host_name}}
+            </el-form-item>
+            <el-form-item label="服务器编号" v-model="server.serial_number">
+                {{server.serial_number}}
+            </el-form-item>
+            <el-form-item label="服务器类型" v-model="server.type">
+                {{server.type}}
+            </el-form-item>
+            <el-form-item label="厂家" v-model="server.manufacturer">
+                {{server.manufacturer}}
+            </el-form-item>
+            <el-form-item label="入网时间" v-model="server.start_time">
+                {{server.start_time}}
+            </el-form-item>
+            <el-form-item label="位置" v-model="server.location">
+                {{server.location}}
+            </el-form-item>
+            <el-form-item label="CPU分配率" v-model="server.cpu_alloc_ratio">
+                <el-progress :text-inside="true" :stroke-width="15" :percentage="server.cpu_alloc_ratio"></el-progress>
+            </el-form-item>
+            <el-form-item label="内存分配率" v-model="server.mem_alloc_ratio">
+                <el-progress :text-inside="true" :stroke-width="15" :percentage="server.mem_alloc_ratio"></el-progress>
+            </el-form-item>
+            <el-form-item label="CPU平均利用率" v-model="server.cpu_util">
+                <el-progress :text-inside="true" :stroke-width="15" :percentage="server.cpu_util"></el-progress>
+            </el-form-item>
+            <el-form-item label="内存平均利用率" v-model="server.mem_util">
+                <el-progress :text-inside="true" :stroke-width="15" :percentage="server.mem_util"></el-progress>
+            </el-form-item>
+            <el-form-item label="CPU碎片率" v-model="server.cpu_unalloc_ratio">
+                <el-progress :text-inside="true" :stroke-width="15" :percentage="server.cpu_unalloc_ratio"></el-progress>
+            </el-form-item>
+        </el-form>
+    </div>
+    <div id="returnButton" style="position: absolute;right: 120px;top: 35px;">
+        <el-button type="primary" @click="index">返回首页</el-button>
+    </div>
+    <div id="help" class="help">
+        <template>
+            <el-table
+                    :data="tableData"
+                    style="width: 100%">
+                <el-table-column label="键盘快捷键操作说明">
+                    <el-table-column
+                            prop="name"
+                            label="快捷键">
+                    </el-table-column>
+                    <el-table-column
+                            prop="description"
+                            label="说明">
+                    </el-table-column>
+                </el-table-column>
+            </el-table>
+        </template>
+    </div>
+    <div id="tag" style="visibility:hidden">
+        <div style="position:relative;">
+            <div style="position: absolute;top:-70px;left:20px;width:100px;color:#ffffff;font-size: 12px">
+            </div>
+            <div style="position: absolute;top:-50px;left:0px;">
+                <img src="../images/tagLine.png" alt="">
+            </div>
+        </div>
+    </div>
+    <div id="switch" style="position: absolute;left: 48%;top: 65px;">
+        <span style="color:#ffffff;font-size:16px">显示标签</span>
+        <el-switch style="margin-top:-3px;" v-model="showTag" active-color="#00aeef"></el-switch>
+    </div>
+
+</div>
+<script src="../js/common/three.js"></script>
+<script src="../js/common/Detector.js"></script>
+<script src="../js/common/Stats.js"></script>
+<script src="../js/common/OrbitControls.js"></script>
+<script src="../js/common/KeyboardState.js"></script>
+<script src="../js/common/jquery-1.9.1.js"></script>
+<script src="../js/common/Projector.js"></script>
+<!-- 引入组件库 -->
+<script src="../js/common/vue.js"></script>
+<script src="../js/common/element-ui.js"></script>
+<script type="module" src="../js/CSS2DRenderer.js"></script>
+
+<script>
+    function load() {
+        $("#queryForm").show();
+    }
+
+</script>
+<script type="module">
+    // Our Javascript will go here.
+    // import * as THREE from './js/three.module.js';
+    import { CSS2DRenderer, CSS2DObject } from '../js/CSS2DRenderer.js';
+    import { ModuleBuilder } from '../js/ModuleBuilder.js';
+
+    // standard global variables
+    var container = document.getElementById("container");
+    var scene, camera, renderer, labelRenderer, controls, stats;
+    var serverModel;
+    var moduleBuilder;
+    var server_texture, server_back_texture;
+    var clock = new THREE.Clock();
+
+    var keyboard = new KeyboardState();
+
+    var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight ; //
+
+    //var xyz = { x: 0, y: 0, z: 200 };
+
+    // custom global variables
+    var targetList = [];
+    var serverList = [];
+
+    var projector, mouse = {x: 0, y: 0};
+
+    var showInfos = new Vue({
+        el: '#showInfos',
+        data: {
+            positionStyle: '',
+            showTag: false,
+            server: {
+                host_name: '',
+                serial_number: '',
+                type: '',
+                manufacturer: '',
+                start_time: '1天',
+                cpu_alloc_ratio: 0,
+                mem_alloc_ratio: 0,
+                cpu_util: 0,
+                mem_util: 0,
+                cpu_unalloc_ratio: 0,
+                location: ''
+            },
+            query: {
+                cpu_alloc_ratio: '',
+                mem_alloc_ratio: '',
+                cpu_util: '',
+                mem_util: '',
+                temperatures: '',
+                cpu_unalloc_ratio: ''
+            },
+
+            tableData: [
+                {
+                    name: 'A or 方向键←',
+                    description: '逆时针转',
+                },
+                {
+                    name: 'D or 方向键→',
+                    description: '顺时针转',
+                },
+                {
+                    name: 'W or 方向键↑',
+                    description: '放大',
+                },
+                {
+                    name: 'S or 方向键↓',
+                    description: '缩小',
+                },
+                {
+                    name: 'Q',
+                    description: '左平移',
+                },
+                {
+                    name: 'E',
+                    description: '右平移',
+                },
+                {
+                    name: 'R',
+                    description: '上旋',
+                },
+                {
+                    name: 'F',
+                    description: '下旋',
+                }
+            ]
+        },
+        watch: {
+            showTag(value) {
+                var arr = document.getElementsByClassName("tag");
+                if (value) {
+                    for (var i = 0; i < arr.length; i++) {
+                        arr[i].style.visibility = "visible";
+                    }
+                }else{
+                    for (var i = 0; i < arr.length; i++) {
+                        arr[i].style.visibility = "hidden";
+                    }
+                }
+            }
+        },
+        methods: {
+            onSubmit() {
+                serverList.forEach(function (mesh) {
+                    mesh.material[2].color.setRGB(0.7, 0.7, 0.7);
+                    mesh.geometry.colorsNeedUpdate = true;
+                    if (filterByQuery(mesh)) {
+                        mesh.material[2].color.setRGB(1, 0, 0);
+                        mesh.geometry.colorsNeedUpdate = true;
+                    }
+                })
+            },
+            index() {
+                window.location.href = '../index.html'
+            },
+            clear() {
+                this.query.cpu_alloc_ratio = '';
+                this.query.mem_alloc_ratio = '';
+                this.query.cpu_util = '';
+                this.query.mem_util = '';
+                this.query.temperatures = '';
+                this.query.cpu_unalloc_ratio = '';
+                serverList.forEach(function (mesh) {
+                    mesh.material[2].color.setRGB(0.7, 0.7, 0.7);
+                    mesh.geometry.colorsNeedUpdate = true;
+                })
+            },
+            enter() {
+                $("#help").show();
+            },
+            leave() {
+                $("#help").hide();
+            }
+        }
+    })
+
+    var filterByQuery = function (mesh) {
+        if (showInfos.query.cpu_alloc_ratio) {
+            if (!mesh.info.cpu_alloc_ratio) {
+                return false;
+            }
+            if (mesh.info.cpu_alloc_ratio < showInfos.query.cpu_alloc_ratio) {
+                return false;
+            }
+        }
+        if (showInfos.query.mem_alloc_ratio) {
+            if (!mesh.info.mem_alloc_ratio) {
+                return false;
+            }
+            if (mesh.info.mem_alloc_ratio < showInfos.query.mem_alloc_ratio) {
+                return false;
+            }
+        }
+        if (showInfos.query.cpu_util) {
+            if (!mesh.info.cpu_util) {
+                return false;
+            }
+            if (mesh.info.cpu_util < showInfos.query.cpu_util) {
+                return false;
+            }
+        }
+        if (showInfos.query.mem_util) {
+            if (!mesh.info.mem_util) {
+                return false;
+            }
+            if (mesh.info.mem_util < showInfos.query.mem_util) {
+                return false;
+            }
+        }
+        if (showInfos.query.cpu_unalloc_ratio) {
+            if (!mesh.info.cpu_unalloc_ratio) {
+                return false;
+            }
+            if (mesh.info.cpu_unalloc_ratio < showInfos.query.cpu_unalloc_ratio) {
+                return false;
+            }
+        }
+        if (showInfos.query.temperatures) {
+            if (!mesh.info.temperatures) {
+                return false;
+            }
+            if (mesh.info.temperatures < showInfos.query.temperatures) {
+                return false;
+            }
+        }
+        return true;
+    }
+    function loginfo(log) {
+        // info.innerHTML += log;
+        // info.innerHTML += "<br />";
+        console.log(log);
+    }
+
+    function closeHover() {
+        $("#serverForm").hide();
+    }
+
+    init();
+    animate();
+
+    // FUNCTIONS
+    function init() {
+        // SCENE
+        scene = new THREE.Scene();
+
+        // CAMERA
+        var VIEW_ANGLE = 50, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 2000;
+
+        camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+        scene.add(camera);
+        camera.position.set(0, 500, 1000);
+        camera.lookAt(scene.position);
+
+        // camera.position.z = 5;
+
+        // RENDERER
+        //renderer = new THREE.WebGLRenderer();
+        if (Detector.webgl)
+            renderer = new THREE.WebGLRenderer({antialias: true});
+        else
+            renderer = new THREE.CanvasRenderer();
+
+        renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+        container.appendChild(renderer.domElement);
+
+        labelRenderer = new CSS2DRenderer();
+        labelRenderer.setSize(window.innerWidth, window.innerHeight);
+        labelRenderer.domElement.style.position = 'absolute';
+        labelRenderer.domElement.style.top = '0';
+        // labelRenderer.domElement.style.pointerEvents = 'none';
+        container.appendChild(labelRenderer.domElement);
+
+        // CONTROLS
+        // controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls = new THREE.OrbitControls(camera, labelRenderer.domElement);
+
+        //坐标系
+        // var axisHelper =new THREE.AxisHelper(540);
+        // scene.add(axisHelper);
+        // STATS
+        stats = new Stats();
+        stats.domElement.style.position = 'absolute';
+        stats.domElement.style.top = '0px';
+        stats.domElement.style.zIndex = 100;
+        container.appendChild(stats.domElement);
+
+        // LIGHT
+        var light = new THREE.PointLight(0x00ff00);
+        light.position.set(0, 100, 0);
+        scene.add(light);
+
+        moduleBuilder = new ModuleBuilder(scene,targetList);
+
+        createServerModel(26, 4, 26);
+        // createCabinetModel();
+        initModel(1080, 1080, 80);
+
+        // initialize object to perform world/screen calculations
+        projector = new THREE.Projector();
+
+        // when the mouse moves, call the given function
+        document.addEventListener('mousedown', onDocumentMouseDown, false);
+
+        // when the mouse moves, call the given function
+        document.addEventListener('mousemove', onDocumentMouseMove, false);
+
+    }
+
+    //服务器宽、高、深
+    function createServerModel(server_w, server_h, server_d) {
+
+        server_texture = new THREE.ImageUtils.loadTexture('../images/server.png');
+        server_texture.wrapS = server_texture.wrapT = THREE.ClampToEdgeWrapping;
+        server_texture.repeat.set(1, 1);
+        server_texture.minFilter = THREE.LinearFilter
+
+        server_back_texture = new THREE.ImageUtils.loadTexture('../images/server-back.png');
+        server_back_texture.wrapS = server_back_texture.wrapT = THREE.ClampToEdgeWrapping;
+        server_back_texture.repeat.set(1, 1);
+        server_back_texture.minFilter = THREE.LinearFilter
+
+        var geometry = new THREE.BoxGeometry(server_w, server_h, server_d);
+        //var material = new THREE.MeshBasicMaterial( { map: texture } );
+        // Create an array of materials to be used in a cube, one for each side
+        var materialArray = [];
+        // order to add materials: x+,x-,y+,y-,z+,z-
+        materialArray.push(new THREE.MeshBasicMaterial({color: 0xbbbbbb}));
+        materialArray.push(new THREE.MeshBasicMaterial({color: 0xbbbbbb}));
+        materialArray.push(new THREE.MeshBasicMaterial({color: 0xbbbbbb}));
+        materialArray.push(new THREE.MeshBasicMaterial({color: 0xbbbbbb}));
+        materialArray.push(new THREE.MeshBasicMaterial({map: server_texture}));
+        materialArray.push(new THREE.MeshBasicMaterial({map: server_back_texture}));
+        var material = new THREE.MeshFaceMaterial(materialArray);
+
+        serverModel = new THREE.Mesh(geometry, material);
+    }
+
+    function initModel(l, w, h) {
+        // 预留宽度
+        const reserve = 500;
+
+        //机房长、宽、高
+        const length = l;
+        const width = w;
+        const height = h;
+
+        // FLOOR
+        moduleBuilder.createFloor(l + reserve, w + reserve);
+
+        // WALL
+        moduleBuilder.createWall(width, height, 0, 41, -540, 0, 0, 0);
+
+        moduleBuilder.createGlassWall(width, height, length / 2, 41, 0, 0, Math.PI / 2, 0);
+        moduleBuilder.createGlassWall(width, height, -length / 2, 41, 0, 0, -Math.PI / 2, 0);
+
+        // createGlassWall(100, 80, 296, 41, 210, 0, Math.PI / 2, 0);
+        // createGlassWall(100, 80, -296, 41, 210, 0, -Math.PI / 2, 0);
+
+        // createGlassWall(80, 80, 250, 41, 155, 0, 0, 0);
+        // createGlassWall(80, 80, -250, 41, 155, 0, 0, 0);
+
+        // createGlassWall(300, 80, 0, 41, 155, 0, 0, 0);
+
+        moduleBuilder.createGlassWall(80, height, 500, 41, width / 2, 0, 0, 0);
+        moduleBuilder.createGlassWall(80, height, -500, 41, width / 2, 0, 0, 0);
+
+        moduleBuilder.createGlassWall(800, height, 0, 41, width / 2, 0, 0, 0);
+
+        // COLUMN
+        // createColumn(10, 80, 295, 41, 155);
+        // createColumn(10, 80, -295, 41, 155);
+        // createColumn(10, 80, 210, 41, 155);
+        // createColumn(10, 80, -210, 41, 155);
+        // createColumn(10, 80, 150, 41, 155);
+        // createColumn(10, 80, -150, 41, 155);
+
+        moduleBuilder.createColumn(10, 80, 540, 41, 540);
+        moduleBuilder.createColumn(10, 80, -540, 41, 540);
+        moduleBuilder.createColumn(10, 80, 460, 41, 540);
+        moduleBuilder.createColumn(10, 80, -460, 41, 540);
+        moduleBuilder.createColumn(10, 80, 400, 41, 540);
+        moduleBuilder.createColumn(10, 80, -400, 41, 540);
+
+        moduleBuilder.createFireExtinguisher(8, 30, 520, 16, 520);
+        moduleBuilder.createFireExtinguisher(8, 30, -520, 16, 520);
+
+        var air1 = moduleBuilder.createStandAir(30, 70, 15, 200, 36, -525);
+        createTag(air1,"空调1");
+        var air2 = moduleBuilder.createStandAir(30, 70, 15, -200, 36, -525);
+        createTag(air2,"空调2");
+        // var text = document.getElementById('label').cloneNode(true);
+        // text.style.visibility = "hidden";
+        // text.className = "label";
+        // text.childNodes[1].childNodes[1].textContent = Mesh.name;
+        // var label = new THREE.CSS2DObject(text);
+        // label.position.copy(Mesh.position);
+
+        var dev1 = moduleBuilder.createDevice(30, 70, 25, 350, 36, 50, {'color': 0xff0000, 'uuid': 'dev1', 'name': '1#供电系统'});
+        createTag(dev1,dev1.info.name);
+
+        dev1.hover = function (o) {
+        }
+        var dev2 = moduleBuilder.createDevice(30, 70, 25, 350, 36, -50, {'color': 0xff0000, 'uuid': 'dev1', 'name': '3#供电系统'});
+        createTag(dev2,dev2.info.name);
+        dev2.hover = function (o) {
+            loginfo('hover:' + o.info.name);
+        }
+        var dev3 = moduleBuilder.createDevice(30, 70, 25, 400, 36, 50, {'color': 0xff0000, 'uuid': 'dev1', 'name': '2#供电系统'});
+        createTag(dev3,dev3.info.name);
+        dev3.hover = function (o) {
+            loginfo('hover:' + o.info.name);
+        }
+        var dev4 = moduleBuilder.createDevice(30, 70, 25, 400, 36, -50, {'color': 0xff0000, 'uuid': 'dev1', 'name': '4#供电系统'});
+        createTag(dev4,dev4.info.name);
+        dev4.hover = function (o) {
+            loginfo('hover:' + o.info.name);
+        }
+
+        var dev5 = moduleBuilder.createDevice(30, 70, 25, 350, 36, -150, {'color': 0xff0000, 'uuid': 'dev1', 'name': '5#供电系统'});
+        createTag(dev5,dev5.info.name);
+        dev5.hover = function (o) {
+            loginfo('hover:' + o.info.name);
+        }
+        var dev6 = moduleBuilder.createDevice(30, 70, 25, 400, 36, -150, {'color': 0xff0000, 'uuid': 'dev1', 'name': '6#供电系统'});
+        createTag(dev6,dev6.info.name);
+        dev6.hover = function (o) {
+            loginfo('hover:' + o.info.name);
+        }
+        // WINDOW
+        /*
+        var windw = createWindow( 245, 50, 0, 41, 180, 0, 0, 0 );
+        windw.toggle = function(o) {
+          if ( o.rotation.x == 0 ) {
+            o.rotation.x = o.rotation.x + Math.PI / 4;
+          } else {
+            o.rotation.x = o.rotation.x - Math.PI / 4;
+          }
+        }
+        */
+
+        // DOOR
+        var door_right = moduleBuilder.createDoor(50, 80, 430, 41, 540, 0, 0, 0);
+        door_right.toggle = function (o) {
+            if (o.rotation.y == 0) {
+                o.rotation.y = o.rotation.y + Math.PI / 2;
+                o.position.x = o.position.x + 25;
+                o.position.z = o.position.z + 25;
+            } else {
+                o.rotation.y = o.rotation.y - Math.PI / 2;
+                o.position.x = o.position.x - 25;
+                o.position.z = o.position.z - 25;
+            }
+        }
+        scene.add(door_right);
+        targetList.push(door_right);
+
+        var door_left = moduleBuilder.createDoor(50, 80, -430, 41, 540, 0, 0, 0);
+        door_left.toggle = function (o) {
+            if (o.rotation.y == 0) {
+                o.rotation.y = o.rotation.y + Math.PI / 2;
+                o.position.x = o.position.x - 25;
+                o.position.z = o.position.z + 25;
+            } else {
+                o.rotation.y = o.rotation.y - Math.PI / 2;
+                o.position.x = o.position.x + 25;
+                o.position.z = o.position.z - 25;
+            }
+        }
+        scene.add(door_left);
+        targetList.push(door_left);
+
+        moduleBuilder.buildCabinets(11,25,createAreaTag);
+    }
+
+    function showServerInfo (server, event) {
+        showInfos.server.host_name = server.info.host_name;
+        showInfos.server.serial_number = server.info.serial_number;
+        showInfos.server.type = server.info.type;
+        showInfos.server.manufacturer = server.info.manufacturer;
+        showInfos.server.start_time = server.info.start_time;
+        showInfos.server.cpu_alloc_ratio = server.info.cpu_alloc_ratio;
+        showInfos.server.mem_alloc_ratio = server.info.mem_alloc_ratio;
+        showInfos.server.cpu_util = server.info.cpu_util;
+        showInfos.server.mem_util = server.info.mem_util;
+        showInfos.server.cpu_unalloc_ratio = server.info.cpu_unalloc_ratio;
+        showInfos.server.location = server.info.location;
+
+        let left = event.clientX;
+        let top = event.clientY;
+
+        showInfos.positionStyle = "position: absolute; left: " + left + "px; top:" + top + "px";
+        $("#serverForm").show();
+    }
+
+    function createAreaTag(mesh,pz){
+        var MAX_PZ = 400;
+        var CABINET_INTERVAL = 80;
+        if (MAX_PZ == pz){//DPI、特通等预留
+            createTag(mesh,'DPI/特通等预留列');
+        }else if (MAX_PZ - CABINET_INTERVAL == pz){
+            createTag(mesh,'分区B-DMZ列');
+        }else if (MAX_PZ - 2*CABINET_INTERVAL == pz){
+            createTag(mesh,'分区B-网络设备列');
+        }else if (MAX_PZ - 3*CABINET_INTERVAL == pz){
+            createTag(mesh,'分区A-网络设备列');
+        }else if (MAX_PZ - 4*CABINET_INTERVAL == pz){
+            createTag(mesh,'分区A-DMZ列');
+        }else if (MAX_PZ - 5*CABINET_INTERVAL == pz){
+            createTag(mesh,'分区B-可信域2列');
+        }else if (MAX_PZ - 6*CABINET_INTERVAL == pz){
+            createTag(mesh,'分区B-可信域1列');
+        }else if (MAX_PZ - 7*CABINET_INTERVAL == pz){
+            createTag(mesh,'分区B-网络设备列');
+        }else if (MAX_PZ - 8*CABINET_INTERVAL == pz){
+            createTag(mesh,'分区A-网络设备列');
+        }else if (MAX_PZ - 9*CABINET_INTERVAL == pz){
+            createTag(mesh,'分区A-可信域1列');
+        }else if (MAX_PZ - 10*CABINET_INTERVAL == pz){
+            createTag(mesh,'分区A-可信域2列');
+        }
+    }
+    function createTag(mesh,title) {
+        var tagCopy = document.getElementById('tag').cloneNode(true);
+        tagCopy.style.visibility = "hidden";
+        tagCopy.className = "tag";
+        var tag = new CSS2DObject(tagCopy);
+        tagCopy.childNodes[0].childNodes[0].textContent = title;
+        mesh.add(tag);
+    }
+
+    function onDocumentMouseMove(event) {
+        // the following line would stop any other event handler from firing
+        // (such as the mouse's TrackballControls)
+        // event.preventDefault();
+
+        // update the mouse variable
+        mouse.x = (event.clientX / SCREEN_WIDTH) * 2 - 1;
+        mouse.y = -(event.clientY / SCREEN_HEIGHT) * 2 + 1;
+
+        // find intersections
+
+        // create a Ray with origin at the mouse position
+        //   and direction into the scene (camera direction)
+        var vector = new THREE.Vector3(mouse.x, mouse.y, 1);
+        //projector.unprojectVector( vector, camera );
+        vector.unproject(camera);
+        var ray = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
+
+        // create an array containing all objects in the scene with which the ray intersects
+        var intersects = ray.intersectObjects(targetList);
+
+        // if there is one (or more) intersections
+        if (intersects.length > 0) {
+            //console.log("Hit @ " + toString( intersects[0].point ) );
+            // change the color of the closest face.
+            intersects[0].face.color.setRGB(0.8 * Math.random() + 0.2, 0, 0);
+            intersects[0].object.geometry.colorsNeedUpdate = true;
+
+            var o = intersects[0].object;
+            //o.material.color.set( 0xff0000 );
+
+            if (typeof o.hover == 'function') {
+                o.hover(o, event);
+            } else {
+                closeHover();
+            }
+        }
+    }
+
+    function onDocumentMouseDown(event) {
+        // the following line would stop any other event handler from firing
+        // (such as the mouse's TrackballControls)
+        // event.preventDefault();
+
+        //console.log("Click.");
+
+        // update the mouse variable
+        mouse.x = (event.clientX / SCREEN_WIDTH) * 2 - 1;
+        mouse.y = -(event.clientY / SCREEN_HEIGHT) * 2 + 1;
+
+        // find intersections
+
+        // create a Ray with origin at the mouse position
+        //   and direction into the scene (camera direction)
+        var vector = new THREE.Vector3(mouse.x, mouse.y, 1);
+        //projector.unprojectVector( vector, camera );
+        vector.unproject(camera);
+        var ray = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
+
+        // create an array containing all objects in the scene with which the ray intersects
+        var intersects = ray.intersectObjects(targetList);
+
+        // if there is one (or more) intersections
+        if (intersects.length > 0) {
+            //console.log("Hit @ " + toString( intersects[0].point ) );
+            // change the color of the closest face.
+            // intersects[ 0 ].face.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 );
+            var o = intersects[0].object;
+            // intersects[ 0 ].object.geometry.colorsNeedUpdate = true;
+            // o.material.color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 );
+            // o.material.materials[0].color.setRGB( 0.8 * Math.random() + 0.2, 0, 0 );
+            // o.geometry.colorsNeedUpdate = true;
+            if (typeof o.toggle == 'function') {
+                o.toggle(o);
+            }
+        }
+    }
+
+    function toString(v) {
+        return "[ " + v.x + ", " + v.y + ", " + v.z + " ]";
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        render();
+        update();
+    }
+
+    function update() {
+        keyboard.update();
+
+        var moveDistance = 50 * clock.getDelta();
+
+        if (keyboard.pressed("left") || keyboard.pressed("A"))
+            camera.translateX(-5);
+
+        if (keyboard.pressed("right") || keyboard.pressed("D"))
+            camera.translateX(5);
+
+        if (keyboard.pressed("up") || keyboard.pressed("W"))
+            camera.translateZ(-5);
+
+        if (keyboard.pressed("down") || keyboard.pressed("S"))
+            camera.translateZ(5);
+
+        if (keyboard.pressed("R"))
+            camera.translateY(-5);
+
+        if (keyboard.pressed("F"))
+            camera.translateY(5);
+
+        if (keyboard.pressed("Q"))
+            controls.pan(new THREE.Vector3(-10, 0, 0));
+
+        if (keyboard.pressed("E"))
+            controls.pan(new THREE.Vector3(10, 0, 0));
+
+        /*
+        if ( keyboard.down("R") )
+          mesh.material.color = new THREE.Color(0xff0000);
+        if ( keyboard.up("R") )
+          mesh.material.color = new THREE.Color(0x0000ff);
+        */
+
+        controls.update();
+        stats.update();
+    }
+
+    function render() {
+        renderer.render(scene, camera);
+        labelRenderer.render(scene, camera);
+    }
+
+    function findServerByNameAndDoorNum(location){
+        $.ajax({
+            type: "GET",
+            url: "http://localhost:8090/cpms/v1/topo/findServerByLocation",
+            data: {location},
+            dataType: "json",
+            success: function(serverData){
+                console.log(serverData);
+                serverList = moduleBuilder.buildServers(serverData,showServerInfo);
+            }
+        });
+    }
+    findServerByNameAndDoorNum('HDNJIH-00A-1202');
+</script>
+</body>
+</html>
