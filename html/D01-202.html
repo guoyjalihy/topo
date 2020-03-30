@@ -6,88 +6,7 @@
     <title>浙中产业园D01-202</title>
     <!-- 引入样式 -->
     <link rel="stylesheet" href="../css/element-ui.css">
-    <style>
-        body {
-            overflow: hidden;
-            background: black;
-        }
-        #help {
-            display: none;
-            position: absolute;
-            right: 70px;
-            top: 70px;
-            z-index: 5;
-            vertical-align: middle;
-            width: 220px;
-        }
-
-        .cabinetForm {
-            background: #01232E;
-            width: 200px;
-            display: none;
-        }
-
-        .title {
-            background-color: #01818D;
-            height: 20px;
-            font-weight: bold;
-            font-size: 14px;
-            color: #80E6EF;
-            padding-top: 5px;
-            padding-left: 5px;
-        }
-
-        .el-form-item {
-            margin-bottom: 1px;
-        }
-
-        .el-form-item__label {
-            font-size: 12px;
-            color: #80E6EF;
-            font-weight: bold;
-            line-height: 15px
-        }
-
-        .el-form-item__content {
-            font-size: 12px;
-            color: #80E6EF;
-            line-height: 15px
-        }
-
-        .el-table .el-table__header-wrapper tr th {
-            background-color: #01232E;
-            color: #80E6EF;
-        }
-
-        .el-table .el-table__row {
-            background-color: #01232E;
-            color: #80E6EF;
-        }
-
-        .el-table td,
-        .el-table th.is-leaf {
-            border-bottom: 1px solid #4e73ac;
-            border-right: 1px solid #4e73ac;
-        }
-
-        .el-table__header tr,
-        .el-table__header th {
-            height: 20px;
-            padding: 0;
-        }
-
-        .el-table__body tr,
-        .el-table__body td {
-            height: 20px;
-            padding: 0;
-        }
-
-        .el-table {
-            /*border: 1px solid #4e73ac;*/
-            font-size: 12px;
-        }
-
-    </style>
+    <link rel="stylesheet" href="../css/moduleBuilder.css">
 </head>
 <body onload="load()">
 <div style="z-index:2;text-align:center;font-size: 16px;color:#00ffff;top:4px;position: absolute;width:100%;background: rgba(255, 0, 0, 0.0);">
@@ -155,14 +74,23 @@
             <el-form-item label="内存分配率" v-model="server.mem_alloc_ratio">
                 <el-progress :text-inside="true" :stroke-width="15" :percentage="server.mem_alloc_ratio"></el-progress>
             </el-form-item>
-            <el-form-item label="CPU平均利用率" v-model="server.cpu_util">
+            <el-form-item label="CPU利用率" v-model="server.cpu_util">
                 <el-progress :text-inside="true" :stroke-width="15" :percentage="server.cpu_util"></el-progress>
             </el-form-item>
-            <el-form-item label="内存平均利用率" v-model="server.mem_util">
+            <el-form-item label="内存利用率" v-model="server.mem_util">
                 <el-progress :text-inside="true" :stroke-width="15" :percentage="server.mem_util"></el-progress>
             </el-form-item>
             <el-form-item label="CPU碎片率" v-model="server.cpu_unalloc_ratio">
                 <el-progress :text-inside="true" :stroke-width="15" :percentage="server.cpu_unalloc_ratio"></el-progress>
+            </el-form-item>
+            <el-form-item label="CPU温度" v-model="server.temperatures">
+                {{server.temperatures}}°C
+            </el-form-item>
+            <el-form-item label="当前功耗" v-model="server.power_consumption">
+                {{server.power_consumption}}KW
+            </el-form-item>
+            <el-form-item label="设备状态" v-model="server.safty_status">
+                {{server.safty_status}}
             </el-form-item>
         </el-form>
     </div>
@@ -189,7 +117,7 @@
     </div>
     <div id="tag" style="visibility:hidden">
         <div style="position:relative;">
-            <div style="position: absolute;top:-70px;left:20px;width:100px;color:#ffffff;font-size: 12px">
+            <div style="position: absolute;top:-70px;left:20px;width:250px;color:#ffffff;font-size: 12px">
             </div>
             <div style="position: absolute;top:-50px;left:0px;">
                 <img src="../images/tagLine.png" alt="">
@@ -213,6 +141,7 @@
 <script src="../js/common/vue.js"></script>
 <script src="../js/common/element-ui.js"></script>
 <script type="module" src="../js/CSS2DRenderer.js"></script>
+<script src="../js/data.js"></script>
 
 <script>
     function load() {
@@ -229,9 +158,7 @@
     // standard global variables
     var container = document.getElementById("container");
     var scene, camera, renderer, labelRenderer, controls, stats;
-    var serverModel;
     var moduleBuilder;
-    var server_texture, server_back_texture;
     var clock = new THREE.Clock();
 
     var keyboard = new KeyboardState();
@@ -251,6 +178,7 @@
         data: {
             positionStyle: '',
             showTag: false,
+            showCabinetName: false,
             server: {
                 host_name: '',
                 serial_number: '',
@@ -262,7 +190,10 @@
                 cpu_util: 0,
                 mem_util: 0,
                 cpu_unalloc_ratio: 0,
-                location: ''
+                location: '',
+                temperatures: '',
+                power_consumption: '',
+                safty_status: ''
             },
             query: {
                 cpu_alloc_ratio: '',
@@ -311,6 +242,18 @@
         watch: {
             showTag(value) {
                 var arr = document.getElementsByClassName("tag");
+                if (value) {
+                    for (var i = 0; i < arr.length; i++) {
+                        arr[i].style.visibility = "visible";
+                    }
+                }else{
+                    for (var i = 0; i < arr.length; i++) {
+                        arr[i].style.visibility = "hidden";
+                    }
+                }
+            },
+            showCabinetName(value) {
+                var arr = document.getElementsByClassName("cabinetName");
                 if (value) {
                     for (var i = 0; i < arr.length; i++) {
                         arr[i].style.visibility = "visible";
@@ -474,8 +417,6 @@
 
         moduleBuilder = new ModuleBuilder(scene,targetList);
 
-        createServerModel(26, 4, 26);
-        // createCabinetModel();
         initModel(1080, 1080, 80);
 
         // initialize object to perform world/screen calculations
@@ -487,35 +428,6 @@
         // when the mouse moves, call the given function
         document.addEventListener('mousemove', onDocumentMouseMove, false);
 
-    }
-
-    //服务器宽、高、深
-    function createServerModel(server_w, server_h, server_d) {
-
-        server_texture = new THREE.ImageUtils.loadTexture('../images/server.png');
-        server_texture.wrapS = server_texture.wrapT = THREE.ClampToEdgeWrapping;
-        server_texture.repeat.set(1, 1);
-        server_texture.minFilter = THREE.LinearFilter
-
-        server_back_texture = new THREE.ImageUtils.loadTexture('../images/server-back.png');
-        server_back_texture.wrapS = server_back_texture.wrapT = THREE.ClampToEdgeWrapping;
-        server_back_texture.repeat.set(1, 1);
-        server_back_texture.minFilter = THREE.LinearFilter
-
-        var geometry = new THREE.BoxGeometry(server_w, server_h, server_d);
-        //var material = new THREE.MeshBasicMaterial( { map: texture } );
-        // Create an array of materials to be used in a cube, one for each side
-        var materialArray = [];
-        // order to add materials: x+,x-,y+,y-,z+,z-
-        materialArray.push(new THREE.MeshBasicMaterial({color: 0xbbbbbb}));
-        materialArray.push(new THREE.MeshBasicMaterial({color: 0xbbbbbb}));
-        materialArray.push(new THREE.MeshBasicMaterial({color: 0xbbbbbb}));
-        materialArray.push(new THREE.MeshBasicMaterial({color: 0xbbbbbb}));
-        materialArray.push(new THREE.MeshBasicMaterial({map: server_texture}));
-        materialArray.push(new THREE.MeshBasicMaterial({map: server_back_texture}));
-        var material = new THREE.MeshFaceMaterial(materialArray);
-
-        serverModel = new THREE.Mesh(geometry, material);
     }
 
     function initModel(l, w, h) {
@@ -653,6 +565,9 @@
         targetList.push(door_left);
 
         moduleBuilder.buildCabinets(11,25,createAreaTag);
+
+        moduleBuilder.findServerByLocation('HDNJIH-00A-1202',1000,showServerInfo,serverList);
+
     }
 
     function showServerInfo (server, event) {
@@ -667,9 +582,12 @@
         showInfos.server.mem_util = server.info.mem_util;
         showInfos.server.cpu_unalloc_ratio = server.info.cpu_unalloc_ratio;
         showInfos.server.location = server.info.location;
+        showInfos.server.temperatures = server.info.temperatures;
+        showInfos.server.power_consumption = server.info.power_consumption;
+        showInfos.server.safty_status = server.info.safty_status;
 
         let left = event.clientX;
-        let top = event.clientY;
+        let top = event.clientY -  287;
 
         showInfos.positionStyle = "position: absolute; left: " + left + "px; top:" + top + "px";
         $("#serverForm").show();
@@ -681,25 +599,25 @@
         if (MAX_PZ == pz){//DPI、特通等预留
             createTag(mesh,'DPI/特通等预留列');
         }else if (MAX_PZ - CABINET_INTERVAL == pz){
-            createTag(mesh,'分区B-DMZ列');
+            createTag(mesh,'硬件分区B-DMZ资源池及其网络设备列');
         }else if (MAX_PZ - 2*CABINET_INTERVAL == pz){
-            createTag(mesh,'分区B-网络设备列');
+            createTag(mesh,'硬件分区B-DMZ资源池及其网络设备列');
         }else if (MAX_PZ - 3*CABINET_INTERVAL == pz){
-            createTag(mesh,'分区A-网络设备列');
+            createTag(mesh,'硬件分区A-DMZ资源池及其网络设备列');
         }else if (MAX_PZ - 4*CABINET_INTERVAL == pz){
-            createTag(mesh,'分区A-DMZ列');
+            createTag(mesh,'硬件分区A-DMZ资源池及其网络设备列');
         }else if (MAX_PZ - 5*CABINET_INTERVAL == pz){
-            createTag(mesh,'分区B-可信域2列');
+            createTag(mesh,'硬件分区B-可信域资源池2');
         }else if (MAX_PZ - 6*CABINET_INTERVAL == pz){
-            createTag(mesh,'分区B-可信域1列');
+            createTag(mesh,'硬件分区B-可信域资源池1');
         }else if (MAX_PZ - 7*CABINET_INTERVAL == pz){
-            createTag(mesh,'分区B-网络设备列');
+            createTag(mesh,'硬件分区B-网络设备列');
         }else if (MAX_PZ - 8*CABINET_INTERVAL == pz){
-            createTag(mesh,'分区A-网络设备列');
+            createTag(mesh,'硬件分区A-网络设备列');
         }else if (MAX_PZ - 9*CABINET_INTERVAL == pz){
-            createTag(mesh,'分区A-可信域1列');
+            createTag(mesh,'硬件分区A-可信域资源池1');
         }else if (MAX_PZ - 10*CABINET_INTERVAL == pz){
-            createTag(mesh,'分区A-可信域2列');
+            createTag(mesh,'硬件分区A-可信域资源池2');
         }
     }
     function createTag(mesh,title) {
@@ -844,19 +762,7 @@
         labelRenderer.render(scene, camera);
     }
 
-    function findServerByNameAndDoorNum(location){
-        $.ajax({
-            type: "GET",
-            url: "http://localhost:8090/cpms/v1/topo/findServerByLocation",
-            data: {location},
-            dataType: "json",
-            success: function(serverData){
-                console.log(serverData);
-                serverList = moduleBuilder.buildServers(serverData,showServerInfo);
-            }
-        });
-    }
-    findServerByNameAndDoorNum('HDNJIH-00A-1202');
+
 </script>
 </body>
 </html>

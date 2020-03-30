@@ -1,0 +1,95 @@
+body {
+    overflow: hidden;
+    background: black;
+}
+#help {
+    display: none;
+    position: absolute;
+    right: 70px;
+    top: 70px;
+    z-index: 5;
+    vertical-align: middle;
+    width: 220px;
+}
+
+.cabinetForm {
+    background: #01232E;
+    width: 200px;
+    display: none;
+}
+
+.title {
+    background-color: #01818D;
+    height: 20px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #80E6EF;
+    padding-top: 5px;
+    padding-left: 5px;
+}
+
+.el-form-item {
+    margin-bottom: 1px;
+}
+
+.el-form-item__label {
+    font-size: 12px;
+    color: #80E6EF;
+    font-weight: bold;
+    line-height: 15px
+}
+
+.el-form-item__content {
+    font-size: 12px;
+    color: #80E6EF;
+    line-height: 15px
+}
+
+.el-table .el-table__header-wrapper tr th {
+    background-color: #01232E;
+    color: #80E6EF;
+}
+
+.el-table .el-table__row {
+    background-color: #01232E;
+    color: #80E6EF;
+}
+
+.el-table td,
+.el-table th.is-leaf {
+    border-bottom: 1px solid #4e73ac;
+    border-right: 1px solid #4e73ac;
+}
+
+.el-table__header tr,
+.el-table__header th {
+    height: 20px;
+    padding: 0;
+}
+
+.el-table__body tr,
+.el-table__body td {
+    height: 20px;
+    padding: 0;
+}
+
+.el-table {
+    /*border: 1px solid #4e73ac;*/
+    font-size: 12px;
+}
+
+.cabinetName {
+    font-size: 12px;
+    color: #80E6EF;
+}
+
+.el-progress-bar__innerText {
+    color: #80E6EF
+}
+.el-progress-bar__inner {
+    background-color: #479aa2
+}
+.el-progress-bar__outer {
+    background-color: #8e918f
+}
+

@@ -1,4577 +1,5112 @@
-// 定义机柜、服务器数据
-var model = [
-    //1
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -470, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -440, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -410, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -380, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -350, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -320, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -290, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -260, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -230, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -200, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '1',
-                'id': 1,
-                'name':'1号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -170, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':50},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '2',
-                'id': 2,
-                'name':'2号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -140, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':60},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '3',
-                'id': 3,
-                'name':'3号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -110, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':60},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '4',
-                'id': 4,
-                'name':'4号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -80, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '5',
-                'id': 5,
-                'name':'5号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -50, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            },
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -20, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 10, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 40, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 70, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 100, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 130, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 160, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 190, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 210, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 240, y: 0, z: 400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-
-    //2
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -470, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -440, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuAlloc':90},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuAlloc':80},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuAlloc':70},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuAlloc':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuAlloc':50},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuAlloc':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuAlloc':30}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -410, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -380, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -350, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -320, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -290, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -260, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -230, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -200, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '1',
-                'id': 1,
-                'name':'1号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -170, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':50},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '2',
-                'id': 2,
-                'name':'2号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -140, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':60},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '3',
-                'id': 3,
-                'name':'3号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -110, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':60},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '4',
-                'id': 4,
-                'name':'4号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -80, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '5',
-                'id': 5,
-                'name':'5号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -50, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            },
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -20, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 10, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 40, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 70, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 100, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 130, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 160, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 190, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 210, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 240, y: 0, z: 320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-
-    //3
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -470, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -440, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -410, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -380, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -350, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -320, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -290, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -260, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -230, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -200, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '1',
-                'id': 1,
-                'name':'1号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -170, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':50},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '2',
-                'id': 2,
-                'name':'2号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -140, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':60},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '3',
-                'id': 3,
-                'name':'3号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -110, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':60},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '4',
-                'id': 4,
-                'name':'4号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -80, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '5',
-                'id': 5,
-                'name':'5号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -50, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            },
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -20, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 10, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 40, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 70, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 100, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 130, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 160, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 190, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 210, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 240, y: 0, z: 240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-
-    //4
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -470, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -440, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -410, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -380, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -350, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -320, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -290, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -260, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -230, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -200, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '1',
-                'id': 1,
-                'name':'1号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -170, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':50},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '2',
-                'id': 2,
-                'name':'2号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -140, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':60},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '3',
-                'id': 3,
-                'name':'3号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -110, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':60},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '4',
-                'id': 4,
-                'name':'4号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -80, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '5',
-                'id': 5,
-                'name':'5号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -50, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            },
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -20, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 10, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 40, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 70, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 100, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 130, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 160, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 190, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 210, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 240, y: 0, z: 160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-
-    //5
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -470, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -440, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -410, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -380, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -350, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -320, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -290, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -260, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -230, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -200, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '1',
-                'id': 1,
-                'name':'1号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -170, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':50},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '2',
-                'id': 2,
-                'name':'2号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -140, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':60},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '3',
-                'id': 3,
-                'name':'3号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -110, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':60},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '4',
-                'id': 4,
-                'name':'4号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -80, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':40},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '5',
-                'id': 5,
-                'name':'5号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -50, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            },
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -20, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 10, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 40, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 70, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 100, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 130, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 160, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 190, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 210, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 240, y: 0, z: 80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-
-    //6
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -470, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -440, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -410, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -380, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -350, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -320, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -290, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -260, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -230, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -200, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40,'cpuAlloc':60,'memAlloc':60},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40,'cpuAlloc':40,'memAlloc':60},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40,'cpuAlloc':30,'memAlloc':20},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60,'cpuAlloc':90,'memAlloc':30},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40,'cpuAlloc':70,'memAlloc':50},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40,'cpuAlloc':10,'memAlloc':10},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60,'cpuAlloc':80,'memAlloc':70}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '1',
-                'id': 1,
-                'name':'1号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -170, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '2',
-                'id': 2,
-                'name':'2号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -140, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '3',
-                'id': 3,
-                'name':'3号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -110, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '31', 'id':31, 'name':'', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '4',
-                'id': 4,
-                'name':'4号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -80, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '5',
-                'id': 5,
-                'name':'5号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -50, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            },
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -20, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 10, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 40, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 70, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 100, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 130, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 160, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 190, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 210, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 240, y: 0, z: 0}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-
-
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -470, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -440, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -410, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -380, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -350, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -320, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -290, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -260, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -230, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -200, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '1',
-                'id': 1,
-                'name':'1号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -170, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '2',
-                'id': 2,
-                'name':'2号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -140, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '3',
-                'id': 3,
-                'name':'3号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -110, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '31', 'id':31, 'name':'', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '4',
-                'id': 4,
-                'name':'4号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -80, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '5',
-                'id': 5,
-                'name':'5号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -50, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            },
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -20, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 10, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 40, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 70, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuAlloc':60,'memAlloc':60,'memUsed':60,'cpus':60},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuAlloc':60,'memAlloc':70,'memUsed':60,'cpus':20},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuAlloc':60,'memAlloc':30,'memUsed':20,'cpus':60},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuAlloc':60,'memAlloc':10,'memUsed':60,'cpus':90},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuAlloc':60,'memAlloc':80,'memUsed':30,'cpus':60},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuAlloc':60,'memAlloc':20,'memUsed':90,'cpus':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuAlloc':60,'memAlloc':10,'memUsed':60,'cpus':50}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 100, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 130, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 160, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 190, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 210, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 240, y: 0, z: -80}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -470, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -440, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -410, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -380, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -350, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -320, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -290, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -260, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -230, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -200, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '1',
-                'id': 1,
-                'name':'1号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -170, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '2',
-                'id': 2,
-                'name':'2号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -140, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '3',
-                'id': 3,
-                'name':'3号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -110, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '31', 'id':31, 'name':'', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '4',
-                'id': 4,
-                'name':'4号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -80, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '5',
-                'id': 5,
-                'name':'5号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -50, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            },
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -20, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 10, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 40, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 70, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 100, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 130, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 160, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 190, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 210, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 240, y: 0, z: -160}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -470, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -440, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -410, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -380, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -350, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -320, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -290, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -260, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -230, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -200, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '1',
-                'id': 1,
-                'name':'1号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -170, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '2',
-                'id': 2,
-                'name':'2号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -140, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '3',
-                'id': 3,
-                'name':'3号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -110, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '31', 'id':31, 'name':'', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '4',
-                'id': 4,
-                'name':'4号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -80, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '5',
-                'id': 5,
-                'name':'5号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -50, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            },
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -20, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 10, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 40, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 70, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 100, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 130, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 160, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 190, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 210, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 240, y: 0, z: -240}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -470, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -440, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -410, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -380, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -350, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -320, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -290, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -260, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -230, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -200, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '1',
-                'id': 1,
-                'name':'1号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -170, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '2',
-                'id': 2,
-                'name':'2号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -140, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '3',
-                'id': 3,
-                'name':'3号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -110, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '31', 'id':31, 'name':'', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '4',
-                'id': 4,
-                'name':'4号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -80, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '5',
-                'id': 5,
-                'name':'5号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -50, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            },
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -20, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 10, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 40, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 70, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 100, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 130, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 160, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 190, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 210, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 240, y: 0, z: -320}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -470, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -440, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -410, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -380, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -350, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -320, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -290, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -260, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -230, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -200, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '1',
-                'id': 1,
-                'name':'1号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -170, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '2',
-                'id': 2,
-                'name':'2号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -140, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '3',
-                'id': 3,
-                'name':'3号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸
-                'position': {x: -110, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '31', 'id':31, 'name':'', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '4',
-                'id': 4,
-                'name':'4号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -80, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '5',
-                'id': 5,
-                'name':'5号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -50, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            },
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: -20, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 10, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 40, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 70, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 100, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '6',
-                'id': 6,
-                'name':'6号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 130, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '7',
-                'id': 7,
-                'name':'7号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 160, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': ''},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': ''}
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '8',
-                'id': 8,
-                'name':'8号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 190, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '9',
-                'id': 9,
-                'name':'9号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 210, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '21', 'id':21, 'name':'', 'ip':'', 'apps': ''},
-                ]
-            }
-    },
-    {
-        cabinet:
-            {
-                'uuid': '10',
-                'id': 10,
-                'name':'10号机柜',
-                'size': {w: 30, h: 70, d: 30}, // 尺寸 宽、高、深
-                'position': {x: 240, y: 0, z: -400}, // 位置
-                'servers': [
-                    {'uuid': '11', 'id':11, 'name':'1号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':40},
-                    {'uuid': '12', 'id':12, 'name':'2号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '13', 'id':13, 'name':'3号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '14', 'id':14, 'name':'4号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60},
-                    {'uuid': '15', 'id':15, 'name':'5号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':65,'temperature':40},
-                    {'uuid': '16', 'id':16, 'name':'6号服务器', 'ip':'', 'apps': '','cpuUsed': 64,'memUsed':25,'temperature':40},
-                    {'uuid': '17', 'id':17, 'name':'7号服务器', 'ip':'', 'apps': '','cpuUsed': 34,'memUsed':25,'temperature':60}
-                ]
-            }
-    },
-];
+var serverData = [
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845078,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 184,
+        "serial_number": "219189741932",
+        "mem_alloc": 42,
+        "host_id": 188796,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=41, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E03-29-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E03-S-SRV-41",
+        "status": 0
+    },
+    {
+        "mem_used": 201,
+        "cpu_alloc_ratio": 92.0,
+        "mem_util": 52.4,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 40,
+        "model": "48C384G",
+        "id": 6845114,
+        "cpu_util": 32.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 44,
+        "power_consumption": 201,
+        "serial_number": "219189068830",
+        "mem_alloc": 194,
+        "host_id": 188797,
+        "mem_total": 384,
+        "cpu_unalloc_num": 4,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=41, CPU1=39, Inlet1=23, Outlet1=30}",
+        "mem_alloc_ratio": 50.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 38,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B03-02-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 11.0,
+        "service_nic_rate": 3,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B03-S-SRV-29",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845123,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 182,
+        "serial_number": "219190001847",
+        "mem_alloc": 42,
+        "host_id": 188798,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=40, Inlet1=20, Outlet1=30}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B07-08-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B07-S-SRV-04",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845136,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 184,
+        "serial_number": "219189741870",
+        "mem_alloc": 42,
+        "host_id": 188799,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=39, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B08-08-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B08-S-SRV-18",
+        "status": 0
+    },
+    {
+        "mem_used": 62,
+        "cpu_alloc_ratio": 67.0,
+        "mem_util": 16.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 36,
+        "model": "48C384G",
+        "id": 6845144,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 32,
+        "power_consumption": 184,
+        "serial_number": "219189068895",
+        "mem_alloc": 90,
+        "host_id": 188800,
+        "mem_total": 384,
+        "cpu_unalloc_num": 16,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=33, CPU1=40, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 23.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E07-15-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 40.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E07-S-SRV-07",
+        "status": 0
+    },
+    {
+        "mem_used": 135,
+        "cpu_alloc_ratio": 100.0,
+        "mem_util": 35.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845146,
+        "cpu_util": 19.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 48,
+        "power_consumption": 188,
+        "serial_number": "219189830233",
+        "mem_alloc": 162,
+        "host_id": 188801,
+        "mem_total": 384,
+        "cpu_unalloc_num": 0,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=35, CPU1=39, Inlet1=21, Outlet1=36}",
+        "mem_alloc_ratio": 42.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B03-04-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 0.0,
+        "service_nic_rate": 1,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B03-S-SRV-30",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845148,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 186,
+        "serial_number": "219190001944",
+        "mem_alloc": 42,
+        "host_id": 188802,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=41, Inlet1=19, Outlet1=38}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E04-20-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E04-S-SRV-09",
+        "status": 0
+    },
+    {
+        "mem_used": 45,
+        "cpu_alloc_ratio": 42.0,
+        "mem_util": 11.8,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845197,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 20,
+        "power_consumption": 181,
+        "serial_number": "219189742639",
+        "mem_alloc": 74,
+        "host_id": 188803,
+        "mem_total": 384,
+        "cpu_unalloc_num": 28,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=39, Inlet1=20, Outlet1=28}",
+        "mem_alloc_ratio": 19.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E08-13-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 70.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E08-S-SRV-20",
+        "status": 0
+    },
+    {
+        "mem_used": 160,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 41.7,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845073,
+        "cpu_util": 26.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 192,
+        "serial_number": "219188879620",
+        "mem_alloc": 186,
+        "host_id": 188804,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=41, Inlet1=20, Outlet1=38}",
+        "mem_alloc_ratio": 48.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B07-13-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 1,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B07-S-SRV-06",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 36,
+        "model": "48C384G",
+        "id": 6845075,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 183,
+        "serial_number": "219189830604",
+        "mem_alloc": 42,
+        "host_id": 188805,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=34, CPU1=38, Inlet1=19, Outlet1=28}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E03-02-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E03-S-SRV-29",
+        "status": 0
+    },
+    {
+        "mem_used": 210,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 54.6,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845083,
+        "cpu_util": 17.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 184,
+        "serial_number": "219188879450",
+        "mem_alloc": 234,
+        "host_id": 188806,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=38, Inlet1=23, Outlet1=37}",
+        "mem_alloc_ratio": 61.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC02",
+        "location": "HDNJIH-00A-1202-0B04-13-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 1,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B04-S-SRV-06",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845091,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 185,
+        "serial_number": "219189068892",
+        "mem_alloc": 42,
+        "host_id": 188807,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=37, Inlet1=20, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B02-13-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B02-S-SRV-20",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845094,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 189,
+        "serial_number": "219189741949",
+        "mem_alloc": 42,
+        "host_id": 188808,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=38, Inlet1=19, Outlet1=38}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E01-17-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E01-S-SRV-08",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845099,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 186,
+        "serial_number": "219189830267",
+        "mem_alloc": 42,
+        "host_id": 188809,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=38, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC03",
+        "location": "HDNJIH-00A-1202-0E07-08-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E07-S-SRV-04",
+        "status": 0
+    },
+    {
+        "mem_used": 29,
+        "cpu_alloc_ratio": 33.0,
+        "mem_util": 7.5,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845111,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 16,
+        "power_consumption": 184,
+        "serial_number": "219189741925",
+        "mem_alloc": 58,
+        "host_id": 188810,
+        "mem_total": 384,
+        "cpu_unalloc_num": 32,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=35, CPU1=40, Inlet1=19, Outlet1=38}",
+        "mem_alloc_ratio": 15.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E08-02-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 80.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E08-S-SRV-15",
+        "status": 0
+    },
+    {
+        "mem_used": 159,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 41.5,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 41,
+        "model": "48C384G",
+        "id": 6845131,
+        "cpu_util": 26.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 204,
+        "serial_number": "219189830358",
+        "mem_alloc": 186,
+        "host_id": 188811,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=41, CPU1=42, Inlet1=20, Outlet1=37}",
+        "mem_alloc_ratio": 48.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B03-06-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 2,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B03-S-SRV-31",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 40,
+        "model": "48C384G",
+        "id": 6845142,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 183,
+        "serial_number": "219189742024",
+        "mem_alloc": 42,
+        "host_id": 188812,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=39, CPU1=41, Inlet1=21, Outlet1=40}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B01-20-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B01-S-SRV-09",
+        "status": 0
+    },
+    {
+        "mem_used": 128,
+        "cpu_alloc_ratio": 88.0,
+        "mem_util": 33.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 41,
+        "model": "48C384G",
+        "id": 6845168,
+        "cpu_util": 19.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 42,
+        "power_consumption": 196,
+        "serial_number": "219189741898",
+        "mem_alloc": 154,
+        "host_id": 188813,
+        "mem_total": 384,
+        "cpu_unalloc_num": 6,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=41, CPU1=41, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 40.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B07-17-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 15.0,
+        "service_nic_rate": 2,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B07-S-SRV-08",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845169,
+        "cpu_util": 12.3,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 181,
+        "serial_number": "219189673349",
+        "mem_alloc": 42,
+        "host_id": 188814,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=39, Inlet1=19, Outlet1=28}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E02-06-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E02-S-SRV-17",
+        "status": 0
+    },
+    {
+        "mem_used": 79,
+        "mem_util": 20.4,
+        "cpu_total": 48,
+        "type": "Controller",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845060,
+        "cpu_util": 20.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "power_consumption": 200,
+        "serial_number": "219189830972",
+        "host_id": 188815,
+        "mem_total": 384,
+        "cpu_unalloc_num": 48,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=40, Inlet1=20, Outlet1=39}",
+        "vim_id": 11263,
+        "az": "internal",
+        "location": "HDNJIH-00A-1202-0E02-31-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E02-M-SRV-28",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845068,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 185,
+        "serial_number": "219189830251",
+        "mem_alloc": 42,
+        "host_id": 188816,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=38, Inlet1=19, Outlet1=28}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E02-15-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E02-S-SRV-21",
+        "status": 0
+    },
+    {
+        "mem_used": 45,
+        "cpu_alloc_ratio": 42.0,
+        "mem_util": 11.8,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845081,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 20,
+        "power_consumption": 181,
+        "serial_number": "219189741861",
+        "mem_alloc": 74,
+        "host_id": 188817,
+        "mem_total": 384,
+        "cpu_unalloc_num": 28,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=38, Inlet1=19, Outlet1=30}",
+        "mem_alloc_ratio": 19.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E07-17-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 70.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E07-S-SRV-08",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 36,
+        "model": "48C384G",
+        "id": 6845092,
+        "cpu_util": 12.3,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 180,
+        "serial_number": "219189742139",
+        "mem_alloc": 42,
+        "host_id": 188818,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=37, Inlet1=19, Outlet1=36}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E02-04-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E02-S-SRV-16",
+        "status": 0
+    },
+    {
+        "mem_used": 29,
+        "cpu_alloc_ratio": 33.0,
+        "mem_util": 7.6,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845100,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 16,
+        "power_consumption": 184,
+        "serial_number": "219189830281",
+        "mem_alloc": 58,
+        "host_id": 188819,
+        "mem_total": 384,
+        "cpu_unalloc_num": 32,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=40, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 15.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E08-15-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 80.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E08-S-SRV-21",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 36,
+        "model": "48C384G",
+        "id": 6845101,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 179,
+        "serial_number": "219189673450",
+        "mem_alloc": 42,
+        "host_id": 188820,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=35, CPU1=38, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E03-15-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E03-S-SRV-35",
+        "status": 0
+    },
+    {
+        "mem_used": 62,
+        "cpu_alloc_ratio": 50.0,
+        "mem_util": 16.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845121,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 24,
+        "power_consumption": 184,
+        "serial_number": "219189673454",
+        "mem_alloc": 90,
+        "host_id": 188821,
+        "mem_total": 384,
+        "cpu_unalloc_num": 24,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=35, CPU1=40, Inlet1=19, Outlet1=29}",
+        "mem_alloc_ratio": 23.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E07-11-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 60.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E07-S-SRV-05",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845126,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 187,
+        "serial_number": "219188879612",
+        "mem_alloc": 42,
+        "host_id": 188822,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=41, Inlet1=20, Outlet1=31}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B03-29-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B03-S-SRV-41",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 36,
+        "model": "48C384G",
+        "id": 6845137,
+        "cpu_util": 12.3,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 182,
+        "serial_number": "219189673403",
+        "mem_alloc": 42,
+        "host_id": 188823,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=35, CPU1=38, Inlet1=19, Outlet1=36}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E03-06-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E03-S-SRV-31",
+        "status": 0
+    },
+    {
+        "mem_used": 143,
+        "cpu_alloc_ratio": 50.0,
+        "mem_util": 37.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845150,
+        "cpu_util": 14.7,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 24,
+        "power_consumption": 175,
+        "serial_number": "219188879586",
+        "mem_alloc": 170,
+        "host_id": 188824,
+        "mem_total": 384,
+        "cpu_unalloc_num": 24,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=38, Inlet1=20, Outlet1=38}",
+        "mem_alloc_ratio": 44.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B01-13-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 60.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B01-S-SRV-06",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 36,
+        "model": "48C384G",
+        "id": 6845151,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 186,
+        "serial_number": "219189742636",
+        "mem_alloc": 42,
+        "host_id": 188825,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=36, Inlet1=19, Outlet1=36}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E08-08-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E08-S-SRV-18",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845160,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 185,
+        "serial_number": "219189673370",
+        "mem_alloc": 42,
+        "host_id": 188826,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=39, Inlet1=19, Outlet1=29}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B08-13-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B08-S-SRV-20",
+        "status": 0
+    },
+    {
+        "mem_used": 77,
+        "cpu_alloc_ratio": 50.0,
+        "mem_util": 20.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845166,
+        "cpu_util": 15.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 24,
+        "power_consumption": 176,
+        "serial_number": "219189830429",
+        "mem_alloc": 106,
+        "host_id": 188827,
+        "mem_total": 384,
+        "cpu_unalloc_num": 24,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=38, Inlet1=20, Outlet1=30}",
+        "mem_alloc_ratio": 28.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B01-22-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 60.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B01-S-SRV-10",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845188,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 186,
+        "serial_number": "219189742140",
+        "mem_alloc": 42,
+        "host_id": 188828,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=38, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E02-02-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E02-S-SRV-15",
+        "status": 0
+    },
+    {
+        "mem_used": 128,
+        "mem_util": 33.2,
+        "cpu_total": 48,
+        "type": "Controller",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 41,
+        "model": "48C384G",
+        "id": 6845190,
+        "cpu_util": 18.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "power_consumption": 221,
+        "serial_number": "219189830981",
+        "host_id": 188829,
+        "mem_total": 384,
+        "cpu_unalloc_num": 48,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=39, CPU1=44, Inlet1=19, Outlet1=30}",
+        "vim_id": 11263,
+        "az": "internal",
+        "location": "HDNJIH-00A-1202-0E01-29-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E01-S-SRV-13",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 36,
+        "model": "48C384G",
+        "id": 6845198,
+        "cpu_util": 12.3,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 176,
+        "serial_number": "219189831075",
+        "mem_alloc": 42,
+        "host_id": 188830,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=37, Inlet1=19, Outlet1=36}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E04-08-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E04-S-SRV-04",
+        "status": 0
+    },
+    {
+        "mem_used": 62,
+        "cpu_alloc_ratio": 33.0,
+        "mem_util": 16.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845087,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 16,
+        "power_consumption": 187,
+        "serial_number": "219189741913",
+        "mem_alloc": 90,
+        "host_id": 188831,
+        "mem_total": 384,
+        "cpu_unalloc_num": 32,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=35, CPU1=39, Inlet1=19, Outlet1=38}",
+        "mem_alloc_ratio": 23.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E03-26-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 80.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E03-S-SRV-40",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845098,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 184,
+        "serial_number": "219189741988",
+        "mem_alloc": 42,
+        "host_id": 188832,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=35, CPU1=39, Inlet1=19, Outlet1=39}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E03-20-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E03-S-SRV-37",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845102,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 181,
+        "serial_number": "219188879593",
+        "mem_alloc": 42,
+        "host_id": 188833,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=38, Inlet1=20, Outlet1=31}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B01-08-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B01-S-SRV-04",
+        "status": 0
+    },
+    {
+        "mem_used": 76,
+        "mem_util": 19.7,
+        "cpu_total": 48,
+        "type": "Controller",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845117,
+        "cpu_util": 21.3,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "power_consumption": 213,
+        "serial_number": "219189830965",
+        "host_id": 188834,
+        "mem_total": 384,
+        "cpu_unalloc_num": 48,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=41, Inlet1=20, Outlet1=38}",
+        "vim_id": 11263,
+        "az": "internal",
+        "location": "HDNJIH-00A-1202-0E01-31-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E01-M-SRV-14",
+        "status": 0
+    },
+    {
+        "mem_used": 45,
+        "cpu_alloc_ratio": 42.0,
+        "mem_util": 11.8,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845124,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 20,
+        "power_consumption": 185,
+        "serial_number": "219189830353",
+        "mem_alloc": 74,
+        "host_id": 188835,
+        "mem_total": 384,
+        "cpu_unalloc_num": 28,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=40, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 19.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E08-06-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 70.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E08-S-SRV-17",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845125,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 184,
+        "serial_number": "219189068809",
+        "mem_alloc": 42,
+        "host_id": 188836,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=39, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B01-17-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B01-S-SRV-08",
+        "status": 0
+    },
+    {
+        "mem_used": 144,
+        "cpu_alloc_ratio": 75.0,
+        "mem_util": 37.4,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845132,
+        "cpu_util": 19.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 36,
+        "power_consumption": 190,
+        "serial_number": "219188879467",
+        "mem_alloc": 170,
+        "host_id": 188837,
+        "mem_total": 384,
+        "cpu_unalloc_num": 12,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=40, Inlet1=20, Outlet1=38}",
+        "mem_alloc_ratio": 44.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 38,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B02-02-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 32.0,
+        "service_nic_rate": 2,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B02-S-SRV-15",
+        "status": 0
+    },
+    {
+        "mem_used": 111,
+        "cpu_alloc_ratio": 92.0,
+        "mem_util": 28.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845133,
+        "cpu_util": 17.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 44,
+        "power_consumption": 190,
+        "serial_number": "219189742685",
+        "mem_alloc": 138,
+        "host_id": 188838,
+        "mem_total": 384,
+        "cpu_unalloc_num": 4,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=40, Inlet1=19, Outlet1=38}",
+        "mem_alloc_ratio": 36.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E02-20-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 10.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E02-S-SRV-23",
+        "status": 0
+    },
+    {
+        "mem_used": 144,
+        "cpu_alloc_ratio": 100.0,
+        "mem_util": 37.4,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845145,
+        "cpu_util": 17.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 48,
+        "power_consumption": 186,
+        "serial_number": "219189742020",
+        "mem_alloc": 170,
+        "host_id": 188839,
+        "mem_total": 384,
+        "cpu_unalloc_num": 0,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=39, Inlet1=19, Outlet1=36}",
+        "mem_alloc_ratio": 44.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E04-15-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 0.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E04-S-SRV-07",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 36,
+        "model": "48C384G",
+        "id": 6845172,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 182,
+        "serial_number": "219189742708",
+        "mem_alloc": 42,
+        "host_id": 188840,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=35, CPU1=38, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E02-24-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E02-S-SRV-25",
+        "status": 0
+    },
+    {
+        "mem_used": 177,
+        "cpu_alloc_ratio": 75.0,
+        "mem_util": 46.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845183,
+        "cpu_util": 16.7,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 36,
+        "power_consumption": 188,
+        "serial_number": "219189068914",
+        "mem_alloc": 202,
+        "host_id": 188841,
+        "mem_total": 384,
+        "cpu_unalloc_num": 12,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=35, CPU1=39, Inlet1=23, Outlet1=37}",
+        "mem_alloc_ratio": 53.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC02",
+        "location": "HDNJIH-00A-1202-0B04-11-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 30.0,
+        "service_nic_rate": 1,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B04-S-SRV-05",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845186,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 184,
+        "serial_number": "219189830454",
+        "mem_alloc": 42,
+        "host_id": 188842,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=39, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B07-29-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B07-S-SRV-13",
+        "status": 0
+    },
+    {
+        "mem_used": 111,
+        "cpu_alloc_ratio": 67.0,
+        "mem_util": 28.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 41,
+        "model": "48C384G",
+        "id": 6845193,
+        "cpu_util": 18.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 32,
+        "power_consumption": 199,
+        "serial_number": "219189741983",
+        "mem_alloc": 106,
+        "host_id": 188843,
+        "mem_total": 384,
+        "cpu_unalloc_num": 16,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=40, CPU1=42, Inlet1=20, Outlet1=40}",
+        "mem_alloc_ratio": 28.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B07-26-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 40.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B07-S-SRV-12",
+        "status": 0
+    },
+    {
+        "mem_used": 45,
+        "cpu_alloc_ratio": 25.0,
+        "mem_util": 11.8,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845196,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 12,
+        "power_consumption": 184,
+        "serial_number": "219189673356",
+        "mem_alloc": 74,
+        "host_id": 188844,
+        "mem_total": 384,
+        "cpu_unalloc_num": 36,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=40, Inlet1=19, Outlet1=38}",
+        "mem_alloc_ratio": 19.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E03-11-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 90.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E03-S-SRV-33",
+        "status": 0
+    },
+    {
+        "mem_used": 159,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 41.5,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 41,
+        "model": "48C384G",
+        "id": 6845065,
+        "cpu_util": 20.7,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 196,
+        "serial_number": "219188879472",
+        "mem_alloc": 186,
+        "host_id": 188845,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=39, CPU1=43, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 48.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B03-20-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 5,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B03-S-SRV-37",
+        "status": 0
+    },
+    {
+        "mem_used": 29,
+        "cpu_alloc_ratio": 33.0,
+        "mem_util": 7.5,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845066,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 16,
+        "power_consumption": 184,
+        "serial_number": "219189830244",
+        "mem_alloc": 58,
+        "host_id": 188846,
+        "mem_total": 384,
+        "cpu_unalloc_num": 32,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=38, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 15.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E08-17-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 80.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E08-S-SRV-22",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845067,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 179,
+        "serial_number": "219188879470",
+        "mem_alloc": 42,
+        "host_id": 188847,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=39, Inlet1=20, Outlet1=38}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B03-13-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B03-S-SRV-34",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845088,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 186,
+        "serial_number": "219189068891",
+        "mem_alloc": 42,
+        "host_id": 188848,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=39, Inlet1=21, Outlet1=30}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B02-31-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B02-S-SRV-28",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845106,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 183,
+        "serial_number": "219188879523",
+        "mem_alloc": 42,
+        "host_id": 188849,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=39, CPU1=40, Inlet1=20, Outlet1=30}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B01-04-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B01-S-SRV-02",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845109,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 187,
+        "serial_number": "219189068828",
+        "mem_alloc": 42,
+        "host_id": 188850,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=39, CPU1=40, Inlet1=21, Outlet1=39}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B01-31-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B01-S-SRV-14",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845112,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 184,
+        "serial_number": "219188879505",
+        "mem_alloc": 42,
+        "host_id": 188851,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=37, Inlet1=20, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B01-06-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B01-S-SRV-03",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845116,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 182,
+        "serial_number": "219189830239",
+        "mem_alloc": 42,
+        "host_id": 188852,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=39, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E07-29-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E07-S-SRV-13",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845179,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 176,
+        "serial_number": "219189068846",
+        "mem_alloc": 42,
+        "host_id": 188853,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=39, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B07-11-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B07-S-SRV-05",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845071,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 185,
+        "serial_number": "219189673409",
+        "mem_alloc": 42,
+        "host_id": 188854,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=39, Inlet1=19, Outlet1=38}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E03-08-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E03-S-SRV-32",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845076,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 180,
+        "serial_number": "210097229402",
+        "mem_alloc": 42,
+        "host_id": 188855,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=37, Inlet1=20, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B02-04-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B02-S-SRV-16",
+        "status": 0
+    },
+    {
+        "mem_used": 45,
+        "cpu_alloc_ratio": 25.0,
+        "mem_util": 11.8,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845077,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 12,
+        "power_consumption": 184,
+        "serial_number": "219189742657",
+        "mem_alloc": 74,
+        "host_id": 188856,
+        "mem_total": 384,
+        "cpu_unalloc_num": 36,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=38, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 19.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E02-17-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 90.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E02-S-SRV-22",
+        "status": 0
+    },
+    {
+        "mem_used": 177,
+        "cpu_alloc_ratio": 67.0,
+        "mem_util": 46.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845082,
+        "cpu_util": 17.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 32,
+        "power_consumption": 185,
+        "serial_number": "219189741902",
+        "mem_alloc": 154,
+        "host_id": 188857,
+        "mem_total": 384,
+        "cpu_unalloc_num": 16,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=39, Inlet1=19, Outlet1=39}",
+        "mem_alloc_ratio": 40.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B08-04-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 40.0,
+        "service_nic_rate": 1,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B08-S-SRV-16",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845085,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 184,
+        "serial_number": "219188879493",
+        "mem_alloc": 42,
+        "host_id": 188858,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=40, Inlet1=20, Outlet1=38}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B03-22-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B03-S-SRV-38",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 36,
+        "model": "48C384G",
+        "id": 6845090,
+        "cpu_util": 12.3,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 182,
+        "serial_number": "219188879606",
+        "mem_alloc": 42,
+        "host_id": 188859,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=36, Inlet1=19, Outlet1=36}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E04-13-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E04-S-SRV-06",
+        "status": 0
+    },
+    {
+        "mem_used": 143,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 37.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845097,
+        "cpu_util": 17.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 182,
+        "serial_number": "219189830351",
+        "mem_alloc": 170,
+        "host_id": 188860,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "7days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=41, Inlet1=20, Outlet1=38}",
+        "mem_alloc_ratio": 44.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B01-26-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B01-S-SRV-11",
+        "status": 0
+    },
+    {
+        "mem_used": 45,
+        "cpu_alloc_ratio": 42.0,
+        "mem_util": 11.8,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 40,
+        "model": "48C384G",
+        "id": 6845103,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 20,
+        "power_consumption": 194,
+        "serial_number": "219189742028",
+        "mem_alloc": 74,
+        "host_id": 188861,
+        "mem_total": 384,
+        "cpu_unalloc_num": 28,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=39, CPU1=42, Inlet1=19, Outlet1=39}",
+        "mem_alloc_ratio": 19.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E07-20-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 70.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E07-S-SRV-09",
+        "status": 0
+    },
+    {
+        "mem_used": 91,
+        "mem_util": 23.7,
+        "cpu_total": 48,
+        "type": "Controller",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845107,
+        "cpu_util": 21.7,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "power_consumption": 210,
+        "serial_number": "219189830987",
+        "host_id": 188862,
+        "mem_total": 384,
+        "cpu_unalloc_num": 48,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=39, Inlet1=20, Outlet1=38}",
+        "vim_id": 11263,
+        "az": "internal",
+        "location": "HDNJIH-00A-1202-0E03-31-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E03-M-SRV-42",
+        "status": 0
+    },
+    {
+        "mem_used": 62,
+        "cpu_alloc_ratio": 33.0,
+        "mem_util": 16.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845113,
+        "cpu_util": 16.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 16,
+        "power_consumption": 189,
+        "serial_number": "219189830632",
+        "mem_alloc": 90,
+        "host_id": 188863,
+        "mem_total": 384,
+        "cpu_unalloc_num": 32,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=40, Inlet1=19, Outlet1=28}",
+        "mem_alloc_ratio": 23.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E03-24-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 80.0,
+        "service_nic_rate": 10,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E03-S-SRV-39",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845120,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 182,
+        "serial_number": "219189830356",
+        "mem_alloc": 42,
+        "host_id": 188864,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=39, CPU1=40, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B02-20-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B02-S-SRV-23",
+        "status": 0
+    },
+    {
+        "mem_used": 142,
+        "mem_util": 37.0,
+        "cpu_total": 48,
+        "type": "Controller",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 41,
+        "model": "48C384G",
+        "id": 6845138,
+        "cpu_util": 18.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "power_consumption": 202,
+        "serial_number": "219189830956",
+        "host_id": 188865,
+        "mem_total": 384,
+        "cpu_unalloc_num": 48,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=40, CPU1=42, Inlet1=19, Outlet1=39}",
+        "vim_id": 11263,
+        "az": "internal",
+        "location": "HDNJIH-00A-1202-0E02-29-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E02-S-SRV-27",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845164,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 191,
+        "serial_number": "219189673391",
+        "mem_alloc": 42,
+        "host_id": 188866,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=40, Inlet1=19, Outlet1=28}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E03-22-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E03-S-SRV-38",
+        "status": 0
+    },
+    {
+        "mem_used": 29,
+        "cpu_alloc_ratio": 33.0,
+        "mem_util": 7.5,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845171,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 16,
+        "power_consumption": 184,
+        "serial_number": "219189830248",
+        "mem_alloc": 58,
+        "host_id": 188867,
+        "mem_total": 384,
+        "cpu_unalloc_num": 32,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=39, Inlet1=20, Outlet1=38}",
+        "mem_alloc_ratio": 15.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E07-26-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 80.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E07-S-SRV-12",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845177,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 185,
+        "serial_number": "219189741957",
+        "mem_alloc": 42,
+        "host_id": 188868,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=39, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E01-15-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E01-S-SRV-07",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845181,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 178,
+        "serial_number": "219189673492",
+        "mem_alloc": 42,
+        "host_id": 188869,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=38, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E02-11-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E02-S-SRV-19",
+        "status": 0
+    },
+    {
+        "mem_used": 77,
+        "cpu_alloc_ratio": 50.0,
+        "mem_util": 20.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 40,
+        "model": "48C384G",
+        "id": 6845185,
+        "cpu_util": 15.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 24,
+        "power_consumption": 185,
+        "serial_number": "219189830357",
+        "mem_alloc": 106,
+        "host_id": 188870,
+        "mem_total": 384,
+        "cpu_unalloc_num": 24,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=40, CPU1=40, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 28.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B02-17-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 60.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B02-S-SRV-22",
+        "status": 0
+    },
+    {
+        "mem_used": 144,
+        "cpu_alloc_ratio": 92.0,
+        "mem_util": 37.5,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 36,
+        "model": "48C384G",
+        "id": 6845187,
+        "cpu_util": 15.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 44,
+        "power_consumption": 189,
+        "serial_number": "219189742713",
+        "mem_alloc": 170,
+        "host_id": 188871,
+        "mem_total": 384,
+        "cpu_unalloc_num": 4,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=37, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 44.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E01-13-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 10.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E01-S-SRV-06",
+        "status": 0
+    },
+    {
+        "mem_used": 13,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.3,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845195,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 184,
+        "serial_number": "219189741985",
+        "mem_alloc": 42,
+        "host_id": 188872,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=39, CPU1=38, Inlet1=20, Outlet1=38}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B07-20-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B07-S-SRV-09",
+        "status": 0
+    },
+    {
+        "mem_used": 152,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 39.5,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 40,
+        "model": "48C384G",
+        "id": 6845061,
+        "cpu_util": 22.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 200,
+        "serial_number": "219189068951",
+        "mem_alloc": 178,
+        "host_id": 188873,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=42, Inlet1=20, Outlet1=40}",
+        "mem_alloc_ratio": 46.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 38,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B01-02-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 21.0,
+        "service_nic_rate": 2,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B01-S-SRV-01",
+        "status": 0
+    },
+    {
+        "mem_used": 85,
+        "cpu_alloc_ratio": 50.0,
+        "mem_util": 22.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845063,
+        "cpu_util": 16.3,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 24,
+        "power_consumption": 178,
+        "serial_number": "219189830297",
+        "mem_alloc": 114,
+        "host_id": 188874,
+        "mem_total": 384,
+        "cpu_unalloc_num": 24,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=41, Inlet1=20, Outlet1=30}",
+        "mem_alloc_ratio": 30.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B02-22-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 60.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B02-S-SRV-24",
+        "status": 0
+    },
+    {
+        "mem_used": 29,
+        "cpu_alloc_ratio": 33.0,
+        "mem_util": 7.6,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845069,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 16,
+        "power_consumption": 186,
+        "serial_number": "219189742637",
+        "mem_alloc": 58,
+        "host_id": 188875,
+        "mem_total": 384,
+        "cpu_unalloc_num": 32,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=40, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 15.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E08-11-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 80.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E08-S-SRV-19",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845079,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 186,
+        "serial_number": "219189742026",
+        "mem_alloc": 42,
+        "host_id": 188876,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=40, Inlet1=20, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B02-06-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B02-S-SRV-17",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845118,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 183,
+        "serial_number": "219189673449",
+        "mem_alloc": 42,
+        "host_id": 188877,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=39, Inlet1=19, Outlet1=38}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E03-17-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E03-S-SRV-36",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845122,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 182,
+        "serial_number": "219189830325",
+        "mem_alloc": 42,
+        "host_id": 188878,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=39, CPU1=40, Inlet1=20, Outlet1=38}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B07-24-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B07-S-SRV-11",
+        "status": 0
+    },
+    {
+        "mem_used": 160,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 41.7,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845127,
+        "cpu_util": 20.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 189,
+        "serial_number": "219189830326",
+        "mem_alloc": 186,
+        "host_id": 188879,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=42, Inlet1=20, Outlet1=30}",
+        "mem_alloc_ratio": 48.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B07-22-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 1,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B07-S-SRV-10",
+        "status": 0
+    },
+    {
+        "mem_used": 184,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 47.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845128,
+        "cpu_util": 23.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 186,
+        "serial_number": "219189830292",
+        "mem_alloc": 210,
+        "host_id": 188880,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=42, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 55.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B02-24-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 1,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B02-S-SRV-25",
+        "status": 0
+    },
+    {
+        "mem_used": 77,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 20.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845135,
+        "cpu_util": 15.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 190,
+        "serial_number": "219189741871",
+        "mem_alloc": 106,
+        "host_id": 188881,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=42, Inlet1=20, Outlet1=38}",
+        "mem_alloc_ratio": 28.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B08-11-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B08-S-SRV-19",
+        "status": 0
+    },
+    {
+        "mem_used": 45,
+        "cpu_alloc_ratio": 25.0,
+        "mem_util": 11.8,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 35,
+        "model": "48C384G",
+        "id": 6845139,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 12,
+        "power_consumption": 180,
+        "serial_number": "219189673417",
+        "mem_alloc": 74,
+        "host_id": 188882,
+        "mem_total": 384,
+        "cpu_unalloc_num": 36,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=34, CPU1=37, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 19.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E02-22-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 90.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E02-S-SRV-24",
+        "status": 0
+    },
+    {
+        "mem_used": 45,
+        "cpu_alloc_ratio": 25.0,
+        "mem_util": 11.8,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845143,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 12,
+        "power_consumption": 186,
+        "serial_number": "219189742714",
+        "mem_alloc": 74,
+        "host_id": 188883,
+        "mem_total": 384,
+        "cpu_unalloc_num": 36,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=38, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 19.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E01-20-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 90.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E01-S-SRV-09",
+        "status": 0
+    },
+    {
+        "mem_used": 127,
+        "cpu_alloc_ratio": 88.0,
+        "mem_util": 33.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 40,
+        "model": "48C384G",
+        "id": 6845147,
+        "cpu_util": 19.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 42,
+        "power_consumption": 195,
+        "serial_number": "219189673368",
+        "mem_alloc": 154,
+        "host_id": 188884,
+        "mem_total": 384,
+        "cpu_unalloc_num": 6,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=39, CPU1=42, Inlet1=19, Outlet1=29}",
+        "mem_alloc_ratio": 40.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B08-15-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 15.0,
+        "service_nic_rate": 1,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B08-S-SRV-21",
+        "status": 0
+    },
+    {
+        "mem_used": 143,
+        "cpu_alloc_ratio": 67.0,
+        "mem_util": 37.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845152,
+        "cpu_util": 17.7,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 32,
+        "power_consumption": 180,
+        "serial_number": "219189068910",
+        "mem_alloc": 170,
+        "host_id": 188885,
+        "mem_total": 384,
+        "cpu_unalloc_num": 16,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=38, Inlet1=20, Outlet1=31}",
+        "mem_alloc_ratio": 44.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B03-26-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 40.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B03-S-SRV-40",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845153,
+        "cpu_util": 12.3,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 183,
+        "serial_number": "219189742630",
+        "mem_alloc": 42,
+        "host_id": 188886,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=39, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E01-24-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E01-S-SRV-11",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845154,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 188,
+        "serial_number": "219188879525",
+        "mem_alloc": 42,
+        "host_id": 188887,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=41, Inlet1=20, Outlet1=38}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B03-15-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B03-S-SRV-35",
+        "status": 0
+    },
+    {
+        "mem_used": 77,
+        "cpu_alloc_ratio": 50.0,
+        "mem_util": 20.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 36,
+        "model": "48C384G",
+        "id": 6845155,
+        "cpu_util": 15.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 24,
+        "power_consumption": 178,
+        "serial_number": "219189741852",
+        "mem_alloc": 106,
+        "host_id": 188888,
+        "mem_total": 384,
+        "cpu_unalloc_num": 24,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=37, Inlet1=19, Outlet1=38}",
+        "mem_alloc_ratio": 28.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B08-17-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 60.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B08-S-SRV-22",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845156,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 185,
+        "serial_number": "219189742712",
+        "mem_alloc": 42,
+        "host_id": 188889,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=39, Inlet1=19, Outlet1=28}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E01-22-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E01-S-SRV-10",
+        "status": 0
+    },
+    {
+        "mem_used": 135,
+        "cpu_alloc_ratio": 88.0,
+        "mem_util": 35.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845157,
+        "cpu_util": 20.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 42,
+        "power_consumption": 196,
+        "serial_number": "219188879481",
+        "mem_alloc": 162,
+        "host_id": 188890,
+        "mem_total": 384,
+        "cpu_unalloc_num": 6,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=39, Inlet1=21, Outlet1=37}",
+        "mem_alloc_ratio": 42.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B02-29-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 15.0,
+        "service_nic_rate": 2,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B02-S-SRV-27",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845158,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 182,
+        "serial_number": "219189742710",
+        "mem_alloc": 42,
+        "host_id": 188891,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=40, Inlet1=19, Outlet1=29}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E02-26-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E02-S-SRV-26",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845161,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 187,
+        "serial_number": "219189830354",
+        "mem_alloc": 42,
+        "host_id": 188892,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=39, CPU1=40, Inlet1=20, Outlet1=31}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B01-26-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B01-S-SRV-12",
+        "status": 0
+    },
+    {
+        "mem_used": 78,
+        "cpu_alloc_ratio": 75.0,
+        "mem_util": 20.4,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845163,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 36,
+        "power_consumption": 186,
+        "serial_number": "219189742101",
+        "mem_alloc": 106,
+        "host_id": 188893,
+        "mem_total": 384,
+        "cpu_unalloc_num": 12,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=41, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 28.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E07-24-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 30.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E07-S-SRV-11",
+        "status": 0
+    },
+    {
+        "mem_used": 126,
+        "cpu_alloc_ratio": 67.0,
+        "mem_util": 32.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 40,
+        "model": "48C384G",
+        "id": 6845167,
+        "cpu_util": 18.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 32,
+        "power_consumption": 193,
+        "serial_number": "219188879609",
+        "mem_alloc": 154,
+        "host_id": 188894,
+        "mem_total": 384,
+        "cpu_unalloc_num": 16,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=42, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 40.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B02-15-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 40.0,
+        "service_nic_rate": 1,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B02-S-SRV-21",
+        "status": 0
+    },
+    {
+        "mem_used": 78,
+        "cpu_alloc_ratio": 58.0,
+        "mem_util": 20.3,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845170,
+        "cpu_util": 15.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 28,
+        "power_consumption": 189,
+        "serial_number": "219189068815",
+        "mem_alloc": 106,
+        "host_id": 188895,
+        "mem_total": 384,
+        "cpu_unalloc_num": 20,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=37, Inlet1=19, Outlet1=38}",
+        "mem_alloc_ratio": 28.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E04-11-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 50.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E04-S-SRV-05",
+        "status": 0
+    },
+    {
+        "mem_used": 62,
+        "cpu_alloc_ratio": 67.0,
+        "mem_util": 16.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845173,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 32,
+        "power_consumption": 189,
+        "serial_number": "219189830278",
+        "mem_alloc": 90,
+        "host_id": 188896,
+        "mem_total": 384,
+        "cpu_unalloc_num": 16,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=40, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 23.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E07-13-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 40.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E07-S-SRV-06",
+        "status": 0
+    },
+    {
+        "mem_used": 29,
+        "cpu_alloc_ratio": 33.0,
+        "mem_util": 7.5,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845175,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 16,
+        "power_consumption": 191,
+        "serial_number": "219189741954",
+        "mem_alloc": 58,
+        "host_id": 188897,
+        "mem_total": 384,
+        "cpu_unalloc_num": 32,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=41, Inlet1=19, Outlet1=28}",
+        "mem_alloc_ratio": 15.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E08-04-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 80.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E08-S-SRV-16",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 36,
+        "model": "48C384G",
+        "id": 6845176,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 187,
+        "serial_number": "219189830549",
+        "mem_alloc": 42,
+        "host_id": 188898,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=35, CPU1=38, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E04-17-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E04-S-SRV-08",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845191,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 181,
+        "serial_number": "219189068880",
+        "mem_alloc": 42,
+        "host_id": 188899,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=40, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B01-11-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B01-S-SRV-05",
+        "status": 0
+    },
+    {
+        "mem_used": 77,
+        "cpu_alloc_ratio": 50.0,
+        "mem_util": 20.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845194,
+        "cpu_util": 15.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 24,
+        "power_consumption": 178,
+        "serial_number": "219188879582",
+        "mem_alloc": 106,
+        "host_id": 188901,
+        "mem_total": 384,
+        "cpu_unalloc_num": 24,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=38, Inlet1=20, Outlet1=38}",
+        "mem_alloc_ratio": 28.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B02-11-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 60.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B02-S-SRV-19",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845199,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 188,
+        "serial_number": "219189742738",
+        "mem_alloc": 42,
+        "host_id": 188903,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=37, Inlet1=19, Outlet1=36}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC03",
+        "location": "HDNJIH-00A-1202-0E07-06-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E07-S-SRV-03",
+        "status": 0
+    },
+    {
+        "mem_used": 62,
+        "cpu_alloc_ratio": 33.0,
+        "mem_util": 16.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845059,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 16,
+        "power_consumption": 183,
+        "serial_number": "219189742716",
+        "mem_alloc": 90,
+        "host_id": 188904,
+        "mem_total": 384,
+        "cpu_unalloc_num": 32,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=35, CPU1=39, Inlet1=19, Outlet1=28}",
+        "mem_alloc_ratio": 23.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E01-26-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 80.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E01-S-SRV-12",
+        "status": 0
+    },
+    {
+        "mem_used": 116,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 30.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 35,
+        "model": "48C384G",
+        "id": 6845062,
+        "cpu_util": 4.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 181,
+        "serial_number": "219189068899",
+        "mem_alloc": 42,
+        "host_id": 188906,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=35, CPU1=36, Inlet1=23, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC02",
+        "location": "HDNJIH-00A-1202-0B04-08-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B04-S-SRV-04",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845064,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 181,
+        "serial_number": "219189830633",
+        "mem_alloc": 42,
+        "host_id": 188908,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=38, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E03-13-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E03-S-SRV-34",
+        "status": 0
+    },
+    {
+        "mem_used": 144,
+        "cpu_alloc_ratio": 75.0,
+        "mem_util": 37.5,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845070,
+        "cpu_util": 19.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 36,
+        "power_consumption": 187,
+        "serial_number": "219189068950",
+        "mem_alloc": 170,
+        "host_id": 188910,
+        "mem_total": 384,
+        "cpu_unalloc_num": 12,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=40, Inlet1=20, Outlet1=30}",
+        "mem_alloc_ratio": 44.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B07-06-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 30.0,
+        "service_nic_rate": 1,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B07-S-SRV-03",
+        "status": 0
+    },
+    {
+        "mem_used": 184,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 47.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845074,
+        "cpu_util": 22.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 187,
+        "serial_number": "219189830234",
+        "mem_alloc": 210,
+        "host_id": 188912,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=39, CPU1=40, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 55.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B02-26-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 1,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B02-S-SRV-26",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845080,
+        "cpu_util": 12.3,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 187,
+        "serial_number": "219189741926",
+        "mem_alloc": 42,
+        "host_id": 188914,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=35, CPU1=39, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC03",
+        "location": "HDNJIH-00A-1202-0E01-11-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E01-S-SRV-05",
+        "status": 0
+    },
+    {
+        "mem_used": 45,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 11.8,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845084,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 184,
+        "serial_number": "219189742142",
+        "mem_alloc": 42,
+        "host_id": 188916,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=39, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC03",
+        "location": "HDNJIH-00A-1202-0E01-08-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E01-S-SRV-04",
+        "status": 0
+    },
+    {
+        "mem_used": 143,
+        "cpu_alloc_ratio": 50.0,
+        "mem_util": 37.1,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845086,
+        "cpu_util": 14.3,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 24,
+        "power_consumption": 183,
+        "serial_number": "219189830264",
+        "mem_alloc": 170,
+        "host_id": 188918,
+        "mem_total": 384,
+        "cpu_unalloc_num": 24,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=39, Inlet1=20, Outlet1=31}",
+        "mem_alloc_ratio": 44.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B01-29-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 60.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B01-S-SRV-13",
+        "status": 0
+    },
+    {
+        "mem_used": 167,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 43.6,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 40,
+        "model": "48C384G",
+        "id": 6845089,
+        "cpu_util": 19.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 186,
+        "serial_number": "219189742741",
+        "mem_alloc": 194,
+        "host_id": 188920,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=40, CPU1=41, Inlet1=20, Outlet1=40}",
+        "mem_alloc_ratio": 50.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B03-31-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 1,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B03-S-SRV-42",
+        "status": 0
+    },
+    {
+        "mem_used": 111,
+        "cpu_alloc_ratio": 67.0,
+        "mem_util": 28.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845093,
+        "cpu_util": 15.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 32,
+        "power_consumption": 193,
+        "serial_number": "219189741941",
+        "mem_alloc": 138,
+        "host_id": 188922,
+        "mem_total": 384,
+        "cpu_unalloc_num": 16,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=39, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 36.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E03-04-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 40.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E03-S-SRV-30",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845096,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 185,
+        "serial_number": "219189741971",
+        "mem_alloc": 42,
+        "host_id": 188924,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=38, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E02-08-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E02-S-SRV-18",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845105,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 183,
+        "serial_number": "219189830470",
+        "mem_alloc": 42,
+        "host_id": 188926,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=41, Inlet1=19, Outlet1=39}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B08-02-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B08-S-SRV-15",
+        "status": 0
+    },
+    {
+        "mem_used": 78,
+        "cpu_alloc_ratio": 75.0,
+        "mem_util": 20.4,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 35,
+        "model": "48C384G",
+        "id": 6845110,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 36,
+        "power_consumption": 181,
+        "serial_number": "219189742711",
+        "mem_alloc": 106,
+        "host_id": 188928,
+        "mem_total": 384,
+        "cpu_unalloc_num": 12,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=33, CPU1=38, Inlet1=20, Outlet1=37}",
+        "mem_alloc_ratio": 28.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC01",
+        "location": "HDNJIH-00A-1202-0E07-31-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 30.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E07-S-SRV-14",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845119,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 176,
+        "serial_number": "219190001830",
+        "mem_alloc": 42,
+        "host_id": 188930,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=38, Inlet1=20, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B01-15-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B01-S-SRV-07",
+        "status": 0
+    },
+    {
+        "mem_used": 143,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 37.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845130,
+        "cpu_util": 17.3,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 182,
+        "serial_number": "219189742023",
+        "mem_alloc": 170,
+        "host_id": 188932,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=41, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 44.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B02-08-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B02-S-SRV-18",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845134,
+        "cpu_util": 12.3,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 181,
+        "serial_number": "219189673494",
+        "mem_alloc": 42,
+        "host_id": 188934,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=38, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E01-02-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E01-S-SRV-01",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845140,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 184,
+        "serial_number": "219189741900",
+        "mem_alloc": 42,
+        "host_id": 188935,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=40, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B07-15-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B07-S-SRV-07",
+        "status": 0
+    },
+    {
+        "mem_used": 184,
+        "cpu_alloc_ratio": 67.0,
+        "mem_util": 47.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 40,
+        "model": "48C384G",
+        "id": 6845141,
+        "cpu_util": 18.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 32,
+        "power_consumption": 183,
+        "serial_number": "219189068800",
+        "mem_alloc": 210,
+        "host_id": 188937,
+        "mem_total": 384,
+        "cpu_unalloc_num": 16,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=39, CPU1=42, Inlet1=20, Outlet1=40}",
+        "mem_alloc_ratio": 55.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B03-17-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 40.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B03-S-SRV-36",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845149,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 189,
+        "serial_number": "219189068883",
+        "mem_alloc": 42,
+        "host_id": 188939,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=40, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B03-08-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B03-S-SRV-32",
+        "status": 0
+    },
+    {
+        "mem_used": 127,
+        "cpu_alloc_ratio": 58.0,
+        "mem_util": 33.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845159,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 28,
+        "power_consumption": 182,
+        "serial_number": "219189742093",
+        "mem_alloc": 154,
+        "host_id": 188941,
+        "mem_total": 384,
+        "cpu_unalloc_num": 20,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=39, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 40.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E01-04-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 50.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E01-S-SRV-02",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 36,
+        "model": "48C384G",
+        "id": 6845165,
+        "cpu_util": 12.3,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 179,
+        "serial_number": "219189741843",
+        "mem_alloc": 42,
+        "host_id": 188943,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=37, Inlet1=19, Outlet1=28}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E01-06-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E01-S-SRV-03",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845174,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 181,
+        "serial_number": "219189830481",
+        "mem_alloc": 42,
+        "host_id": 188945,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=38, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B07-31-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B07-S-SRV-14",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845178,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 186,
+        "serial_number": "219189741869",
+        "mem_alloc": 42,
+        "host_id": 188947,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=38, CPU1=40, Inlet1=19, Outlet1=39}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B08-06-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B08-S-SRV-17",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 37,
+        "model": "48C384G",
+        "id": 6845180,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 185,
+        "serial_number": "219189742751",
+        "mem_alloc": 42,
+        "host_id": 188949,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=39, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "TrustPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-SVIC01",
+        "location": "HDNJIH-00A-1202-0E02-13-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E02-S-SRV-20",
+        "status": 0
+    },
+    {
+        "mem_used": 11,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 2.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 38,
+        "model": "48C384G",
+        "id": 6845184,
+        "cpu_util": 12.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 179,
+        "serial_number": "219189068863",
+        "mem_alloc": 42,
+        "host_id": 188951,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=37, CPU1=39, Inlet1=20, Outlet1=38}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B03-11-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B03-S-SRV-33",
+        "status": 0
+    },
+    {
+        "mem_used": 68,
+        "cpu_alloc_ratio": 33.0,
+        "mem_util": 17.8,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 42,
+        "model": "48C384G",
+        "id": 6845104,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 16,
+        "power_consumption": 201,
+        "serial_number": "219189830629",
+        "mem_alloc": 50,
+        "host_id": 1212363,
+        "mem_total": 384,
+        "cpu_unalloc_num": 32,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=42, CPU1=42, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 13.0,
+        "vim_id": 11263,
+        "domain": "MgmtPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-MNG01",
+        "location": "HDNJIH-00A-1202-0E04-02-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 80.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E04-M-SRV-01",
+        "status": 0
+    },
+    {
+        "mem_used": 126,
+        "cpu_alloc_ratio": 33.0,
+        "mem_util": 32.8,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 45,
+        "model": "48C384G",
+        "id": 6845108,
+        "cpu_util": 76.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 16,
+        "power_consumption": 221,
+        "serial_number": "219189068893",
+        "mem_alloc": 58,
+        "host_id": 1212364,
+        "mem_total": 384,
+        "cpu_unalloc_num": 32,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=50, CPU1=41, Inlet1=19, Outlet1=32}",
+        "mem_alloc_ratio": 15.0,
+        "vim_id": 11263,
+        "domain": "MgmtPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-MNG01",
+        "location": "HDNJIH-00A-1202-0E07-02-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 80.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E07-M-SRV-01",
+        "status": 0
+    },
+    {
+        "mem_used": 77,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 20.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 41,
+        "model": "48C384G",
+        "id": 6845162,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 197,
+        "serial_number": "219189068894",
+        "mem_alloc": 106,
+        "host_id": 1212368,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=41, CPU1=41, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 28.0,
+        "vim_id": 11263,
+        "domain": "MgmtPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-MNG01",
+        "location": "HDNJIH-00A-1202-0E07-04-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E07-M-SRV-02",
+        "status": 0
+    },
+    {
+        "mem_used": 93,
+        "cpu_alloc_ratio": 33.0,
+        "mem_util": 24.3,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 42,
+        "model": "48C384G",
+        "id": 6845189,
+        "cpu_util": 42.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 16,
+        "power_consumption": 197,
+        "serial_number": "219189741944",
+        "mem_alloc": 50,
+        "host_id": 1212371,
+        "mem_total": 384,
+        "cpu_unalloc_num": 32,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=42, CPU1=42, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 13.0,
+        "vim_id": 11263,
+        "domain": "MgmtPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-MNG01",
+        "location": "HDNJIH-00A-1202-0E04-04-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 80.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E04-M-SRV-02",
+        "status": 0
+    },
+    {
+        "mem_used": 77,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 19.9,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 41,
+        "model": "48C384G",
+        "id": 6845095,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 190,
+        "serial_number": "219188879524",
+        "mem_alloc": 106,
+        "host_id": 1212389,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=40, CPU1=42, Inlet1=20, Outlet1=40}",
+        "mem_alloc_ratio": 28.0,
+        "vim_id": 11263,
+        "domain": "MgmtPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-MNG02",
+        "location": "HDNJIH-00A-1202-0B07-02-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B07-M-SRV-01",
+        "status": 0
+    },
+    {
+        "mem_used": 77,
+        "cpu_alloc_ratio": 42.0,
+        "mem_util": 20.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 41,
+        "model": "48C384G",
+        "id": 6845115,
+        "cpu_util": 39.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 20,
+        "power_consumption": 195,
+        "serial_number": "219189673393",
+        "mem_alloc": 58,
+        "host_id": 1212391,
+        "mem_total": 384,
+        "cpu_unalloc_num": 28,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=41, CPU1=42, Inlet1=19, Outlet1=37}",
+        "mem_alloc_ratio": 15.0,
+        "vim_id": 11263,
+        "domain": "MgmtPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ1",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-MNG01",
+        "location": "HDNJIH-00A-1202-0E04-06-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 70.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0E04-M-SRV-03",
+        "status": 0
+    },
+    {
+        "mem_used": 93,
+        "cpu_alloc_ratio": 33.0,
+        "mem_util": 24.2,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 40,
+        "model": "48C384G",
+        "id": 6845192,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 16,
+        "power_consumption": 190,
+        "serial_number": "219189068949",
+        "mem_alloc": 74,
+        "host_id": 1212438,
+        "mem_total": 384,
+        "cpu_unalloc_num": 32,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=40, CPU1=40, Inlet1=24, Outlet1=36}",
+        "mem_alloc_ratio": 19.0,
+        "vim_id": 11263,
+        "domain": "MgmtPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-MNG02",
+        "location": "HDNJIH-00A-1202-0B04-02-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 80.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B04-M-SRV-01",
+        "status": 0
+    },
+    {
+        "mem_used": 109,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 28.5,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 41,
+        "model": "48C384G",
+        "id": 6845129,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 196,
+        "serial_number": "219188879484",
+        "mem_alloc": 138,
+        "host_id": 1212455,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=41, CPU1=41, Inlet1=24, Outlet1=30}",
+        "mem_alloc_ratio": 36.0,
+        "vim_id": 11263,
+        "domain": "MgmtPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-MNG02",
+        "location": "HDNJIH-00A-1202-0B04-04-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B04-M-SRV-02",
+        "status": 0
+    },
+    {
+        "mem_used": 142,
+        "cpu_alloc_ratio": 83.0,
+        "mem_util": 37.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 40,
+        "model": "48C384G",
+        "id": 6845072,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 40,
+        "power_consumption": 186,
+        "serial_number": "219188879615",
+        "mem_alloc": 138,
+        "host_id": 1212472,
+        "mem_total": 384,
+        "cpu_unalloc_num": 8,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=39, CPU1=41, Inlet1=19, Outlet1=39}",
+        "mem_alloc_ratio": 36.0,
+        "vim_id": 11263,
+        "domain": "MgmtPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-MNG02",
+        "location": "HDNJIH-00A-1202-0B07-04-02",
+        "rn": 1,
+        "cpu_unalloc_ratio": 20.0,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B07-M-SRV-02",
+        "status": 0
+    },
+    {
+        "mem_used": 12,
+        "cpu_alloc_ratio": 17.0,
+        "mem_util": 3.0,
+        "cpu_total": 48,
+        "type": "Compute",
+        "manufacturer": "ZTE",
+        "update_time": "2020-03-20T20:15:00.000+0000",
+        "temperatures": 39,
+        "model": "48C384G",
+        "id": 6845182,
+        "cpu_util": 13.0,
+        "address": "华东（南）金华-00A-01",
+        "create_time": "2020-03-20T20:15:00.000+0000",
+        "cpu_alloc_num": 8,
+        "power_consumption": 182,
+        "serial_number": "219188879454",
+        "mem_alloc": 42,
+        "host_id": 3281904,
+        "mem_total": 384,
+        "cpu_unalloc_num": 40,
+        "start_time": "76days",
+        "safty_status": "OK",
+        "temperature_details": "{CPU2=36, CPU1=42, Inlet1=20, Outlet1=39}",
+        "mem_alloc_ratio": 11.0,
+        "vim_id": 11263,
+        "domain": "DmzPlane",
+        "cpu_available_num": 40,
+        "az": "NFV-AZ-HDNJIH-00A-HW-01-AZ2",
+        "ha": "NFV-HA-HDNJIH-00A-HW-01-DMZC02",
+        "location": "HDNJIH-00A-1202-0B03-24-02",
+        "rn": 1,
+        "service_nic_rate": 0,
+        "host_name": "NFV-D-HDNJIH-00A-1202-0B03-S-SRV-39",
+        "status": 0
+    }
+]
