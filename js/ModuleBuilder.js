@@ -11,11 +11,11 @@ function ModuleBuilder(scene,targetList){
     let server_texture,server_back_texture;
     //机柜宽、高、深
     const cabinet_w = 30;
-    const cabinet_h = 70;
+    const cabinet_h = 84;
     const cabinet_d = 30;
     //服务器宽、高、深
     const server_w = 26;
-    const server_h = 4;
+    let server_h = 4;
     const server_d = 26;
     let _serverList;
     function buildCabinetModule() {
@@ -80,9 +80,9 @@ function ModuleBuilder(scene,targetList){
                 back.position.y = py + cabinet_h / 2 + 1;
                 back.position.z = pz - cabinet_d / 2 + 2;
 
-                back.hover = function (o) {
-                    hoverCabinet(o.container);
-                }
+                // back.hover = function (o) {
+                //     hoverCabinet(o.container);
+                // }
                 back.container = cabinet;
 
                 targetList.push(back);
@@ -103,13 +103,13 @@ function ModuleBuilder(scene,targetList){
                 right.position.z = pz;
                 right.rotation.y = -Math.PI / 2;
 
-                left.hover = function (o) {
-                    hoverCabinet(o.container);
-                }
+                // left.hover = function (o) {
+                //     hoverCabinet(o.container);
+                // }
                 left.container = cabinet;
-                right.hover = function (o) {
-                    hoverCabinet(o.container);
-                }
+                // right.hover = function (o) {
+                //     hoverCabinet(o.container);
+                // }
                 right.container = cabinet;
 
                 targetList.push(left);
@@ -133,13 +133,13 @@ function ModuleBuilder(scene,targetList){
                 bottom.position.y = py + 2;
                 bottom.position.z = pz;
 
-                top.hover = function (o) {
-                    hoverCabinet(o.container);
-                }
+                // top.hover = function (o) {
+                //     hoverCabinet(o.container);
+                // }
                 top.container = cabinet;
-                bottom.hover = function (o) {
-                    hoverCabinet(o.container);
-                }
+                // bottom.hover = function (o) {
+                //     hoverCabinet(o.container);
+                // }
                 bottom.container = cabinet;
 
                 if (px == initX+12*30) {  //tag显示的行坐标,第12个柜子
@@ -176,9 +176,9 @@ function ModuleBuilder(scene,targetList){
                         closeCabinet(o.container);
                     }
                 }
-                front.hover = function (o) {
-                    hoverCabinet(o.container);
-                }
+                // front.hover = function (o) {
+                //     hoverCabinet(o.container);
+                // }
                 front.container = cabinet;
 
                 targetList.push(front);
@@ -206,10 +206,10 @@ function ModuleBuilder(scene,targetList){
     // rowNum=0,columnNum=1 => x=initX+1*30, z=initZ
     // rowNum=1,columnNum=0 => x=initX+0*30, z=initZ+1*80
     // rowNum=1,columnNum=1 => x=initX+1*30, z=initZ+1*80
-    function convertLocationFromRowNumAndColumnNum (rowNum,columnNum,height){
+    function convertLocationFromRowNumAndColumnNum (rowNum,columnNum,start,height){
         let object = {};
         object.x = initX + columnNum * cabinet_w;
-        object.y = height * 2 + 2 ;
+        object.y = parseInt(start)*2 + parseInt(height);
         object.z = initZ - rowNum * rowDistance;
         return object;
     }
@@ -237,21 +237,55 @@ function ModuleBuilder(scene,targetList){
     }
 
 
-    //服务器宽、高、深
-    function buildServerModel() {
-        server_texture = new THREE.TextureLoader().load('../images/server.png', server_texture => {
+    // type 1-server(默认，可不传) 2-storageHost 3-tor 4-eor 5-router 6-防火墙 7-IPS/IDS 8-DDoS 9-WAF 10-负载均衡
+    function buildServerModel(type) {
+        let imagePath = "../images/server.png";
+        let imageBackPath = "../images/server-back.png";
+        let _server_h = server_h;
+        if (type == 2){
+            imagePath = "../images/storage.png";
+            imageBackPath = "../images/storage_back.png";
+        }
+        if (type == 3){
+            imagePath = "../images/tor.png";
+            _server_h = 2;
+        }
+        if (type == 4){
+            imagePath = "../images/eor.jpeg";
+            _server_h = 40;
+        }
+        if (type == 5){
+            imagePath = "../images/router.png";
+            imageBackPath = "../images/router_back.png";
+            _server_h = 80;
+        }
+        if (type == 6){
+            imagePath = "../images/firewall.png";
+            _server_h = 32;
+        }
+        if (type == 7){
+            imagePath = "../images/ipsids.png";
+        }
+        if (type == 8){
+            imagePath = "../images/ddos.png";
+        }
+        if (type == 9){
+            imagePath = "../images/waf.png";
+        }
+
+        server_texture = new THREE.TextureLoader().load(imagePath, server_texture => {
             server_texture.wrapS = server_texture.wrapT = THREE.ClampToEdgeWrapping;
             server_texture.repeat.set(1, 1);
             server_texture.minFilter = THREE.LinearFilter
         })
 
-        server_back_texture = new THREE.TextureLoader().load('../images/server-back.png', server_back_texture => {
+        server_back_texture = new THREE.TextureLoader().load(imageBackPath, server_back_texture => {
             server_back_texture.wrapS = server_back_texture.wrapT = THREE.ClampToEdgeWrapping;
             server_back_texture.repeat.set(1, 1);
             server_back_texture.minFilter = THREE.LinearFilter
         })
 
-        var geometry = new THREE.BoxGeometry(server_w, server_h, server_d);
+        var geometry = new THREE.BoxGeometry(server_w, _server_h, server_d);
         var material = [];
         material.push(new THREE.MeshBasicMaterial({color: 0xbbbbbb}));
         material.push(new THREE.MeshBasicMaterial({color: 0xbbbbbb}));
@@ -264,8 +298,9 @@ function ModuleBuilder(scene,targetList){
         return serverModel;
     }
 
-    function buildServers(serverData,callback,serverList) {
-        let serverModel = buildServerModel();
+
+    function buildServers(type,serverData,callback,serverList) {
+        let serverModel = buildServerModel(type);
         for (let i = 0; i <serverData.length; i++) {
             // 服务器
             const server = serverModel.clone();
@@ -278,11 +313,13 @@ function ModuleBuilder(scene,targetList){
             materialArray.push(new THREE.MeshBasicMaterial({map: server_texture}));
             materialArray.push(new THREE.MeshBasicMaterial({map: server_back_texture}));
             serverModel.material = materialArray;
+            //HDNJIH-00A-1202-0E03-29-02
             let locationArr = serverData[i].location.split("-");
             let rowNum = locationArr[3].substr(1,1).charCodeAt() - 65;
             let columnNum = locationArr[3].substr(2,3);
-            let height = locationArr[4];
-            let position = convertLocationFromRowNumAndColumnNum(rowNum,columnNum,height);
+            let start = locationArr[4];
+            let height = locationArr[5];
+            let position = convertLocationFromRowNumAndColumnNum(rowNum,columnNum,start,height);
             server.position.x = position.x;
             server.position.y = position.y;
             server.position.z = position.z;
@@ -313,6 +350,7 @@ function ModuleBuilder(scene,targetList){
                 }
             }
             server.info = serverData[i];
+            server.deviceType = type;
             server.hover = function (o, event) {
                 callback(o,event);
             }
@@ -584,34 +622,35 @@ function ModuleBuilder(scene,targetList){
         targetList.push(fe);
     }
 
-    this.findServerByLocation = function (location,pageNum,callback,serverList){
+    // type 1-server(默认，可不传) 2-storageHost 3-tor 4-eor 5-router 6-防火墙 7-IPS/IDS 8-DDoS 9-WAF 10-负载均衡
+    this.findServerByLocation = function (type,location,pageNum,callback,serverList){
         // const url = "http://10.211.202.2:8082/";
-        // // const url = "http://localhost:8082/";
-        // $.ajax({
-        //     type: "GET",
-        //     url: url + "cpms/v1/topo/countServerByLocation",
-        //     data: {location},
-        //     dataType: "json",
-        //     success: function(serverNum){
-        //         console.log(serverNum);
-        //         let startPage = 0;
-        //         if (serverNum > 0){
-        //             for (let i=0;i<=serverNum/pageNum;i++){
-        //                 startPage = i*pageNum;
-        //                 $.ajax({
-        //                     type: "GET",
-        //                     url: url + "cpms/v1/topo/findServerByLocation",
-        //                     data: {location,startPage,pageNum},
-        //                     dataType: "json",
-        //                     success: function(serverData){
-        //                         buildServers(serverData,callback,serverList);
-        //                     }
-        //                 });
-        //             }
-        //         }
-        //     }
-        // });
-        buildServers(serverData,callback,serverList);
+        const url = "http://localhost:8090/";
+        $.ajax({
+            type: "GET",
+            url: url + "cpms/v1/topo/countServerByLocation",
+            data: {type,location},
+            dataType: "json",
+            success: function(serverNum){
+                console.log(serverNum);
+                let startPage = 0;
+                if (serverNum > 0){
+                    for (let i=0;i<=serverNum/pageNum;i++){
+                        startPage = i*pageNum;
+                        $.ajax({
+                            type: "GET",
+                            url: url + "cpms/v1/topo/findServerByLocation",
+                            data: {type,location,startPage,pageNum},
+                            dataType: "json",
+                            success: function(serverData){
+                                buildServers(type,serverData,callback,serverList);
+                            }
+                        });
+                    }
+                }
+            }
+        });
+        // buildServers(type,serverData,callback,serverList);
     }
 }
 

@@ -94,6 +94,200 @@
             </el-form-item>
         </el-form>
     </div>
+    <div id="storageHostForm" :style="positionStyle" class="cabinetForm">
+        <div class="title">存储服务器详细信息</div>
+        <el-form :model="storageHost" label-width="80px">
+            <el-form-item label="编号" v-model="storageHost.serial_number">
+                {{storageHost.serial_number}}
+            </el-form-item>
+            <el-form-item label="型号" v-model="storageHost.model">
+                {{storageHost.model}}
+            </el-form-item>
+            <el-form-item label="节点角色" v-model="storageHost.role">
+                {{storageHost.role}}
+            </el-form-item>
+            <el-form-item label="厂家" v-model="storageHost.manufacturer">
+                {{storageHost.manufacturer}}
+            </el-form-item>
+            <el-form-item label="入网时间" v-model="storageHost.start_time">
+                {{storageHost.start_time}}
+            </el-form-item>
+            <el-form-item label="位置" v-model="storageHost.location">
+                {{storageHost.location}}
+            </el-form-item>
+            <el-form-item label="设备状态" v-model="storageHost.location">
+                {{storageHost.location}}
+            </el-form-item>
+            <el-form-item label="设备状态" v-model="storageHost.safty_status">
+                {{storageHost.safty_status}}
+            </el-form-item>
+            <el-form-item label="CPU利用率" v-model="storageHost.cpu_util">
+                <el-progress :text-inside="true" :stroke-width="15" :percentage="storageHost.cpu_util"></el-progress>
+            </el-form-item>
+            <el-form-item label="内存利用率" v-model="storageHost.mem_util">
+                <el-progress :text-inside="true" :stroke-width="15" :percentage="storageHost.mem_util"></el-progress>
+            </el-form-item>
+            <el-form-item label="CPU温度" v-model="storageHost.temperatures">
+                {{storageHost.temperatures}}°C
+            </el-form-item>
+            <el-form-item label="当前功耗" v-model="storageHost.power_consumption">
+                {{storageHost.power_consumption}}KW
+            </el-form-item>
+        </el-form>
+    </div>
+    <div id="networkEqpForm" :style="positionStyle" class="cabinetForm">
+        <div class="title">组网设备详细信息</div>
+        <el-form :model="networkEqp" label-width="80px">
+            <el-form-item label="设备名称" v-model="networkEqp.eqp_name">
+                {{networkEqp.eqp_name}}
+            </el-form-item>
+            <el-form-item label="设备编号" v-model="networkEqp.eqp_no">
+                {{networkEqp.eqp_no}}
+            </el-form-item>
+            <el-form-item label="设备型号" v-model="networkEqp.eqp_model">
+                {{networkEqp.eqp_model}}
+            </el-form-item>
+            <el-form-item label="设备软件版本号" v-model="networkEqp.software_version">
+                {{networkEqp.software_version}}
+            </el-form-item>
+            <el-form-item label="厂家" v-model="networkEqp.manufacturer">
+                {{networkEqp.manufacturer}}
+            </el-form-item>
+            <el-form-item label="总流量" v-model="networkEqp.total_rate">
+                {{networkEqp.total_rate}} （Mbps）
+            </el-form-item>
+            <el-form-item label="位置" v-model="networkEqp.location">
+                {{networkEqp.location}}
+            </el-form-item>
+        </el-form>
+    </div>
+    <div id="fireWallForm" :style="positionStyle" class="cabinetForm">
+        <div class="title">安全设备详细信息</div>
+        <el-form :model="firewall" label-width="80px">
+            <el-form-item label="设备名称" v-model="firewall.eqp_name">
+                {{firewall.eqp_name}}
+            </el-form-item>
+            <el-form-item label="设备版本号" v-model="firewall.version">
+                {{firewall.version}}
+            </el-form-item>
+            <el-form-item label="厂家" v-model="firewall.manufacturer">
+                {{firewall.manufacturer}}
+            </el-form-item>
+            <el-form-item label="忙时平均吞吐量" v-model="firewall.throughput">
+                {{firewall.throughput}} Mbps
+            </el-form-item>
+            <el-form-item label="忙时并发连接数" v-model="firewall.max_connection">
+                {{firewall.max_connection}} 条
+            </el-form-item>
+            <el-form-item label="位置" v-model="firewall.location">
+                {{firewall.location}}
+            </el-form-item>
+        </el-form>
+    </div>
+    <div id="ipsForm" :style="positionStyle" class="cabinetForm">
+        <div class="title">安全设备详细信息</div>
+        <el-form :model="ips" label-width="80px">
+            <el-form-item label="设备名称" v-model="ips.eqp_name">
+                {{ips.eqp_name}}
+            </el-form-item>
+            <el-form-item label="设备版本号" v-model="ips.version">
+                {{ips.version}}
+            </el-form-item>
+            <el-form-item label="厂家" v-model="ips.manufacturer">
+                {{ips.manufacturer}}
+            </el-form-item>
+            <el-form-item label="忙时总吞吐量" v-model="ips.throughput">
+                {{ips.throughput}} Mbps
+            </el-form-item>
+            <el-form-item label="最大并发连接数" v-model="ips.max_connection">
+                {{ips.max_connection}} 条
+            </el-form-item>
+            <el-form-item label="每秒新建连接数" v-model="ips.new_connection">
+                {{ips.new_connection}} 条
+            </el-form-item>
+            <el-form-item label="误报率" v-model="ips.error_report_rate">
+                {{ips.error_report_rate}}
+            </el-form-item>
+            <el-form-item label="漏报率" v-model="ips.loss_report_rate">
+                {{ips.loss_report_rate}}
+            </el-form-item>
+            <el-form-item label="位置" v-model="ips.location">
+                {{ips.location}}
+            </el-form-item>
+        </el-form>
+    </div>
+    <div id="ddosForm" :style="positionStyle" class="cabinetForm">
+        <div class="title">安全设备详细信息</div>
+        <el-form :model="ddos" label-width="80px">
+            <el-form-item label="设备名称" v-model="ddos.eqp_name">
+                {{ddos.eqp_name}}
+            </el-form-item>
+            <el-form-item label="设备版本号" v-model="ddos.version">
+                {{ddos.version}}
+            </el-form-item>
+            <el-form-item label="厂家" v-model="ddos.manufacturer">
+                {{ddos.manufacturer}}
+            </el-form-item>
+            <el-form-item label="忙时平均吞吐量" v-model="ddos.throughput">
+                {{ddos.throughput}} Mbps
+            </el-form-item>
+            <el-form-item label="位置" v-model="ddos.location">
+                {{ddos.location}}
+            </el-form-item>
+        </el-form>
+    </div>
+    <div id="wafForm" :style="positionStyle" class="cabinetForm">
+        <div class="title">安全设备详细信息</div>
+        <el-form :model="waf" label-width="80px">
+            <el-form-item label="设备名称" v-model="waf.eqp_name">
+                {{waf.eqp_name}}
+            </el-form-item>
+            <el-form-item label="设备版本号" v-model="waf.version">
+                {{waf.version}}
+            </el-form-item>
+            <el-form-item label="厂家" v-model="waf.manufacturer">
+                {{waf.manufacturer}}
+            </el-form-item>
+            <el-form-item label=" HTTP吞吐量" v-model="waf.throughput">
+                {{waf.throughput}} Mbps
+            </el-form-item>
+            <el-form-item label=" HTTPS吞吐量" v-model="waf.throughput">
+                {{waf.throughput}} Mbps
+            </el-form-item>
+            <el-form-item label="最大并发连接数" v-model="waf.max_connection">
+                {{waf.max_connection}} 条
+            </el-form-item>
+            <el-form-item label="位置" v-model="waf.location">
+                {{waf.location}}
+            </el-form-item>
+        </el-form>
+    </div>
+    <div id="lbForm" :style="positionStyle" class="cabinetForm">
+        <div class="title">安全设备详细信息</div>
+        <el-form :model="lb" label-width="80px">
+            <el-form-item label="设备名称" v-model="lb.eqp_name">
+                {{lb.eqp_name}}
+            </el-form-item>
+            <el-form-item label="设备版本号" v-model="lb.version">
+                {{lb.version}}
+            </el-form-item>
+            <el-form-item label="厂家" v-model="lb.manufacturer">
+                {{lb.manufacturer}}
+            </el-form-item>
+            <el-form-item label="吞吐量" v-model="lb.throughput">
+                {{lb.throughput}} Mbps
+            </el-form-item>
+            <el-form-item label="并发链接数" v-model="lb.max_connection">
+                {{lb.max_connection}} 条
+            </el-form-item>
+            <el-form-item label="新建链接数" v-model="lb.new_connection">
+                {{lb.new_connection}} 条
+            </el-form-item>
+            <el-form-item label="位置" v-model="lb.location">
+                {{lb.location}}
+            </el-form-item>
+        </el-form>
+    </div>
     <div id="returnButton" style="position: absolute;right: 120px;top: 35px;">
         <el-button type="primary" @click="index">返回首页</el-button>
     </div>
@@ -194,6 +388,69 @@
                 temperatures: '',
                 power_consumption: '',
                 safty_status: ''
+            },
+            storageHost: {
+                serial_number:'',
+                model:'',
+                role:'',
+                manufacturer:'',
+                start_time:'',
+                location:'',
+                safty_status:'',
+                cpu_util:'',
+                mem_util:'',
+                temperatures:'',
+                power_consumption:''
+            },
+            networkEqp: {
+                eqp_name: '',
+                eqp_no: '',
+                eqp_model: '',
+                software_version: '',
+                manufacturer: '',
+                manufacturer: '',
+                total_rate: '',
+                location: '',
+            },
+            firewall: {
+                eqp_name: '',
+                version: '',
+                manufacturer: '',
+                throughput: '',
+                max_connection: '',
+                new_connection: '',
+            },
+            ips: {
+                eqp_name: '',
+                version: '',
+                manufacturer: '',
+                throughput: '',
+                max_connection: '',
+                new_connection: '',
+                error_report_rate: '',
+                loss_report_rate: '',
+            },
+            ddos: {
+                eqp_name: '',
+                version: '',
+                manufacturer: '',
+                throughput: '',
+            },
+            waf: {
+                eqp_name: '',
+                version: '',
+                manufacturer: '',
+                throughput_http: '',
+                throughput_https: '',
+                max_connection: '',
+            },
+            lb: {
+                eqp_name: '',
+                version: '',
+                manufacturer: '',
+                throughput: '',
+                max_connection: '',
+                new_connection: '',
             },
             query: {
                 cpu_alloc_ratio: '',
@@ -358,7 +615,7 @@
     }
 
     function closeHover() {
-        $("#serverForm").hide();
+        $(".cabinetForm").hide();
     }
 
     init();
@@ -566,31 +823,109 @@
 
         moduleBuilder.buildCabinets(11,25,createAreaTag);
 
-        moduleBuilder.findServerByLocation('1202',2000,showServerInfo,serverList);
+        moduleBuilder.findServerByLocation(1,'1202',2000,showServerInfo,serverList);
+        moduleBuilder.findServerByLocation(2,'1202',2000,showServerInfo,serverList);
+        moduleBuilder.findServerByLocation(3,'1202',2000,showServerInfo,serverList);
+        moduleBuilder.findServerByLocation(4,'1202',2000,showServerInfo,serverList);
+        moduleBuilder.findServerByLocation(5,'1202',2000,showServerInfo,serverList);
+        moduleBuilder.findServerByLocation(6,'1202',2000,showServerInfo,serverList);
+        moduleBuilder.findServerByLocation(7,'1202',2000,showServerInfo,serverList);
+        moduleBuilder.findServerByLocation(8,'1202',2000,showServerInfo,serverList);
+        moduleBuilder.findServerByLocation(9,'1202',2000,showServerInfo,serverList);
+        moduleBuilder.findServerByLocation(10,'1202',2000,showServerInfo,serverList);
 
     }
 
     function showServerInfo (server, event) {
-        showInfos.server.host_name = server.info.host_name;
-        showInfos.server.serial_number = server.info.serial_number;
-        showInfos.server.type = server.info.type;
-        showInfos.server.manufacturer = server.info.manufacturer;
-        showInfos.server.start_time = server.info.start_time;
-        showInfos.server.cpu_alloc_ratio = server.info.cpu_alloc_ratio;
-        showInfos.server.mem_alloc_ratio = server.info.mem_alloc_ratio;
-        showInfos.server.cpu_util = server.info.cpu_util;
-        showInfos.server.mem_util = server.info.mem_util;
-        showInfos.server.cpu_unalloc_ratio = server.info.cpu_unalloc_ratio;
-        showInfos.server.location = server.info.location;
-        showInfos.server.temperatures = server.info.temperatures;
-        showInfos.server.power_consumption = server.info.power_consumption;
-        showInfos.server.safty_status = server.info.safty_status;
-
         let left = event.clientX;
         let top = event.clientY -  287;
-
         showInfos.positionStyle = "position: absolute; left: " + left + "px; top:" + top + "px";
-        $("#serverForm").show();
+
+        if(server.deviceType == 1){
+            showInfos.server.host_name = server.info.host_name;
+            showInfos.server.serial_number = server.info.serial_number;
+            showInfos.server.type = server.info.type;
+            showInfos.server.manufacturer = server.info.manufacturer;
+            showInfos.server.start_time = server.info.start_time;
+            showInfos.server.cpu_alloc_ratio = server.info.cpu_alloc_ratio;
+            showInfos.server.mem_alloc_ratio = server.info.mem_alloc_ratio;
+            showInfos.server.cpu_util = server.info.cpu_util;
+            showInfos.server.mem_util = server.info.mem_util;
+            showInfos.server.cpu_unalloc_ratio = server.info.cpu_unalloc_ratio;
+            showInfos.server.location = server.info.location;
+            showInfos.server.temperatures = server.info.temperatures;
+            showInfos.server.power_consumption = server.info.power_consumption;
+            showInfos.server.safty_status = server.info.safty_status;
+            $("#serverForm").show();
+        }else if(server.deviceType == 2){
+            showInfos.storageHost.serial_number = server.info.serial_number;
+            showInfos.storageHost.model = server.info.model;
+            showInfos.storageHost.role = server.info.role;
+            showInfos.storageHost.manufacturer = server.info.manufacturer;
+            showInfos.storageHost.start_time = server.info.start_time;
+            showInfos.storageHost.location = server.info.location;
+            showInfos.storageHost.safty_status = server.info.safty_status;
+            showInfos.storageHost.cpu_util = server.info.cpu_util;
+            showInfos.storageHost.mem_util = server.info.mem_util;
+            showInfos.storageHost.temperatures = server.info.temperatures;
+            showInfos.storageHost.power_consumption = server.info.power_consumption;
+            $("#storageHostForm").show();
+        }else if(server.deviceType == 3 || server.deviceType == 4 || server.deviceType == 5){
+            showInfos.networkEqp.eqp_name = server.info.eqp_name;
+            showInfos.networkEqp.eqp_no = server.info.eqp_no;
+            showInfos.networkEqp.eqp_model = server.info.eqp_model;
+            showInfos.networkEqp.software_version = server.info.software_version;
+            showInfos.networkEqp.manufacturer = server.info.manufacturer;
+            showInfos.networkEqp.total_rate = server.info.total_rate;
+            showInfos.networkEqp.location = server.info.location;
+            $("#networkEqpForm").show();
+        }else if(server.deviceType == 6){
+            showInfos.firewall.eqp_name = server.info.eqp_name;
+            showInfos.firewall.version = server.info.version;
+            showInfos.firewall.manufacturer = server.info.manufacturer;
+            showInfos.firewall.throughput = server.info.throughput;
+            showInfos.firewall.max_connection = server.info.max_connection;
+            showInfos.firewall.new_connection = server.info.new_connection;
+            showInfos.firewall.location = server.info.location;
+            $("#fireWallForm").show();
+        }else if(server.deviceType ==7){
+            showInfos.ips.eqp_name = server.info.eqp_name;
+            showInfos.ips.version = server.info.version;
+            showInfos.ips.manufacturer = server.info.manufacturer;
+            showInfos.ips.throughput = server.info.throughput;
+            showInfos.ips.max_connection = server.info.max_connection;
+            showInfos.ips.new_connection = server.info.new_connection;
+            showInfos.ips.error_report_rate = server.info.error_report_rate;
+            showInfos.ips.loss_report_rate = server.info.loss_report_rate;
+            showInfos.ips.location = server.info.location;
+            $("#ipsForm").show();
+        }else if(server.deviceType ==8){
+            showInfos.ddos.eqp_name = server.info.eqp_name;
+            showInfos.ddos.version = server.info.version;
+            showInfos.ddos.manufacturer = server.info.manufacturer;
+            showInfos.ddos.throughput = server.info.throughput;
+            showInfos.ddos.location = server.info.location;
+            $("#ddosForm").show();
+        }else if(server.deviceType == 9){
+            showInfos.waf.eqp_name = server.info.eqp_name;
+            showInfos.waf.version = server.info.version;
+            showInfos.waf.manufacturer = server.info.manufacturer;
+            showInfos.waf.throughput_http = server.info.throughput_http;
+            showInfos.waf.throughput_https = server.info.throughput_https;
+            showInfos.waf.max_connection = server.info.max_connection;
+            showInfos.waf.location = server.info.location;
+            $("#wafForm").show();
+        }else if(server.deviceType == 19){
+            showInfos.lb.eqp_name = server.info.eqp_name;
+            showInfos.lb.version = server.info.version;
+            showInfos.lb.manufacturer = server.info.manufacturer;
+            showInfos.lb.throughput = server.info.throughput;
+            showInfos.lb.max_connection = server.info.max_connection;
+            showInfos.lb.new_connection = server.info.new_connection;
+            showInfos.lb.location = server.info.location;
+            $("#lbForm").show();
+        }
+
     }
 
     function createAreaTag(mesh,pz){
